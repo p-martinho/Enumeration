@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AssemblyName>PM.Enumeration.EFCore</AssemblyName>
+        <RootNamespace>PM.Enumeration.EFCore</RootNamespace>
+        <PackageId>PM.Enumeration.EFCore</PackageId>
+        <Authors>PM.Enumeration.EFCore</Authors>
+        <Company>PM.Enumeration.EFCore</Company>
+        <Product>PM.Enumeration.EFCore</Product>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Enumeration\Enumeration.csproj" />
+    </ItemGroup>
+
+</Project>

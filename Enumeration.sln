@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enumeration", "Enumeration\Enumeration.csproj", "{4BD298FF-EB3E-4295-9B25-11F16DE8CA37}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enumeration.SystemTextJson", "Enumeration.SystemTextJson\Enumeration.SystemTextJson.csproj", "{7F2BBBBB-1AEB-49D2-826A-A42A8074792B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enumeration.EFCore", "Enumeration.EFCore\Enumeration.EFCore.csproj", "{BCA6E329-1A9D-49EA-9D3E-21240D4E4C5F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4BD298FF-EB3E-4295-9B25-11F16DE8CA37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BD298FF-EB3E-4295-9B25-11F16DE8CA37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BD298FF-EB3E-4295-9B25-11F16DE8CA37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BD298FF-EB3E-4295-9B25-11F16DE8CA37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F2BBBBB-1AEB-49D2-826A-A42A8074792B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F2BBBBB-1AEB-49D2-826A-A42A8074792B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F2BBBBB-1AEB-49D2-826A-A42A8074792B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F2BBBBB-1AEB-49D2-826A-A42A8074792B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCA6E329-1A9D-49EA-9D3E-21240D4E4C5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCA6E329-1A9D-49EA-9D3E-21240D4E4C5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCA6E329-1A9D-49EA-9D3E-21240D4E4C5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCA6E329-1A9D-49EA-9D3E-21240D4E4C5F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

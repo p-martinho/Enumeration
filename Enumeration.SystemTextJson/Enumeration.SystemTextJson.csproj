@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AssemblyName>PM.Enumeration.SystemTextJson</AssemblyName>
+        <RootNamespace>PM.Enumeration.SystemTextJson</RootNamespace>
+        <PackageId>PM.Enumeration.SystemTextJson</PackageId>
+        <Authors>PM.Enumeration.SystemTextJson</Authors>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Enumeration\Enumeration.csproj" />
+    </ItemGroup>
+
+</Project>

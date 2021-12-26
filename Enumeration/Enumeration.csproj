@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <LangVersion>10</LangVersion>
+        <Nullable>enable</Nullable>
+        <AssemblyName>PM.Enumeration</AssemblyName>
+        <RootNamespace>PM.Enumeration</RootNamespace>
+        <PackageId>PM.Enumeration</PackageId>
+        <Title>PM.Enumeration</Title>
+        <Authors>Paulo Martinho (@p-martinho)</Authors>
+        <Description>Extendable class to implement enumeration classes, based on string values. Enables the strongly typed advantages, while using string enumerations.</Description>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="System.Collections.Immutable" Version="6.0.0" />
+    </ItemGroup>
+
+</Project>
