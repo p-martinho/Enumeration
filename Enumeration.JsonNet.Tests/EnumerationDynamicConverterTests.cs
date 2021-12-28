@@ -1,10 +1,9 @@
-﻿using System.Text.Json;
-using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 using PM.Enumeration;
-using PM.Enumeration.SystemTextJson;
+using PM.Enumeration.JsonNet;
 using Xunit;
 
-namespace Enumeration.SystemTextJson.Tests;
+namespace Enumeration.JsonNet.Tests;
 
 public class EnumerationDynamicConverterTests
 {
@@ -18,7 +17,7 @@ public class EnumerationDynamicConverterTests
         var test = new TestClass {Test = instance};
 
         // Act
-        var result = JsonSerializer.Serialize(test);
+        var result = JsonConvert.SerializeObject(test);
 
         // Assert
         Assert.Equal("{\"Test\":\"" + instance.Value + "\"}", result);
@@ -31,7 +30,7 @@ public class EnumerationDynamicConverterTests
         var test = new TestClass {Test = null};
 
         // Act
-        var result = JsonSerializer.Serialize(test);
+        var result = JsonConvert.SerializeObject(test);
 
         // Assert
         Assert.Equal("{\"Test\":null}", result);
@@ -49,7 +48,7 @@ public class EnumerationDynamicConverterTests
         var json = "{\"Test\":\"" + instance.Value + "\"}";
 
         // Act
-        var result = JsonSerializer.Deserialize<TestClass>(json);
+        var result = JsonConvert.DeserializeObject<TestClass>(json);
 
         // Assert
         Assert.NotNull(result);
@@ -63,7 +62,7 @@ public class EnumerationDynamicConverterTests
         var json = "{\"Test\":null}";
 
         // Act
-        var result = JsonSerializer.Deserialize<TestClass>(json);
+        var result = JsonConvert.DeserializeObject<TestClass>(json);
 
         // Assert
         Assert.NotNull(result);
@@ -78,7 +77,7 @@ public class EnumerationDynamicConverterTests
         var json = "{\"Test\":\"" + newCode + "\"}";
 
         // Act
-        var result = JsonSerializer.Deserialize<TestClass>(json);
+        var result = JsonConvert.DeserializeObject<TestClass>(json);
 
         // Assert
         Assert.NotNull(result);
@@ -95,7 +94,7 @@ public class EnumerationDynamicConverterTests
         public TestEnumerationDynamic? Test { get; init; }
     }
 
-    [JsonConverter(typeof(EnumerationConverterFactory))]
+    [JsonConverter(typeof(EnumerationDynamicConverter<TestEnumerationDynamic>))]
     private class TestEnumerationDynamic : EnumerationDynamic<TestEnumerationDynamic>
     {
         public static readonly TestEnumerationDynamic CodeA = new(nameof(CodeA));

@@ -1,10 +1,9 @@
-﻿using System.Text.Json;
-using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 using PM.Enumeration;
-using PM.Enumeration.SystemTextJson;
+using PM.Enumeration.JsonNet;
 using Xunit;
 
-namespace Enumeration.SystemTextJson.Tests;
+namespace Enumeration.JsonNet.Tests;
 
 public class EnumerationConverterTests
 {
@@ -18,7 +17,7 @@ public class EnumerationConverterTests
         var test = new TestClass {Test = instance};
 
         // Act
-        var result = JsonSerializer.Serialize(test);
+        var result = JsonConvert.SerializeObject(test);
 
         // Assert
         Assert.Equal("{\"Test\":\"" + instance.Value + "\"}", result);
@@ -31,7 +30,7 @@ public class EnumerationConverterTests
         var test = new TestClass {Test = null};
 
         // Act
-        var result = JsonSerializer.Serialize(test);
+        var result = JsonConvert.SerializeObject(test);
 
         // Assert
         Assert.Equal("{\"Test\":null}", result);
@@ -49,7 +48,7 @@ public class EnumerationConverterTests
         var json = "{\"Test\":\"" + instance.Value + "\"}";
 
         // Act
-        var result = JsonSerializer.Deserialize<TestClass>(json);
+        var result = JsonConvert.DeserializeObject<TestClass>(json);
 
         // Assert
         Assert.NotNull(result);
@@ -63,7 +62,7 @@ public class EnumerationConverterTests
         var json = "{\"Test\":null}";
 
         // Act
-        var result = JsonSerializer.Deserialize<TestClass>(json);
+        var result = JsonConvert.DeserializeObject<TestClass>(json);
 
         // Assert
         Assert.NotNull(result);
@@ -79,7 +78,7 @@ public class EnumerationConverterTests
         public TestEnumeration? Test { get; init; }
     }
 
-    [JsonConverter(typeof(EnumerationConverterFactory))]
+    [JsonConverter(typeof(EnumerationConverter<TestEnumeration>))]
     private class TestEnumeration : Enumeration<TestEnumeration>
     {
         public static readonly TestEnumeration CodeA = new(nameof(CodeA));
