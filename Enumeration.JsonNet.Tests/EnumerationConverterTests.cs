@@ -68,6 +68,19 @@ public class EnumerationConverterTests
         Assert.NotNull(result);
         Assert.Null(result!.Test);
     }
+    
+    [Fact]
+    public void Deserialize_WhenNotValid_ShouldFail()
+    {
+        // Arrange
+        var json = "{\"Test\":1}";
+
+        // Act
+        var result = () => JsonConvert.DeserializeObject<TestClass>(json);
+
+        // Assert
+        Assert.Throws<JsonSerializationException>(result);
+    }
 
     #endregion
 

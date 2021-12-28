@@ -30,13 +30,6 @@ public class EnumerationDynamicConverter<T> : JsonConverter<T> where T : Enumera
     /// <inheritdoc />
     public override void WriteJson(JsonWriter writer, T? value, JsonSerializer serializer)
     {
-        if (value is null)
-        {
-            writer.WriteNull();
-        }
-        else
-        {
-            writer.WriteValue(value.Value);
-        }
+        writer.WriteValue(value?.Value);
     }
 }

@@ -84,6 +84,19 @@ public class EnumerationDynamicConverterTests
         Assert.NotNull(result!.Test);
         Assert.Equal(newCode, result.Test!.Value);
     }
+    
+    [Fact]
+    public void Deserialize_WhenNotValid_ShouldFail()
+    {
+        // Arrange
+        var json = "{\"Test\":1}";
+
+        // Act
+        var result = () => JsonConvert.DeserializeObject<TestClass>(json);
+
+        // Assert
+        Assert.Throws<JsonSerializationException>(result);
+    }
 
     #endregion
 

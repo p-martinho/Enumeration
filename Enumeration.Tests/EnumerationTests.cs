@@ -399,7 +399,7 @@ public class EnumerationTests
         var instance2 = (TestEnumeration?) null;
 
         // ACT
-        var result = instance1.Equals(instance2);
+        var result = instance1 == instance2;
 
         // ASSERT
         Assert.False(result);
@@ -428,7 +428,35 @@ public class EnumerationTests
     {
         // ARRANGE
         var instance1 = TestEnumeration.CodeA;
+        var instance2 = TestEnumeration.CodeA;
+
+        // ACT
+        var result = instance1 != instance2;
+
+        // ASSERT
+        Assert.False(result);
+    }
+    
+    [Fact]
+    public void NotEqualsOperator_WhenDifferentInstanceButSameValue_ShouldReturnFalse()
+    {
+        // ARRANGE
+        var instance1 = TestEnumeration.CodeA;
         var instance2 = TestEnumeration.CodeAClone;
+
+        // ACT
+        var result = instance1 != instance2;
+
+        // ASSERT
+        Assert.False(result);
+    }
+    
+    [Fact]
+    public void NotEqualsOperator_WhenSameValueWithDifferentCase_ShouldReturnFalse()
+    {
+        // ARRANGE
+        var instance1 = TestEnumeration.CodeA;
+        var instance2 = TestEnumeration.CodeAUpper;
 
         // ACT
         var result = instance1 != instance2;
@@ -474,6 +502,182 @@ public class EnumerationTests
 
         // ACT
         var result = instance1 != instance2;
+
+        // ASSERT
+        Assert.False(result);
+    }
+
+    #endregion
+
+    #region == operator with string Tests
+
+    [Fact]
+    public void EqualsOperatorWithString_WhenSameValue_ShouldReturnTrue()
+    {
+        // ARRANGE
+        var instance = TestEnumeration.CodeA;
+        var value = TestEnumeration.CodeA.Value;
+
+        // ACT
+        var result = value == instance;
+
+        // ASSERT
+        Assert.True(result);
+    }
+
+    [Fact]
+    public void EqualsOperatorWithString_WhenSameValueWithDifferentCase_ShouldReturnTrue()
+    {
+        // ARRANGE
+        var instance = TestEnumeration.CodeA;
+        var value = TestEnumeration.CodeA.Value.ToUpper();
+
+        // ACT
+        var result = value == instance;
+
+        // ASSERT
+        Assert.True(result);
+    }
+
+    [Fact]
+    public void EqualsOperatorWithString_WhenNotSameValue_ShouldReturnFalse()
+    {
+        // ARRANGE
+        var instance = TestEnumeration.CodeA;
+        var value = TestEnumeration.CodeB.Value;
+
+        // ACT
+        var result = value == instance;
+
+        // ASSERT
+        Assert.False(result);
+    }
+
+    [Fact]
+    public void EqualsOperatorWithString_WhenStringIsNull_ShouldReturnFalse()
+    {
+        // ARRANGE
+        var instance = TestEnumeration.CodeA;
+        var value = (string?) null;
+
+        // ACT
+        var result = value == instance;
+
+        // ASSERT
+        Assert.False(result);
+    }
+    
+    [Fact]
+    public void EqualsOperatorWithString_WhenEnumerationIsNull_ShouldReturnFalse()
+    {
+        // ARRANGE
+        var instance = (TestEnumeration?) null;
+        var value = TestEnumeration.CodeA.Value;
+
+        // ACT
+        var result = value == instance;
+
+        // ASSERT
+        Assert.False(result);
+    }
+
+    [Fact]
+    public void EqualsOperatorWithString_WhenBothAreNull_ShouldReturnTrue()
+    {
+        // ARRANGE
+        var instance = (TestEnumeration?) null;
+        var value = (TestEnumeration?) null;
+
+        // ACT
+        var result = value == instance;
+
+        // ASSERT
+        Assert.True(result);
+    }
+
+    #endregion
+
+    #region != operator Tests
+
+    [Fact]
+    public void NotEqualsOperatorWithString_WhenSameValue_ShouldReturnFalse()
+    {
+        // ARRANGE
+        var instance = TestEnumeration.CodeA;
+        var value = TestEnumeration.CodeA.Value;
+
+        // ACT
+        var result = value != instance;
+
+        // ASSERT
+        Assert.False(result);
+    }
+
+    [Fact]
+    public void NotEqualsOperatorWithString_WhenSameValueWithDifferentCase_ShouldReturnFalse()
+    {
+        // ARRANGE
+        var instance = TestEnumeration.CodeA;
+        var value = TestEnumeration.CodeA.Value.ToUpper();
+
+        // ACT
+        var result = value != instance;
+
+        // ASSERT
+        Assert.False(result);
+    }
+
+    [Fact]
+    public void NotEqualsOperatorWithString_WhenNotSameValue_ShouldReturnTrue()
+    {
+        // ARRANGE
+        var instance = TestEnumeration.CodeA;
+        var value = TestEnumeration.CodeB.Value;
+
+        // ACT
+        var result = value != instance;
+
+        // ASSERT
+        Assert.True(result);
+    }
+
+    [Fact]
+    public void NotEqualsOperatorWithString_WhenStringIsNull_ShouldReturnTrue()
+    {
+        // ARRANGE
+        var instance = TestEnumeration.CodeA;
+        var value = (string?) null;
+
+        // ACT
+        var result = value != instance;
+
+        // ASSERT
+        Assert.True(result);
+    }
+    
+    [Fact]
+    public void NotEqualsOperatorWithString_WhenEnumerationIsNull_ShouldReturnFalse()
+    {
+        // ARRANGE
+        var instance = (TestEnumeration?) null;
+        var value = TestEnumeration.CodeA.Value;
+
+        // ACT
+        var result = value == instance;
+
+        // ASSERT
+        Assert.False(result);
+    }
+
+    [Fact]
+    public void NotEqualsOperatorWithString_WhenBothAreNull_ShouldReturnFalse()
+    {
+        // ARRANGE
+        var instance = (TestEnumeration?) null;
+        var value = (string?) null;
+
+        // ACT
+        var result = value != instance;
 
         // ASSERT
         Assert.False(result);
