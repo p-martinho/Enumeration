@@ -2,30 +2,29 @@
 using Enumeration.EFCore.Tests.DbContext;
 using Microsoft.EntityFrameworkCore;
 
-namespace Enumeration.EFCore.Tests
+namespace Enumeration.EFCore.Tests;
+
+public abstract class EfCoreBaseTest : IDisposable
 {
-    public abstract class EfCoreBaseTest : IDisposable
+    private const string ConnectionString = "DataSource=:memory:";
+
+    protected readonly TestDbContext Context;
+
+    protected EfCoreBaseTest()
     {
-        private const string ConnectionString = "DataSource=:memory:";
-        
-        protected readonly TestDbContext Context;
-        
-        protected EfCoreBaseTest()
-        {
-            var options = new DbContextOptionsBuilder<TestDbContext>()
-                .UseSqlite(ConnectionString)
-                .Options;
+        var options = new DbContextOptionsBuilder<TestDbContext>()
+            .UseSqlite(ConnectionString)
+            .Options;
 
-            Context = new TestDbContext(options);
+        Context = new TestDbContext(options);
 
-            Context.Database.OpenConnection();
-            
-            Context.Database.EnsureCreated();
-        }
+        Context.Database.OpenConnection();
 
-        public void Dispose()
-        {
-            Context.Dispose();
-        }
+        Context.Database.EnsureCreated();
+    }
+
+    public void Dispose()
+    {
+        Context.Dispose();
     }
 }

@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace PM.Enumeration.SystemTextJson
 {
-    public class EnumerationJsonConverterFactory : JsonConverterFactory
+    public class EnumerationConverterFactory : JsonConverterFactory
     {
         public override bool CanConvert(Type typeToConvert)
         {
@@ -16,8 +16,8 @@ namespace PM.Enumeration.SystemTextJson
             JsonSerializerOptions options)
         {
             var converterType = IsAssignableToGenericType(typeToConvert, typeof(EnumerationDynamic<>))
-                ? typeof(EnumerationDynamicJsonConverter<>)
-                : typeof(EnumerationJsonConverter<>);
+                ? typeof(EnumerationDynamicConverter<>)
+                : typeof(EnumerationConverter<>);
 
             return (JsonConverter)Activator.CreateInstance(converterType.MakeGenericType(typeToConvert))!;
         }
