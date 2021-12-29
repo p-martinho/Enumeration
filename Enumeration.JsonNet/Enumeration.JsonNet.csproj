@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AssemblyName>PM.Enumeration.JsonNet</AssemblyName>
+        <RootNamespace>PM.Enumeration.JsonNet</RootNamespace>
+        <PackageId>PM.Enumeration.JsonNet</PackageId>
+        <Authors>PM.Enumeration.JsonNet</Authors>
+        <Company>PM.Enumeration.JsonNet</Company>
+        <Product>PM.Enumeration.JsonNet</Product>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Enumeration\Enumeration.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    </ItemGroup>
+
+</Project>
