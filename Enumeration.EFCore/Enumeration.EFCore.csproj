@@ -7,9 +7,13 @@
         <AssemblyName>PM.Enumeration.EFCore</AssemblyName>
         <RootNamespace>PM.Enumeration.EFCore</RootNamespace>
         <PackageId>PM.Enumeration.EFCore</PackageId>
-        <Authors>PM.Enumeration.EFCore</Authors>
-        <Company>PM.Enumeration.EFCore</Company>
-        <Product>PM.Enumeration.EFCore</Product>
+        <Authors>Paulo Martinho</Authors>
+        <Company>PM</Company>
+        <Title>PM.Enumeration.EFCore</Title>
+        <Description>EFCore support for PM.Enumeration.</Description>
+        <PackageProjectUrl>https://github.com/p-martinho/Enumeration</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/p-martinho/Enumeration</RepositoryUrl>
+        <PackageTags>enum;enumeration;ddd;entityframeworkcore</PackageTags>
     </PropertyGroup>
 
     <ItemGroup>

@@ -7,9 +7,13 @@
         <AssemblyName>PM.Enumeration.JsonNet</AssemblyName>
         <RootNamespace>PM.Enumeration.JsonNet</RootNamespace>
         <PackageId>PM.Enumeration.JsonNet</PackageId>
-        <Authors>PM.Enumeration.JsonNet</Authors>
-        <Company>PM.Enumeration.JsonNet</Company>
-        <Product>PM.Enumeration.JsonNet</Product>
+        <Authors>Paulo Martinho</Authors>
+        <Company>PM</Company>
+        <Title>PM.Enumeration.JsonNet</Title>
+        <Description>Json.NET serialization support for PM.Enumeration.</Description>
+        <PackageProjectUrl>https://github.com/p-martinho/Enumeration</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/p-martinho/Enumeration</RepositoryUrl>
+        <PackageTags>enum;enumeration;ddd;json;json.net</PackageTags>
     </PropertyGroup>
 
     <ItemGroup>

@@ -2,14 +2,18 @@
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
-        <LangVersion>10</LangVersion>
+        <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <AssemblyName>PM.Enumeration</AssemblyName>
         <RootNamespace>PM.Enumeration</RootNamespace>
         <PackageId>PM.Enumeration</PackageId>
+        <Authors>Paulo Martinho</Authors>
+        <Company>PM</Company>
         <Title>PM.Enumeration</Title>
-        <Authors>Paulo Martinho (@p-martinho)</Authors>
-        <Description>Extendable class to implement enumeration classes, based on string values. Enables the strongly typed advantages, while using string enumerations.</Description>
+        <Description>Extendable class to implement enumeration classes, based on string values. They enable features of an object-oriented language without the limitations of the C# enum's.</Description>
+        <PackageProjectUrl>https://github.com/p-martinho/Enumeration</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/p-martinho/Enumeration</RepositoryUrl>
+        <PackageTags>enum;enumeration;ddd</PackageTags>
     </PropertyGroup>
 
     <ItemGroup>

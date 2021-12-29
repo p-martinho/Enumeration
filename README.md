@@ -1,6 +1,8 @@
 # PM.Enumeration
 
-This set of libraries provide base classes to implement __Enumeration classes__.
+This set of libraries provide base classes to implement __Enumeration classes__, based on string values.
+It enables the strongly typed advantages, while using string enumerations.
+
 It has, also, the possibility to create new Enumerations at runtime (let's call it dynamic enumeration).
 
 ##What are enumeration classes?
