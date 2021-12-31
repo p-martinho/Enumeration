@@ -14,7 +14,13 @@
         <PackageProjectUrl>https://github.com/p-martinho/Enumeration</PackageProjectUrl>
         <RepositoryUrl>https://github.com/p-martinho/Enumeration</RepositoryUrl>
         <PackageTags>enum;enumeration;ddd;json;json.net</PackageTags>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageIcon>icon.png</PackageIcon>
     </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="icon.png" Pack="true" PackagePath="\"/>
+    </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\Enumeration\Enumeration.csproj" />
