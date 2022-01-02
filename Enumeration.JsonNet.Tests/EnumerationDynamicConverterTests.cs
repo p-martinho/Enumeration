@@ -1,6 +1,5 @@
-﻿using Newtonsoft.Json;
-using PM.Enumeration;
-using PM.Enumeration.JsonNet;
+﻿using Enumeration.JsonNet.Tests.EnumerationClasses;
+using Newtonsoft.Json;
 using Xunit;
 
 namespace Enumeration.JsonNet.Tests;
@@ -100,25 +99,11 @@ public class EnumerationDynamicConverterTests
 
     #endregion
 
-    #region Private Enumeration classes for testing
+    #region Private classes for testing
 
     private class TestClass
     {
         public TestEnumerationDynamic? Test { get; init; }
-    }
-
-    [JsonConverter(typeof(EnumerationDynamicConverter<TestEnumerationDynamic>))]
-    private class TestEnumerationDynamic : EnumerationDynamic<TestEnumerationDynamic>
-    {
-        public static readonly TestEnumerationDynamic CodeA = new(nameof(CodeA));
-
-        public TestEnumerationDynamic()
-        {
-        }
-
-        private TestEnumerationDynamic(string value) : base(value)
-        {
-        }
     }
 
     #endregion

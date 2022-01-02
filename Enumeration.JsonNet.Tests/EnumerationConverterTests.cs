@@ -1,6 +1,5 @@
-﻿using Newtonsoft.Json;
-using PM.Enumeration;
-using PM.Enumeration.JsonNet;
+﻿using Enumeration.JsonNet.Tests.EnumerationClasses;
+using Newtonsoft.Json;
 using Xunit;
 
 namespace Enumeration.JsonNet.Tests;
@@ -84,21 +83,11 @@ public class EnumerationConverterTests
 
     #endregion
 
-    #region Private Enumeration classes for testing
+    #region Private classes for testing
 
     private class TestClass
     {
         public TestEnumeration? Test { get; init; }
-    }
-
-    [JsonConverter(typeof(EnumerationConverter<TestEnumeration>))]
-    private class TestEnumeration : Enumeration<TestEnumeration>
-    {
-        public static readonly TestEnumeration CodeA = new(nameof(CodeA));
-
-        private TestEnumeration(string value) : base(value)
-        {
-        }
     }
 
     #endregion

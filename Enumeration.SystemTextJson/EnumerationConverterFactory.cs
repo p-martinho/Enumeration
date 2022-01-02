@@ -1,5 +1,6 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
+using PM.Enumeration.Extensions;
 
 namespace PM.Enumeration.SystemTextJson;
 
@@ -12,36 +13,17 @@ public class EnumerationConverterFactory : JsonConverterFactory
     /// <inheritdoc />
     public override bool CanConvert(Type typeToConvert)
     {
-        var result = IsAssignableToGenericType(typeToConvert, typeof(Enumeration<>));
-
-        return result;
+        return typeToConvert.IsAssignableToEnumeration();
     }
 
     /// <inheritdoc />
     public override JsonConverter CreateConverter(Type typeToConvert,
         JsonSerializerOptions options)
     {
-        var converterType = IsAssignableToGenericType(typeToConvert, typeof(EnumerationDynamic<>))
+        var converterType = typeToConvert.IsAssignableToEnumerationDynamic()
             ? typeof(EnumerationDynamicConverter<>)
             : typeof(EnumerationConverter<>);
 
         return (JsonConverter) Activator.CreateInstance(converterType.MakeGenericType(typeToConvert))!;
-    }
-
-    private bool IsAssignableToGenericType(Type givenType, Type genericType)
-    {
-        if (givenType.IsGenericType && givenType.GetGenericTypeDefinition() == genericType)
-        {
-            return true;
-        }
-
-        var baseType = givenType.BaseType;
-
-        if (baseType == null)
-        {
-            return false;
-        }
-
-        return IsAssignableToGenericType(baseType, genericType);
     }
 }

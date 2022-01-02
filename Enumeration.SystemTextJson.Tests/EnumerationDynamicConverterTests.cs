@@ -1,7 +1,5 @@
 ﻿using System.Text.Json;
-using System.Text.Json.Serialization;
-using PM.Enumeration;
-using PM.Enumeration.SystemTextJson;
+using Enumeration.SystemTextJson.Tests.EnumerationClasses;
 using Xunit;
 
 namespace Enumeration.SystemTextJson.Tests;
@@ -88,25 +86,11 @@ public class EnumerationDynamicConverterTests
 
     #endregion
 
-    #region Private Enumeration classes for testing
+    #region Private classes for testing
 
     private class TestClass
     {
         public TestEnumerationDynamic? Test { get; init; }
-    }
-
-    [JsonConverter(typeof(EnumerationConverterFactory))]
-    private class TestEnumerationDynamic : EnumerationDynamic<TestEnumerationDynamic>
-    {
-        public static readonly TestEnumerationDynamic CodeA = new(nameof(CodeA));
-
-        public TestEnumerationDynamic()
-        {
-        }
-
-        private TestEnumerationDynamic(string value) : base(value)
-        {
-        }
     }
 
     #endregion

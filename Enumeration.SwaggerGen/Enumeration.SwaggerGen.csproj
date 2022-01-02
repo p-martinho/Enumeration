@@ -4,16 +4,16 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <AssemblyName>PM.Enumeration.EFCore</AssemblyName>
-        <RootNamespace>PM.Enumeration.EFCore</RootNamespace>
-        <PackageId>PM.Enumeration.EFCore</PackageId>
+        <AssemblyName>PM.Enumeration.SwaggerGen</AssemblyName>
+        <RootNamespace>PM.Enumeration.SwaggerGen</RootNamespace>
+        <PackageId>PM.Enumeration.SwaggerGen</PackageId>
         <Authors>Paulo Martinho</Authors>
         <Company>PM</Company>
-        <Title>PM.Enumeration.EFCore</Title>
-        <Description>EFCore support for PM.Enumeration.</Description>
+        <Title>PM.Enumeration.SwaggerGen</Title>
+        <Description>Enumeration support to generate Swagger documentation as enum type.</Description>
         <PackageProjectUrl>https://github.com/p-martinho/Enumeration</PackageProjectUrl>
         <RepositoryUrl>https://github.com/p-martinho/Enumeration</RepositoryUrl>
-        <PackageTags>enum;enumeration;ddd;entityframeworkcore</PackageTags>
+        <PackageTags>enum;enumeration;swagger</PackageTags>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageIcon>icon.png</PackageIcon>
     </PropertyGroup>
@@ -23,11 +23,11 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.1" />
+      <ProjectReference Include="..\Enumeration\Enumeration.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Enumeration\Enumeration.csproj" />
+      <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.2.3" />
     </ItemGroup>
 
 </Project>

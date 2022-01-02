@@ -1,5 +1,5 @@
 using System.Linq;
-using PM.Enumeration;
+using Enumeration.Tests.EnumerationClasses;
 using Xunit;
 
 namespace Enumeration.Tests;
@@ -11,13 +11,13 @@ public class EnumerationTests
     [Fact]
     public void Value_ShouldSucceed()
     {
-        // ARRANGE
+        // Arrange
 
-        // ACT
+        // Act
         var valueA = TestEnumeration.CodeA.Value;
         var valueB = TestEnumeration.CodeB.Value;
 
-        // ASSERT
+        // Assert
         Assert.Equal(nameof(TestEnumeration.CodeA), valueA);
         Assert.Equal(nameof(TestEnumeration.CodeB), valueB);
     }
@@ -29,12 +29,12 @@ public class EnumerationTests
     [Fact]
     public void GetMembers_ShouldSucceed()
     {
-        // ARRANGE
+        // Arrange
 
-        // ACT
+        // Act
         var members = TestEnumeration.GetMembers().ToList();
 
-        // ASSERT
+        // Assert
         // GetMembers use an HashSet, that does not allow more than one member with exactly same value.
         Assert.Equal(3, members.Count);
         Assert.Contains(TestEnumeration.CodeA, members);
@@ -50,40 +50,40 @@ public class EnumerationTests
     [Fact]
     public void GetFromValueOrDefault_ShouldSucceed()
     {
-        // ARRANGE
+        // Arrange
         var existentValue = TestEnumeration.CodeB.Value;
 
-        // ACT
+        // Act
         var instance = TestEnumeration.GetFromValueOrDefault(existentValue);
 
-        // ASSERT
+        // Assert
         Assert.Same(TestEnumeration.CodeB, instance);
     }
 
     [Fact]
     public void GetFromValueOrDefault_WhenValueDoesNotExist_ShouldReturnNull()
     {
-        // ARRANGE
+        // Arrange
         var unknownValue = "unknownValue";
 
-        // ACT
+        // Act
         var instance = TestEnumeration.GetFromValueOrDefault(unknownValue);
 
-        // ASSERT
+        // Assert
         Assert.Null(instance);
     }
 
     [Fact]
     public void GetFromValueOrDefault_ShouldBeCaseInsensitive()
     {
-        // ARRANGE
+        // Arrange
         var existentValue = TestEnumeration.CodeB.Value;
         var existentValueInDifferentCase = existentValue.ToUpper();
 
-        // ACT
+        // Act
         var instance = TestEnumeration.GetFromValueOrDefault(existentValueInDifferentCase);
 
-        // ASSERT
+        // Assert
         Assert.Same(TestEnumeration.CodeB, instance);
     }
 
@@ -94,12 +94,12 @@ public class EnumerationTests
     [Fact]
     public void GetValues_ShouldSucceed()
     {
-        // ARRANGE
+        // Arrange
 
-        // ACT
+        // Act
         var values = TestEnumeration.GetValues().ToList();
 
-        // ASSERT
+        // Assert
         Assert.Equal(3, values.Count);
         Assert.Contains(TestEnumeration.CodeA.Value, values);
         Assert.Contains(TestEnumeration.CodeB.Value, values);
@@ -114,39 +114,39 @@ public class EnumerationTests
     [Fact]
     public void HasValue_WhenDoesNotHaveValue_ShouldReturnFalse()
     {
-        // ARRANGE
+        // Arrange
         var unknownValue = "unknownValue";
 
-        // ACT
+        // Act
         var result = TestEnumeration.HasValue(unknownValue);
 
-        // ASSERT
+        // Assert
         Assert.False(result);
     }
 
     [Fact]
     public void HasValue_WhenHasValue_ShouldReturnTrue()
     {
-        // ARRANGE
+        // Arrange
         var value = nameof(TestEnumeration.CodeA);
 
-        // ACT
+        // Act
         var result = TestEnumeration.HasValue(value);
 
-        // ASSERT
+        // Assert
         Assert.True(result);
     }
 
     [Fact]
     public void HasValue_ShouldBeCaseInsensitive()
     {
-        // ARRANGE
+        // Arrange
         var value = nameof(TestEnumeration.CodeB).ToUpper();
 
-        // ACT
+        // Act
         var result = TestEnumeration.HasValue(value);
 
-        // ASSERT
+        // Assert
         Assert.True(result);
     }
 
@@ -157,13 +157,13 @@ public class EnumerationTests
     [Fact]
     public void Value_WithSubClass_ShouldSucceed()
     {
-        // ARRANGE
+        // Arrange
 
-        // ACT
+        // Act
         var valueA = TestEnumerationWithSubClasses.CodeA.Value;
         var valueB = TestEnumerationWithSubClasses.CodeB.Value;
 
-        // ASSERT
+        // Assert
         Assert.Equal(nameof(TestEnumerationWithSubClasses.CodeA), valueA);
         Assert.Equal(nameof(TestEnumerationWithSubClasses.CodeB), valueB);
     }
@@ -171,12 +171,12 @@ public class EnumerationTests
     [Fact]
     public void GetMembers_WithSubClass_ShouldSucceed()
     {
-        // ARRANGE
+        // Arrange
 
-        // ACT
+        // Act
         var members = TestEnumerationWithSubClasses.GetMembers().ToList();
 
-        // ASSERT
+        // Assert
         Assert.Equal(2, members.Count);
         Assert.Contains(TestEnumerationWithSubClasses.CodeA, members);
         Assert.Contains(TestEnumerationWithSubClasses.CodeB, members);
@@ -185,15 +185,15 @@ public class EnumerationTests
     [Fact]
     public void HasValue_WithSubClass_ShouldSucceed()
     {
-        // ARRANGE
+        // Arrange
         var unknownValue = "unknownValue";
         var existentValue = nameof(TestEnumerationWithSubClasses.CodeB);
 
-        // ACT
+        // Act
         var resultWithUnknownValue = TestEnumerationWithSubClasses.HasValue(unknownValue);
         var resultWithExistentValue = TestEnumerationWithSubClasses.HasValue(existentValue);
 
-        // ASSERT
+        // Assert
         Assert.False(resultWithUnknownValue);
         Assert.True(resultWithExistentValue);
     }
@@ -201,13 +201,13 @@ public class EnumerationTests
     [Fact]
     public void CustomPropertyOnSubClass_ShouldSucceed()
     {
-        // ARRANGE
+        // Arrange
 
-        // ACT
+        // Act
         var hasATheCodeB = TestEnumerationWithSubClasses.CodeA.IsCodeB;
         var hasBTheCodeB = TestEnumerationWithSubClasses.CodeB.IsCodeB;
 
-        // ASSERT
+        // Assert
         Assert.False(hasATheCodeB);
         Assert.True(hasBTheCodeB);
     }
@@ -219,13 +219,13 @@ public class EnumerationTests
     [Fact]
     public void ToString_ShouldReturnValue()
     {
-        // ARRANGE
+        // Arrange
         var value = TestEnumeration.CodeA.Value;
 
-        // ACT
+        // Act
         var result = TestEnumeration.CodeA.ToString();
 
-        // ASSERT
+        // Assert
         Assert.Equal(value, result);
     }
 
@@ -236,98 +236,98 @@ public class EnumerationTests
     [Fact]
     public void Equals_WhenSameInstance_ShouldReturnTrue()
     {
-        // ARRANGE
+        // Arrange
         var instance1 = TestEnumeration.CodeA;
         var instance2 = TestEnumeration.CodeA;
 
-        // ACT
+        // Act
         var result = instance1.Equals(instance2);
 
-        // ASSERT
+        // Assert
         Assert.True(result);
     }
 
     [Fact]
     public void Equals_WhenDifferentInstanceButSameValue_ShouldReturnTrue()
     {
-        // ARRANGE
+        // Arrange
         var instance1 = TestEnumeration.CodeA;
         var instance2 = TestEnumeration.CodeAClone;
 
-        // ACT
+        // Act
         var result = Equals(instance1, instance2);
 
-        // ASSERT
+        // Assert
         Assert.True(result);
     }
 
     [Fact]
     public void Equals_WhenSameValueWithDifferentCase_ShouldReturnTrue()
     {
-        // ARRANGE
+        // Arrange
         var instance1 = TestEnumeration.CodeA;
         var instance2 = TestEnumeration.CodeAUpper;
 
-        // ACT
+        // Act
         var result = Equals(instance1, instance2);
 
-        // ASSERT
+        // Assert
         Assert.True(result);
     }
 
     [Fact]
     public void Equals_WhenNotSameValue_ShouldReturnFalse()
     {
-        // ARRANGE
+        // Arrange
         var instance1 = TestEnumeration.CodeA;
         var instance2 = TestEnumeration.CodeB;
 
-        // ACT
+        // Act
         var result = Equals(instance1, instance2);
 
-        // ASSERT
+        // Assert
         Assert.False(result);
     }
 
     [Fact]
     public void Equals_WhenOneIsNull_ShouldReturnFalse()
     {
-        // ARRANGE
+        // Arrange
         var instance1 = TestEnumeration.CodeA;
         var instance2 = (TestEnumeration?) null;
 
-        // ACT
+        // Act
         var result = Equals(instance1, instance2);
 
-        // ASSERT
+        // Assert
         Assert.False(result);
     }
 
     [Fact]
     public void Equals_WhenBothAreNull_ShouldReturnTrue()
     {
-        // ARRANGE
+        // Arrange
         var instance1 = (TestEnumeration?) null;
         var instance2 = (TestEnumeration?) null;
 
-        // ACT
+        // Act
         var result = Equals(instance1, instance2);
 
-        // ASSERT
+        // Assert
         Assert.True(result);
     }
 
     [Fact]
     public void Equals_WhenSameValueButNotSameType_ShouldReturnFalse()
     {
-        // ARRANGE
+        // Arrange
         var instance1 = TestEnumeration.CodeA;
         var instance2 = TestEnumerationWithSubClasses.CodeA;
 
-        // ACT
+        // Act
         var result = Equals(instance1, instance2);
 
-        // ASSERT
+        // Assert
         Assert.False(result);
     }
 
@@ -338,84 +338,84 @@ public class EnumerationTests
     [Fact]
     public void EqualsOperator_WhenSameInstance_ShouldReturnTrue()
     {
-        // ARRANGE
+        // Arrange
         var instance1 = TestEnumeration.CodeA;
         var instance2 = TestEnumeration.CodeA;
 
-        // ACT
+        // Act
         var result = instance1 == instance2;
 
-        // ASSERT
+        // Assert
         Assert.True(result);
     }
 
     [Fact]
     public void EqualsOperator_WhenDifferentInstanceButSameValue_ShouldReturnTrue()
     {
-        // ARRANGE
+        // Arrange
         var instance1 = TestEnumeration.CodeA;
         var instance2 = TestEnumeration.CodeAClone;
 
-        // ACT
+        // Act
         var result = instance1 == instance2;
 
-        // ASSERT
+        // Assert
         Assert.True(result);
     }
 
     [Fact]
     public void EqualsOperator_WhenSameValueWithDifferentCase_ShouldReturnTrue()
     {
-        // ARRANGE
+        // Arrange
         var instance1 = TestEnumeration.CodeA;
         var instance2 = TestEnumeration.CodeAUpper;
 
-        // ACT
+        // Act
         var result = instance1 == instance2;
 
-        // ASSERT
+        // Assert
         Assert.True(result);
     }
 
     [Fact]
     public void EqualsOperator_WhenNotSameValue_ShouldReturnFalse()
     {
-        // ARRANGE
+        // Arrange
         var instance1 = TestEnumeration.CodeA;
         var instance2 = TestEnumeration.CodeB;
 
-        // ACT
+        // Act
         var result = instance1 == instance2;
 
-        // ASSERT
+        // Assert
         Assert.False(result);
     }
 
     [Fact]
     public void EqualsOperator_WhenOneIsNull_ShouldReturnFalse()
     {
-        // ARRANGE
+        // Arrange
         var instance1 = TestEnumeration.CodeA;
         var instance2 = (TestEnumeration?) null;
 
-        // ACT
+        // Act
         var result = instance1 == instance2;
 
-        // ASSERT
+        // Assert
         Assert.False(result);
     }
 
     [Fact]
     public void EqualsOperator_WhenBothAreNull_ShouldReturnTrue()
     {
-        // ARRANGE
+        // Arrange
         var instance1 = (TestEnumeration?) null;
         var instance2 = (TestEnumeration?) null;
 
-        // ACT
+        // Act
         var result = instance1 == instance2;
 
-        // ASSERT
+        // Assert
         Assert.True(result);
     }
 
@@ -426,84 +426,84 @@ public class EnumerationTests
     [Fact]
     public void NotEqualsOperator_WhenSameInstance_ShouldReturnFalse()
     {
-        // ARRANGE
+        // Arrange
         var instance1 = TestEnumeration.CodeA;
         var instance2 = TestEnumeration.CodeA;
 
-        // ACT
+        // Act
         var result = instance1 != instance2;
 
-        // ASSERT
+        // Assert
         Assert.False(result);
     }
     
     [Fact]
     public void NotEqualsOperator_WhenDifferentInstanceButSameValue_ShouldReturnFalse()
     {
-        // ARRANGE
+        // Arrange
         var instance1 = TestEnumeration.CodeA;
         var instance2 = TestEnumeration.CodeAClone;
 
-        // ACT
+        // Act
         var result = instance1 != instance2;
 
-        // ASSERT
+        // Assert
         Assert.False(result);
     }
     
     [Fact]
     public void NotEqualsOperator_WhenSameValueWithDifferentCase_ShouldReturnFalse()
     {
-        // ARRANGE
+        // Arrange
         var instance1 = TestEnumeration.CodeA;
         var instance2 = TestEnumeration.CodeAUpper;
 
-        // ACT
+        // Act
         var result = instance1 != instance2;
 
-        // ASSERT
+        // Assert
         Assert.False(result);
     }
 
     [Fact]
     public void NotEqualsOperator_WhenNotSameValue_ShouldReturnTrue()
     {
-        // ARRANGE
+        // Arrange
         var instance1 = TestEnumeration.CodeA;
         var instance2 = TestEnumeration.CodeB;
 
-        // ACT
+        // Act
         var result = instance1 != instance2;
 
-        // ASSERT
+        // Assert
         Assert.True(result);
     }
 
     [Fact]
     public void NotEqualsOperator_WhenOneIsNull_ShouldReturnTrue()
     {
-        // ARRANGE
+        // Arrange
         var instance1 = TestEnumeration.CodeA;
         var instance2 = (TestEnumeration?) null;
 
-        // ACT
+        // Act
         var result = instance1 != instance2;
 
-        // ASSERT
+        // Assert
         Assert.True(result);
     }
 
     [Fact]
     public void NotEqualsOperator_WhenBothAreNull_ShouldReturnFalse()
     {
-        // ARRANGE
+        // Arrange
         var instance1 = (TestEnumeration?) null;
         var instance2 = (TestEnumeration?) null;
 
-        // ACT
+        // Act
         var result = instance1 != instance2;
 
-        // ASSERT
+        // Assert
         Assert.False(result);
     }
 
@@ -514,84 +514,84 @@ public class EnumerationTests
     [Fact]
     public void EqualsOperatorWithString_WhenSameValue_ShouldReturnTrue()
     {
-        // ARRANGE
+        // Arrange
         var instance = TestEnumeration.CodeA;
         var value = TestEnumeration.CodeA.Value;
 
-        // ACT
+        // Act
         var result = value == instance;
 
-        // ASSERT
+        // Assert
         Assert.True(result);
     }
 
     [Fact]
     public void EqualsOperatorWithString_WhenSameValueWithDifferentCase_ShouldReturnTrue()
     {
-        // ARRANGE
+        // Arrange
         var instance = TestEnumeration.CodeA;
         var value = TestEnumeration.CodeA.Value.ToUpper();
 
-        // ACT
+        // Act
         var result = value == instance;
 
-        // ASSERT
+        // Assert
         Assert.True(result);
     }
 
     [Fact]
     public void EqualsOperatorWithString_WhenNotSameValue_ShouldReturnFalse()
     {
-        // ARRANGE
+        // Arrange
         var instance = TestEnumeration.CodeA;
         var value = TestEnumeration.CodeB.Value;
 
-        // ACT
+        // Act
         var result = value == instance;
 
-        // ASSERT
+        // Assert
         Assert.False(result);
     }
 
     [Fact]
     public void EqualsOperatorWithString_WhenStringIsNull_ShouldReturnFalse()
     {
-        // ARRANGE
+        // Arrange
         var instance = TestEnumeration.CodeA;
         var value = (string?) null;
 
-        // ACT
+        // Act
         var result = value == instance;
 
-        // ASSERT
+        // Assert
         Assert.False(result);
     }
     
     [Fact]
     public void EqualsOperatorWithString_WhenEnumerationIsNull_ShouldReturnFalse()
     {
-        // ARRANGE
+        // Arrange
         var instance = (TestEnumeration?) null;
         var value = TestEnumeration.CodeA.Value;
 
-        // ACT
+        // Act
         var result = value == instance;
 
-        // ASSERT
+        // Assert
         Assert.False(result);
     }
 
     [Fact]
     public void EqualsOperatorWithString_WhenBothAreNull_ShouldReturnTrue()
     {
-        // ARRANGE
+        // Arrange
         var instance = (TestEnumeration?) null;
         var value = (TestEnumeration?) null;
 
-        // ACT
+        // Act
         var result = value == instance;
 
-        // ASSERT
+        // Assert
         Assert.True(result);
     }
 
@@ -602,131 +602,85 @@ public class EnumerationTests
     [Fact]
     public void NotEqualsOperatorWithString_WhenSameValue_ShouldReturnFalse()
     {
-        // ARRANGE
+        // Arrange
         var instance = TestEnumeration.CodeA;
         var value = TestEnumeration.CodeA.Value;
 
-        // ACT
+        // Act
         var result = value != instance;
 
-        // ASSERT
+        // Assert
         Assert.False(result);
     }
 
     [Fact]
     public void NotEqualsOperatorWithString_WhenSameValueWithDifferentCase_ShouldReturnFalse()
     {
-        // ARRANGE
+        // Arrange
         var instance = TestEnumeration.CodeA;
         var value = TestEnumeration.CodeA.Value.ToUpper();
 
-        // ACT
+        // Act
         var result = value != instance;
 
-        // ASSERT
+        // Assert
         Assert.False(result);
     }
 
     [Fact]
     public void NotEqualsOperatorWithString_WhenNotSameValue_ShouldReturnTrue()
     {
-        // ARRANGE
+        // Arrange
         var instance = TestEnumeration.CodeA;
         var value = TestEnumeration.CodeB.Value;
 
-        // ACT
+        // Act
         var result = value != instance;
 
-        // ASSERT
+        // Assert
         Assert.True(result);
     }
 
     [Fact]
     public void NotEqualsOperatorWithString_WhenStringIsNull_ShouldReturnTrue()
     {
-        // ARRANGE
+        // Arrange
         var instance = TestEnumeration.CodeA;
         var value = (string?) null;
 
-        // ACT
+        // Act
         var result = value != instance;
 
-        // ASSERT
+        // Assert
         Assert.True(result);
     }
     
     [Fact]
     public void NotEqualsOperatorWithString_WhenEnumerationIsNull_ShouldReturnFalse()
     {
-        // ARRANGE
+        // Arrange
         var instance = (TestEnumeration?) null;
         var value = TestEnumeration.CodeA.Value;
 
-        // ACT
+        // Act
         var result = value == instance;
 
-        // ASSERT
+        // Assert
         Assert.False(result);
     }
 
     [Fact]
     public void NotEqualsOperatorWithString_WhenBothAreNull_ShouldReturnFalse()
     {
-        // ARRANGE
+        // Arrange
         var instance = (TestEnumeration?) null;
         var value = (string?) null;
 
-        // ACT
+        // Act
         var result = value != instance;
 
-        // ASSERT
+        // Assert
         Assert.False(result);
-    }
-
-    #endregion
-
-    #region Private Enumeration classes for testing
-
-    private class TestEnumeration : Enumeration<TestEnumeration>
-    {
-        public static readonly TestEnumeration CodeA = new(nameof(CodeA));
-        public static readonly TestEnumeration CodeAClone = new(nameof(CodeA));
-        public static readonly TestEnumeration CodeAUpper = new(nameof(CodeA).ToUpper());
-        public static readonly TestEnumeration CodeB = new(nameof(CodeB));
-
-        private TestEnumeration(string value) : base(value)
-        {
-        }
-    }
-
-    private abstract class TestEnumerationWithSubClasses : Enumeration<TestEnumerationWithSubClasses>
-    {
-        public static readonly TestEnumerationWithSubClasses CodeA = new CodeAType();
-        public static readonly TestEnumerationWithSubClasses CodeB = new CodeBType();
-
-        public abstract bool IsCodeB { get; }
-
-        private TestEnumerationWithSubClasses(string value) : base(value)
-        {
-        }
-
-        private class CodeAType : TestEnumerationWithSubClasses
-        {
-            public CodeAType() : base(nameof(CodeA))
-            {
-            }
-
-            public override bool IsCodeB => false;
-        }
-
-        private class CodeBType : TestEnumerationWithSubClasses
-        {
-            public CodeBType() : base(nameof(CodeB))
-            {
-            }
-
-            public override bool IsCodeB => true;
-        }
     }
 
     #endregion
