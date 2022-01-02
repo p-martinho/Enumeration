@@ -56,7 +56,7 @@ Please, be aware that Enumeration class may not fit your needs.
 - [eShopOnContainers: Enumeration.cs](https://github.com/dotnet-architecture/eShopOnContainers/blob/dev/src/Services/Ordering/Ordering.Domain/SeedWork/Enumeration.cs)
 
 ## TODO
-- Swagger support
+- README
 - Test on API/Backend/Database
 - Publish NuGet (pipeline)
 - Pipeline links

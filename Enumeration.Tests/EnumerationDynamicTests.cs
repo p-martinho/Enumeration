@@ -1,6 +1,6 @@
 using System.Collections.Immutable;
 using System.Linq;
-using PM.Enumeration;
+using Enumeration.Tests.EnumerationClasses;
 using Xunit;
 
 namespace Enumeration.Tests;
@@ -12,13 +12,13 @@ public class EnumerationDynamicTests
     [Fact]
     public void GetFromValueOrNew_WhenNewValue_ShouldReturnNewInstance()
     {
-        // ARRANGE
+        // Arrange
         var newTestType = "newTestType";
 
-        // ACT
+        // Act
         var instance = TestEnumerationDynamic.GetFromValueOrNew(newTestType);
 
-        // ASSERT
+        // Assert
         Assert.NotNull(instance);
         Assert.Equal(newTestType, instance.Value);
     }
@@ -26,13 +26,13 @@ public class EnumerationDynamicTests
     [Fact]
     public void GetFromValueOrNew_WhenExistentValue_ShouldReturnInstanceWithValue()
     {
-        // ARRANGE
+        // Arrange
         var existentValue = TestEnumerationDynamic.CodeA.Value;
 
-        // ACT
+        // Act
         var instance = TestEnumerationDynamic.GetFromValueOrNew(existentValue);
 
-        // ASSERT
+        // Assert
         Assert.NotNull(instance);
         Assert.Same(TestEnumerationDynamic.CodeA, instance);
     }
@@ -40,27 +40,27 @@ public class EnumerationDynamicTests
     [Fact]
     public void GetFromValueOrDefault_ShouldBeCaseInsensitive()
     {
-        // ARRANGE
+        // Arrange
         var existentValue = TestEnumerationDynamic.CodeA.Value;
         var existentValueInDifferentCase = existentValue.ToUpper();
 
-        // ACT
+        // Act
         var instance = TestEnumerationDynamic.GetFromValueOrNew(existentValueInDifferentCase);
 
-        // ASSERT
+        // Assert
         Assert.Same(TestEnumerationDynamic.CodeA, instance);
     }
 
     [Fact]
     public void GetFromValueOrDefault_WhenValueIsNull_ShouldReturnNewInstanceWithNullValue()
     {
-        // ARRANGE
+        // Arrange
         string? nullValue = null;
 
-        // ACT
+        // Act
         var instance = TestEnumerationDynamic.GetFromValueOrNew(nullValue!);
 
-        // ASSERT
+        // Assert
         Assert.NotNull(instance);
         Assert.Null(instance.Value);
     }
@@ -72,14 +72,14 @@ public class EnumerationDynamicTests
     [Fact]
     public void GetMembers_ShouldReturnOnlyTheDefaults()
     {
-        // ARRANGE
+        // Arrange
         var newTestType = "newTestType";
         var instanceWithDynamicValue = TestEnumerationDynamic.GetFromValueOrNew(newTestType);
 
-        // ACT
+        // Act
         var members = TestEnumerationDynamic.GetMembers().ToList();
 
-        // ASSERT
+        // Assert
         Assert.Single(members);
         Assert.DoesNotContain(instanceWithDynamicValue, members);
     }
@@ -87,15 +87,15 @@ public class EnumerationDynamicTests
     [Fact]
     public void GetMembers_ShouldNotBePossibleToChangeMembersList()
     {
-        // ARRANGE
+        // Arrange
         var newMember = TestEnumerationDynamic.GetFromValueOrNew("newCode");
 
-        // ACT
+        // Act
         var membersList = (ImmutableHashSet<TestEnumerationDynamic>) TestEnumerationDynamic.GetMembers();
         membersList = membersList.Add(newMember);
         var originalMembersList = TestEnumerationDynamic.GetMembers();
 
-        // ASSERT
+        // Assert
         Assert.Contains(newMember, membersList);
         Assert.DoesNotContain(newMember, originalMembersList);
     }
@@ -107,14 +107,14 @@ public class EnumerationDynamicTests
     [Fact]
     public void HasValue_WithDynamicValue_ShouldReturnFalse()
     {
-        // ARRANGE
+        // Arrange
         var newTestType = "newTestType";
         var instanceWithDynamicValue = TestEnumerationDynamic.GetFromValueOrNew(newTestType);
 
-        // ACT
+        // Act
         var result = TestEnumerationDynamic.HasValue(newTestType);
 
-        // ASSERT
+        // Assert
         Assert.False(result);
         Assert.Equal(newTestType, instanceWithDynamicValue.Value);
     }
@@ -126,47 +126,30 @@ public class EnumerationDynamicTests
     [Fact]
     public void Equals_WhenBothValuesAreNull_ShouldReturnTrue()
     {
-        // ARRANGE
+        // Arrange
         var instance1 = TestEnumerationDynamic.GetFromValueOrNew(null!);
         var instance2 = TestEnumerationDynamic.GetFromValueOrNew(null!);
 
-        // ACT
+        // Act
         var result = Equals(instance1, instance2);
 
-        // ASSERT
+        // Assert
         Assert.True(result);
     }
 
     [Fact]
     public void Equals_WhenDifferentInstanceButSameValue_ShouldReturnTrue()
     {
-        // ARRANGE
+        // Arrange
         var newTestType = "newTestType";
         var instance1 = TestEnumerationDynamic.GetFromValueOrNew(newTestType);
         var instance2 = TestEnumerationDynamic.GetFromValueOrNew(newTestType);
 
-        // ACT
+        // Act
         var result = Equals(instance1, instance2);
 
-        // ASSERT
+        // Assert
         Assert.True(result);
-    }
-
-    #endregion
-
-    #region Private EnumerationDynamic classes for testing
-
-    private class TestEnumerationDynamic : EnumerationDynamic<TestEnumerationDynamic>
-    {
-        public static readonly TestEnumerationDynamic CodeA = new(nameof(CodeA));
-
-        public TestEnumerationDynamic()
-        {
-        }
-
-        private TestEnumerationDynamic(string value) : base(value)
-        {
-        }
     }
 
     #endregion
