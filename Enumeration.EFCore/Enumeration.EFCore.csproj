@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AssemblyName>PM.Enumeration.EFCore</AssemblyName>
+        <RootNamespace>PM.Enumeration.EFCore</RootNamespace>
+        <PackageId>PM.Enumeration.EFCore</PackageId>
+        <Authors>Paulo Martinho</Authors>
+        <Company>PM</Company>
+        <Title>PM.Enumeration.EFCore</Title>
+        <Description>EFCore support for PM.Enumeration.</Description>
+        <PackageProjectUrl>https://github.com/p-martinho/Enumeration</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/p-martinho/Enumeration</RepositoryUrl>
+        <PackageTags>enum;enumeration;ddd;entityframeworkcore</PackageTags>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageIcon>icon.png</PackageIcon>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="icon.png" Pack="true" PackagePath="\" Visible="false" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Enumeration\Enumeration.csproj" />
+    </ItemGroup>
+
+</Project>

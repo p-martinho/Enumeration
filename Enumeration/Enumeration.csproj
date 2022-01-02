@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AssemblyName>PM.Enumeration</AssemblyName>
+        <RootNamespace>PM.Enumeration</RootNamespace>
+        <PackageId>PM.Enumeration</PackageId>
+        <Authors>Paulo Martinho</Authors>
+        <Company>PM</Company>
+        <Title>PM.Enumeration</Title>
+        <Description>Extendable class to implement enumeration classes, based on string values. They enable features of an object-oriented language without the limitations of the C# enum's.</Description>
+        <PackageProjectUrl>https://github.com/p-martinho/Enumeration</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/p-martinho/Enumeration</RepositoryUrl>
+        <PackageTags>enum;enumeration;ddd</PackageTags>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageIcon>icon.png</PackageIcon>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="icon.png" Pack="true" PackagePath="\" Visible="false" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="System.Collections.Immutable" Version="6.0.0" />
+    </ItemGroup>
+
+</Project>

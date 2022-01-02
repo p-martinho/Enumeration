@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AssemblyName>PM.Enumeration.SystemTextJson</AssemblyName>
+        <RootNamespace>PM.Enumeration.SystemTextJson</RootNamespace>
+        <PackageId>PM.Enumeration.SystemTextJson</PackageId>
+        <Authors>Paulo Martinho</Authors>
+        <Company>PM</Company>
+        <Title>PM.Enumeration.SystemTextJson</Title>
+        <Description>System.Text.Json support for PM.Enumeration.</Description>
+        <PackageProjectUrl>https://github.com/p-martinho/Enumeration</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/p-martinho/Enumeration</RepositoryUrl>
+        <PackageTags>enum;enumeration;ddd;json;system.text.json</PackageTags>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageIcon>icon.png</PackageIcon>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="icon.png" Pack="true" PackagePath="\" Visible="false" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Enumeration\Enumeration.csproj" />
+    </ItemGroup>
+
+</Project>
