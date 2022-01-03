@@ -22,7 +22,7 @@ __PM.Enumeration.JsonNet__: The Json.NET support for PM.Enumeration.
 
 __PM.Enumeration.SystemTextJson__: The System.Text.Json support for PM.Enumeration.
 
-# Install
+# Installation
 
 Install one or more of the NuGet packages:
 
@@ -55,9 +55,8 @@ Please, be aware that Enumeration class may not fit your needs.
 - [Ankit Vijay: Enumeration Classes – DDD and beyond](https://ankitvijay.net/2020/06/12/series-enumeration-classes-ddd-and-beyond/)
 - [eShopOnContainers: Enumeration.cs](https://github.com/dotnet-architecture/eShopOnContainers/blob/dev/src/Services/Ordering/Ordering.Domain/SeedWork/Enumeration.cs)
 
-## TODO
-- README
-- Test on API/Backend/Database
+# TODO
+- Finish README
 - Publish NuGet (pipeline)
 - Pipeline links
 - Nuget links

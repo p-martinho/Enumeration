@@ -1,6 +1,7 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 using PM.Enumeration.Extensions;
+using PM.Enumeration.SystemTextJson.Generic;
 
 namespace PM.Enumeration.SystemTextJson;
 

@@ -1,10 +1,7 @@
-﻿using System.Text.Json.Serialization;
-using PM.Enumeration;
-using PM.Enumeration.SystemTextJson;
+﻿using PM.Enumeration;
 
 namespace Enumeration.SystemTextJson.Tests.EnumerationClasses;
 
-[JsonConverter(typeof(EnumerationConverterFactory))]
 internal class TestEnumerationDynamic : EnumerationDynamic<TestEnumerationDynamic>
 {
     public static readonly TestEnumerationDynamic CodeA = new(nameof(CodeA));

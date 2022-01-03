@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace PM.Enumeration.SystemTextJson;
+namespace PM.Enumeration.SystemTextJson.Generic;
 
 /// <summary>
 /// The converter for System.Text.Json to convert to/from <see cref="Enumeration{T}"/>.
@@ -19,6 +19,6 @@ public class EnumerationConverter<T> : JsonConverter<T> where T : Enumeration<T>
     /// <inheritdoc />
     public override void Write(Utf8JsonWriter writer, T value, JsonSerializerOptions options)
     {
-        writer.WriteStringValue(value.ToString());
+        writer.WriteStringValue(value.Value);
     }
 }
