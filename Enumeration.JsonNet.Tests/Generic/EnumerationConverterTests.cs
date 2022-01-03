@@ -1,10 +1,11 @@
 ﻿using Enumeration.JsonNet.Tests.EnumerationClasses;
 using Newtonsoft.Json;
+using PM.Enumeration.JsonNet.Generic;
 using Xunit;
 
-namespace Enumeration.JsonNet.Tests;
+namespace Enumeration.JsonNet.Tests.Generic;
 
-public class EnumerationDynamicConverterTests
+public class EnumerationConverterTests
 {
     #region Serialize Tests
 
@@ -12,11 +13,26 @@ public class EnumerationDynamicConverterTests
     public void Serialize_ShouldSucceed()
     {
         // Arrange
-        var instance = TestEnumerationDynamic.CodeA;
+        var instance = TestEnumeration.CodeA;
         var test = new TestClass {Test = instance};
 
         // Act
         var result = JsonConvert.SerializeObject(test);
+
+        // Assert
+        Assert.Equal("{\"Test\":\"" + instance.Value + "\"}", result);
+    }
+
+    [Fact]
+    public void Serialize_WithoutAttribute_ShouldSucceed()
+    {
+        // Arrange
+        var instance = TestEnumeration.CodeA;
+        var test = new TestClassWithoutAttribute {Test = instance};
+
+        // Act
+        var result = JsonConvert
+            .SerializeObject(test, new EnumerationConverter<TestEnumeration>());
 
         // Assert
         Assert.Equal("{\"Test\":\"" + instance.Value + "\"}", result);
@@ -43,11 +59,27 @@ public class EnumerationDynamicConverterTests
     public void Deserialize_ShouldSucceed()
     {
         // Arrange
-        var instance = TestEnumerationDynamic.CodeA;
+        var instance = TestEnumeration.CodeA;
         var json = "{\"Test\":\"" + instance.Value + "\"}";
 
         // Act
         var result = JsonConvert.DeserializeObject<TestClass>(json);
+
+        // Assert
+        Assert.NotNull(result);
+        Assert.Same(instance, result!.Test);
+    }
+
+    [Fact]
+    public void Deserialize_WithoutAttribute_ShouldSucceed()
+    {
+        // Arrange
+        var instance = TestEnumeration.CodeA;
+        var json = "{\"Test\":\"" + instance.Value + "\"}";
+
+        // Act
+        var result = JsonConvert
+            .DeserializeObject<TestClassWithoutAttribute>(json, new EnumerationConverter<TestEnumeration>());
 
         // Assert
         Assert.NotNull(result);
@@ -66,22 +98,6 @@ public class EnumerationDynamicConverterTests
         // Assert
         Assert.NotNull(result);
         Assert.Null(result!.Test);
-    }
-
-    [Fact]
-    public void Deserialize_WithUnknownValue_ShouldCreateNewInstance()
-    {
-        // Arrange
-        var newCode = "unknownCode";
-        var json = "{\"Test\":\"" + newCode + "\"}";
-
-        // Act
-        var result = JsonConvert.DeserializeObject<TestClass>(json);
-
-        // Assert
-        Assert.NotNull(result);
-        Assert.NotNull(result!.Test);
-        Assert.Equal(newCode, result.Test!.Value);
     }
     
     [Fact]
@@ -103,7 +119,13 @@ public class EnumerationDynamicConverterTests
 
     private class TestClass
     {
-        public TestEnumerationDynamic? Test { get; init; }
+        [JsonConverter(typeof(EnumerationConverter<TestEnumeration>))]
+        public TestEnumeration? Test { get; init; }
+    }
+    
+    private class TestClassWithoutAttribute
+    {
+        public TestEnumeration? Test { get; init; }
     }
 
     #endregion

@@ -1,13 +1,13 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace PM.Enumeration.SystemTextJson;
+namespace PM.Enumeration.SystemTextJson.Generic;
 
 /// <summary>
 /// The converter for System.Text.Json to convert to/from <see cref="EnumerationDynamic{T}"/>.
 /// </summary>
 /// <typeparam name="T">The type to convert.</typeparam>
-internal class EnumerationDynamicConverter<T> : JsonConverter<T> where T : EnumerationDynamic<T>, new()
+public class EnumerationDynamicConverter<T> : JsonConverter<T> where T : EnumerationDynamic<T>, new()
 {
     /// <inheritdoc />
     public override T Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -18,6 +18,6 @@ internal class EnumerationDynamicConverter<T> : JsonConverter<T> where T : Enume
     /// <inheritdoc />
     public override void Write(Utf8JsonWriter writer, T value, JsonSerializerOptions options)
     {
-        writer.WriteStringValue(value.ToString());
+        writer.WriteStringValue(value.Value);
     }
 }
