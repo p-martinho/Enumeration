@@ -1,5 +1,6 @@
 ﻿using Enumeration.JsonNet.Tests.EnumerationClasses;
 using Newtonsoft.Json;
+using PM.Enumeration.JsonNet;
 using Xunit;
 
 namespace Enumeration.JsonNet.Tests;
@@ -12,27 +13,30 @@ public class EnumerationConverterTests
     public void Serialize_ShouldSucceed()
     {
         // Arrange
-        var instance = TestEnumeration.CodeA;
-        var test = new TestClass {Test = instance};
+        var enumeration = TestEnumeration.CodeA;
+        var enumerationDynamicValue = "newValue";
+        var enumerationDynamic = TestEnumerationDynamic.GetFromValueOrNew(enumerationDynamicValue);
+        var test = new TestClass {Test = enumeration, TestDynamic = enumerationDynamic};
 
         // Act
-        var result = JsonConvert.SerializeObject(test);
+        var result = JsonConvert.SerializeObject(test, new EnumerationConverter());
 
         // Assert
-        Assert.Equal("{\"Test\":\"" + instance.Value + "\"}", result);
+        Assert.Equal("{\"Test\":\"" + enumeration.Value + "\",\"TestDynamic\":\"" + enumerationDynamicValue + "\"}",
+            result);
     }
 
     [Fact]
     public void Serialize_WhenNull_ShouldSucceed()
     {
         // Arrange
-        var test = new TestClass {Test = null};
+        var test = new TestClass {Test = null, TestDynamic = null};
 
         // Act
-        var result = JsonConvert.SerializeObject(test);
+        var result = JsonConvert.SerializeObject(test, new EnumerationConverter());
 
         // Assert
-        Assert.Equal("{\"Test\":null}", result);
+        Assert.Equal("{\"Test\":null,\"TestDynamic\":null}", result);
     }
 
     #endregion
@@ -43,31 +47,34 @@ public class EnumerationConverterTests
     public void Deserialize_ShouldSucceed()
     {
         // Arrange
-        var instance = TestEnumeration.CodeA;
-        var json = "{\"Test\":\"" + instance.Value + "\"}";
+        var enumeration = TestEnumeration.CodeA;
+        var enumerationDynamicValue = "newValue";
+        var json = "{\"Test\":\"" + enumeration.Value + "\",\"TestDynamic\":\"" + enumerationDynamicValue + "\"}";
 
         // Act
-        var result = JsonConvert.DeserializeObject<TestClass>(json);
+        var result = JsonConvert.DeserializeObject<TestClass>(json, new EnumerationConverter());
 
         // Assert
         Assert.NotNull(result);
-        Assert.Same(instance, result!.Test);
+        Assert.Same(enumeration, result!.Test);
+        Assert.Equal(enumerationDynamicValue, result.TestDynamic?.Value);
     }
 
     [Fact]
     public void Deserialize_WhenNull_ShouldSucceed()
     {
         // Arrange
-        var json = "{\"Test\":null}";
+        var json = "{\"Test\":null,\"TestDynamic\":null}";
 
         // Act
-        var result = JsonConvert.DeserializeObject<TestClass>(json);
+        var result = JsonConvert.DeserializeObject<TestClass>(json, new EnumerationConverter());
 
         // Assert
         Assert.NotNull(result);
         Assert.Null(result!.Test);
+        Assert.Null(result.TestDynamic);
     }
-    
+
     [Fact]
     public void Deserialize_WhenNotValid_ShouldFail()
     {
@@ -75,7 +82,22 @@ public class EnumerationConverterTests
         var json = "{\"Test\":1}";
 
         // Act
-        var result = () => JsonConvert.DeserializeObject<TestClass>(json);
+        var result = () => JsonConvert
+            .DeserializeObject<TestClass>(json, new EnumerationConverter());
+
+        // Assert
+        Assert.Throws<JsonSerializationException>(result);
+    }
+    
+    [Fact]
+    public void Deserialize_WhenAttributeIncorrectlyAdded_ShouldFail()
+    {
+        // Arrange
+        var json = "{\"Test\":\"CodeA\"}";
+
+        // Act
+        var result = () => JsonConvert
+            .DeserializeObject<TestClassWithIncorrectAttribute>(json);
 
         // Assert
         Assert.Throws<JsonSerializationException>(result);
@@ -88,6 +110,14 @@ public class EnumerationConverterTests
     private class TestClass
     {
         public TestEnumeration? Test { get; init; }
+
+        public TestEnumerationDynamic? TestDynamic { get; init; }
+    }
+
+    private class TestClassWithIncorrectAttribute
+    {
+        [JsonConverter(typeof(EnumerationConverter))]
+        public string? Test { get; init; }
     }
 
     #endregion

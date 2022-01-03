@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace PM.Enumeration.JsonNet;
+namespace PM.Enumeration.JsonNet.Generic;
 
 /// <summary>
 /// The converter for Json.NET to convert to/from <see cref="EnumerationDynamic{T}"/>.
@@ -21,9 +21,9 @@ public class EnumerationDynamicConverter<T> : JsonConverter<T> where T : Enumera
         return reader.TokenType switch
         {
             JsonToken.Null => null,
-            JsonToken.String => EnumerationDynamic<T>.GetFromValueOrNew((string) reader.Value!),
+            JsonToken.String => EnumerationDynamic<T>.GetFromValueOrNew((string?) reader.Value!),
             _ => throw new JsonSerializationException(
-                $"Unexpected token {reader.TokenType} when parsing an enumeration.")
+                $"Unexpected token {reader.TokenType} when parsing an Enumeration.")
         };
     }
 
