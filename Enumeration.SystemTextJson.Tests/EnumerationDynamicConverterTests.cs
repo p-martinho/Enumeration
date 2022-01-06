@@ -1,5 +1,6 @@
 ﻿using System.Text.Json;
 using Enumeration.SystemTextJson.Tests.EnumerationClasses;
+using PM.Enumeration.SystemTextJson;
 using Xunit;
 
 namespace Enumeration.SystemTextJson.Tests;
@@ -14,9 +15,13 @@ public class EnumerationDynamicConverterTests
         // Arrange
         var instance = TestEnumerationDynamic.CodeA;
         var test = new TestClass {Test = instance};
+        var serializerOptions = new JsonSerializerOptions
+        {
+            Converters = {new EnumerationConverterFactory()}
+        };
 
         // Act
-        var result = JsonSerializer.Serialize(test);
+        var result = JsonSerializer.Serialize(test, serializerOptions);
 
         // Assert
         Assert.Equal("{\"Test\":\"" + instance.Value + "\"}", result);
@@ -27,9 +32,13 @@ public class EnumerationDynamicConverterTests
     {
         // Arrange
         var test = new TestClass {Test = null};
+        var serializerOptions = new JsonSerializerOptions
+        {
+            Converters = {new EnumerationConverterFactory()}
+        };
 
         // Act
-        var result = JsonSerializer.Serialize(test);
+        var result = JsonSerializer.Serialize(test, serializerOptions);
 
         // Assert
         Assert.Equal("{\"Test\":null}", result);
@@ -45,9 +54,13 @@ public class EnumerationDynamicConverterTests
         // Arrange
         var instance = TestEnumerationDynamic.CodeA;
         var json = "{\"Test\":\"" + instance.Value + "\"}";
+        var serializerOptions = new JsonSerializerOptions
+        {
+            Converters = {new EnumerationConverterFactory()}
+        };
 
         // Act
-        var result = JsonSerializer.Deserialize<TestClass>(json);
+        var result = JsonSerializer.Deserialize<TestClass>(json, serializerOptions);
 
         // Assert
         Assert.NotNull(result);
@@ -59,9 +72,13 @@ public class EnumerationDynamicConverterTests
     {
         // Arrange
         var json = "{\"Test\":null}";
+        var serializerOptions = new JsonSerializerOptions
+        {
+            Converters = {new EnumerationConverterFactory()}
+        };
 
         // Act
-        var result = JsonSerializer.Deserialize<TestClass>(json);
+        var result = JsonSerializer.Deserialize<TestClass>(json, serializerOptions);
 
         // Assert
         Assert.NotNull(result);
@@ -74,9 +91,13 @@ public class EnumerationDynamicConverterTests
         // Arrange
         var newCode = "unknownCode";
         var json = "{\"Test\":\"" + newCode + "\"}";
+        var serializerOptions = new JsonSerializerOptions
+        {
+            Converters = {new EnumerationConverterFactory()}
+        };
 
         // Act
-        var result = JsonSerializer.Deserialize<TestClass>(json);
+        var result = JsonSerializer.Deserialize<TestClass>(json, serializerOptions);
 
         // Assert
         Assert.NotNull(result);
