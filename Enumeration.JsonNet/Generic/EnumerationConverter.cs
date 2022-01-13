@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace PM.Enumeration.JsonNet.Generic;
+namespace PMart.Enumeration.JsonNet.Generic;
 
 /// <summary>
 /// The converter for Json.NET to convert to/from <see cref="Enumeration{T}"/>.

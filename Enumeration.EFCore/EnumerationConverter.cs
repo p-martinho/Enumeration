@@ -1,7 +1,7 @@
 ﻿using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace PM.Enumeration.EFCore;
+namespace PMart.Enumeration.EFCore;
 
 /// <summary>
 /// The converter for EFCore to convert to/from <see cref="Enumeration{T}"/>.
