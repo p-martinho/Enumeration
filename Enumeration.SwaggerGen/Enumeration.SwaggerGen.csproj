@@ -4,13 +4,13 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <AssemblyName>PM.Enumeration.SwaggerGen</AssemblyName>
-        <RootNamespace>PM.Enumeration.SwaggerGen</RootNamespace>
-        <PackageId>PM.Enumeration.SwaggerGen</PackageId>
+        <AssemblyName>PMart.Enumeration.SwaggerGen</AssemblyName>
+        <RootNamespace>PMart.Enumeration.SwaggerGen</RootNamespace>
+        <PackageId>PMart.Enumeration.SwaggerGen</PackageId>
         <Authors>Paulo Martinho</Authors>
-        <Company>PM</Company>
-        <Title>PM.Enumeration.SwaggerGen</Title>
-        <Description>Enumeration support to generate Swagger documentation as enum type.</Description>
+        <Company>PMart</Company>
+        <Title>PMart.Enumeration.SwaggerGen</Title>
+        <Description>PMart.Enumeration support to generate Swagger documentation as enum type.</Description>
         <PackageProjectUrl>https://github.com/p-martinho/Enumeration</PackageProjectUrl>
         <RepositoryUrl>https://github.com/p-martinho/Enumeration</RepositoryUrl>
         <PackageTags>enum;enumeration;swagger</PackageTags>
