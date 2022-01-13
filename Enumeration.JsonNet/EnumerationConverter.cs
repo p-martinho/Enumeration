@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
-using PM.Enumeration.Extensions;
+using PMart.Enumeration.Extensions;
 
-namespace PM.Enumeration.JsonNet;
+namespace PMart.Enumeration.JsonNet;
 
 /// <summary>
 /// The converter for Json.NET to convert to/from <see cref="Enumeration{T}"/>.

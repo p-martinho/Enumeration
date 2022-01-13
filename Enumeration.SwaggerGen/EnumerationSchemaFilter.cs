@@ -2,10 +2,10 @@
 using System.Reflection;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
-using PM.Enumeration.Extensions;
+using PMart.Enumeration.Extensions;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace PM.Enumeration.SwaggerGen;
+namespace PMart.Enumeration.SwaggerGen;
 
 /// <summary>
 /// Implements <see cref="ISchemaFilter"/> to transform <see cref="Enumeration{T}"/> schema to <see cref="Enum"/>.

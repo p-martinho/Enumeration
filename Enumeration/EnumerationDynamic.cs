@@ -1,4 +1,4 @@
-﻿namespace PM.Enumeration;
+﻿namespace PMart.Enumeration;
 
 /// <summary>
 /// A base class to create enumeration classes with dynamic value.

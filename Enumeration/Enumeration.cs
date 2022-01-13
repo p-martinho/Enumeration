@@ -1,7 +1,7 @@
 ﻿using System.Collections.Immutable;
 using System.Reflection;
 
-namespace PM.Enumeration;
+namespace PMart.Enumeration;
 
 /// <summary>
 /// A base class to implement enumeration classes.
