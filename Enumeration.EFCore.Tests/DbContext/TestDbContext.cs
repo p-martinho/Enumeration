@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PM.Enumeration.EFCore;
+using PMart.Enumeration.EFCore;
 
 namespace Enumeration.EFCore.Tests.DbContext;
 

@@ -1,9 +1,9 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
-using PM.Enumeration.Extensions;
-using PM.Enumeration.SystemTextJson.Generic;
+using PMart.Enumeration.Extensions;
+using PMart.Enumeration.SystemTextJson.Generic;
 
-namespace PM.Enumeration.SystemTextJson;
+namespace PMart.Enumeration.SystemTextJson;
 
 /// <summary>
 /// The converter factory for System.Text.Json to convert to/from <see cref="Enumeration{T}"/>.

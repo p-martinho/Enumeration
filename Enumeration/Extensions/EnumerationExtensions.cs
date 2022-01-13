@@ -1,4 +1,4 @@
-﻿namespace PM.Enumeration.Extensions;
+﻿namespace PMart.Enumeration.Extensions;
 
 public static class EnumerationExtensions
 {

@@ -1,6 +1,6 @@
 ﻿using System;
 using Enumeration.Tests.EnumerationClasses;
-using PM.Enumeration.Extensions;
+using PMart.Enumeration.Extensions;
 using Xunit;
 
 namespace Enumeration.Tests.Extensions;

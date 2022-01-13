@@ -1,4 +1,4 @@
-﻿using PM.Enumeration;
+﻿using PMart.Enumeration;
 
 namespace Enumeration.SystemTextJson.Tests.EnumerationClasses;
 
