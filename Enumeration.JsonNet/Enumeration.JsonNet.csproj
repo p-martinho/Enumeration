@@ -4,13 +4,13 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <AssemblyName>PM.Enumeration.JsonNet</AssemblyName>
-        <RootNamespace>PM.Enumeration.JsonNet</RootNamespace>
-        <PackageId>PM.Enumeration.JsonNet</PackageId>
+        <AssemblyName>PMart.Enumeration.JsonNet</AssemblyName>
+        <RootNamespace>PMart.Enumeration.JsonNet</RootNamespace>
+        <PackageId>PMart.Enumeration.JsonNet</PackageId>
         <Authors>Paulo Martinho</Authors>
-        <Company>PM</Company>
-        <Title>PM.Enumeration.JsonNet</Title>
-        <Description>Json.NET serialization support for PM.Enumeration.</Description>
+        <Company>PMart</Company>
+        <Title>PMart.Enumeration.JsonNet</Title>
+        <Description>Json.NET serialization support for PMart.Enumeration.</Description>
         <PackageProjectUrl>https://github.com/p-martinho/Enumeration</PackageProjectUrl>
         <RepositoryUrl>https://github.com/p-martinho/Enumeration</RepositoryUrl>
         <PackageTags>enum;enumeration;ddd;json;json.net</PackageTags>

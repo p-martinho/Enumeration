@@ -4,12 +4,12 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <AssemblyName>PM.Enumeration</AssemblyName>
-        <RootNamespace>PM.Enumeration</RootNamespace>
-        <PackageId>PM.Enumeration</PackageId>
+        <AssemblyName>PMart.Enumeration</AssemblyName>
+        <RootNamespace>PMart.Enumeration</RootNamespace>
+        <PackageId>PMart.Enumeration</PackageId>
         <Authors>Paulo Martinho</Authors>
-        <Company>PM</Company>
-        <Title>PM.Enumeration</Title>
+        <Company>PMart</Company>
+        <Title>PMart.Enumeration</Title>
         <Description>Extendable class to implement enumeration classes, based on string values. They enable features of an object-oriented language without the limitations of the C# enum's.</Description>
         <PackageProjectUrl>https://github.com/p-martinho/Enumeration</PackageProjectUrl>
         <RepositoryUrl>https://github.com/p-martinho/Enumeration</RepositoryUrl>
