@@ -4,13 +4,13 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <AssemblyName>PM.Enumeration.SystemTextJson</AssemblyName>
-        <RootNamespace>PM.Enumeration.SystemTextJson</RootNamespace>
-        <PackageId>PM.Enumeration.SystemTextJson</PackageId>
+        <AssemblyName>PMart.Enumeration.SystemTextJson</AssemblyName>
+        <RootNamespace>PMart.Enumeration.SystemTextJson</RootNamespace>
+        <PackageId>PMart.Enumeration.SystemTextJson</PackageId>
         <Authors>Paulo Martinho</Authors>
-        <Company>PM</Company>
-        <Title>PM.Enumeration.SystemTextJson</Title>
-        <Description>System.Text.Json support for PM.Enumeration.</Description>
+        <Company>PMart</Company>
+        <Title>PMart.Enumeration.SystemTextJson</Title>
+        <Description>System.Text.Json support for PMart.Enumeration.</Description>
         <PackageProjectUrl>https://github.com/p-martinho/Enumeration</PackageProjectUrl>
         <RepositoryUrl>https://github.com/p-martinho/Enumeration</RepositoryUrl>
         <PackageTags>enum;enumeration;ddd;json;system.text.json</PackageTags>

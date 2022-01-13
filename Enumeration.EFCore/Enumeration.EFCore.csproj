@@ -4,13 +4,13 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <AssemblyName>PM.Enumeration.EFCore</AssemblyName>
-        <RootNamespace>PM.Enumeration.EFCore</RootNamespace>
-        <PackageId>PM.Enumeration.EFCore</PackageId>
+        <AssemblyName>PMart.Enumeration.EFCore</AssemblyName>
+        <RootNamespace>PMart.Enumeration.EFCore</RootNamespace>
+        <PackageId>PMart.Enumeration.EFCore</PackageId>
         <Authors>Paulo Martinho</Authors>
-        <Company>PM</Company>
-        <Title>PM.Enumeration.EFCore</Title>
-        <Description>EFCore support for PM.Enumeration.</Description>
+        <Company>PMart</Company>
+        <Title>PMart.Enumeration.EFCore</Title>
+        <Description>EFCore support for PMart.Enumeration.</Description>
         <PackageProjectUrl>https://github.com/p-martinho/Enumeration</PackageProjectUrl>
         <RepositoryUrl>https://github.com/p-martinho/Enumeration</RepositoryUrl>
         <PackageTags>enum;enumeration;ddd;entityframeworkcore</PackageTags>
