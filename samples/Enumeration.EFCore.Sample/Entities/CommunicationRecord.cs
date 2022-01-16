@@ -1,5 +1,4 @@
 ﻿using Enumeration.EFCore.Sample.Enumerations;
-using Enumeration.Sample.Enumerations;
 
 namespace Enumeration.EFCore.Sample.Entities;
 

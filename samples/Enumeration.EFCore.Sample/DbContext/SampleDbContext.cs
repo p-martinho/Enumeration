@@ -1,6 +1,5 @@
 ﻿using Enumeration.EFCore.Sample.Entities;
 using Enumeration.EFCore.Sample.Enumerations;
-using Enumeration.Sample.Enumerations;
 using Microsoft.EntityFrameworkCore;
 using PMart.Enumeration.EFCore;
 

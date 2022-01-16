@@ -34,6 +34,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enumeration.Sample", "sampl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enumeration.EFCore.Sample", "samples\Enumeration.EFCore.Sample\Enumeration.EFCore.Sample.csproj", "{A3965431-46BF-4494-9CF7-0EA13E7EEB70}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enumeration.SystemTextJson.Sample", "samples\Enumeration.SystemTextJson.Sample\Enumeration.SystemTextJson.Sample.csproj", "{ABFE2F95-BD51-4865-89B9-51208BFE953A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enumeration.JsonNet.Sample", "samples\Enumeration.JsonNet.Sample\Enumeration.JsonNet.Sample.csproj", "{7EDC740E-A1A9-4104-ACA0-000B29C2D097}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -84,6 +88,14 @@ Global
 		{A3965431-46BF-4494-9CF7-0EA13E7EEB70}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3965431-46BF-4494-9CF7-0EA13E7EEB70}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3965431-46BF-4494-9CF7-0EA13E7EEB70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABFE2F95-BD51-4865-89B9-51208BFE953A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABFE2F95-BD51-4865-89B9-51208BFE953A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABFE2F95-BD51-4865-89B9-51208BFE953A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABFE2F95-BD51-4865-89B9-51208BFE953A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EDC740E-A1A9-4104-ACA0-000B29C2D097}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EDC740E-A1A9-4104-ACA0-000B29C2D097}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EDC740E-A1A9-4104-ACA0-000B29C2D097}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EDC740E-A1A9-4104-ACA0-000B29C2D097}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{4BD298FF-EB3E-4295-9B25-11F16DE8CA37} = {D5F0A5F7-1947-4E19-9946-436CEA9A5D95}
@@ -97,5 +109,7 @@ Global
 		{957CD21C-ADCE-4414-AFB4-5F87360879EA} = {D5F0A5F7-1947-4E19-9946-436CEA9A5D95}
 		{CDB88B38-D109-4ADF-BB5D-839049ECEC94} = {8D935BDC-5C2B-49FD-B72A-CFAA76578664}
 		{A3965431-46BF-4494-9CF7-0EA13E7EEB70} = {8D935BDC-5C2B-49FD-B72A-CFAA76578664}
+		{ABFE2F95-BD51-4865-89B9-51208BFE953A} = {8D935BDC-5C2B-49FD-B72A-CFAA76578664}
+		{7EDC740E-A1A9-4104-ACA0-000B29C2D097} = {8D935BDC-5C2B-49FD-B72A-CFAA76578664}
 	EndGlobalSection
 EndGlobal

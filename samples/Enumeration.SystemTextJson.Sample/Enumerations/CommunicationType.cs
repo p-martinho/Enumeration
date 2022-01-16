@@ -1,6 +1,6 @@
 ﻿using PMart.Enumeration;
 
-namespace Enumeration.EFCore.Sample.Enumerations;
+namespace Enumeration.SystemTextJson.Sample.Enumerations;
 
 /// <summary>
 /// The communication type enumeration.

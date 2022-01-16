@@ -1,6 +1,6 @@
 ﻿using Enumeration.EFCore.Sample.DbContext;
 using Enumeration.EFCore.Sample.Entities;
-using Enumeration.Sample.Enumerations;
+using Enumeration.EFCore.Sample.Enumerations;
 using Microsoft.EntityFrameworkCore;
 
 namespace Enumeration.EFCore.Sample.Samples;
