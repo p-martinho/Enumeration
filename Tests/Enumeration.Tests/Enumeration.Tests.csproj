@@ -21,7 +21,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Enumeration\Enumeration.csproj" />
+      <ProjectReference Include="..\..\src\Enumeration\Enumeration.csproj" />
     </ItemGroup>
 
 </Project>
