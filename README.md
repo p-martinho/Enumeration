@@ -571,9 +571,9 @@ __Note:__ you need to install the package `Swashbuckle.AspNetCore.Annotations`.
 
 Here's an example of the result:
 
-![Swagger sample 1](/samples/Enumeration.SwaggerGen.Sample/Samples/swagger-sample-1.png)
+![Swagger sample 1](./samples/Enumeration.SwaggerGen.Sample/Samples/Swagger-sample-1.png)
 
-![Swagger sample 2](/samples/Enumeration.SwaggerGen.Sample/Samples/swagger-sample-2.png)
+![Swagger sample 2](./samples/Enumeration.SwaggerGen.Sample/Samples/Swagger-sample-2.png)
 
 # Disclaimer
 While the enumeration class is a good alternative to `enum` type, it is more complex and also .NET doesn't handle is as it handles `enum` (eg. JSON serialization, model binding, etc.), requiring custom code.
