@@ -35,7 +35,7 @@ public class SendCommunicationSampleUsingEnumeration
         }
 
         // Now, I can use the communication type as an Enumeration, with all of its advantages and features.
-        var communicationSender = GetCommunicationSenderForCommunicationType(communicationTypeEnum);
+        var communicationSender = GetCommunicationSenderForCommunicationType(communicationTypeEnum!);
 
         if (communicationSender == null)
         {
