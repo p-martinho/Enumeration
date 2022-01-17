@@ -5,5 +5,5 @@
 /// </summary>
 public interface ICommunicationSender
 {
-    void SendMessage(string communicationType, string message);
+    void SendMessage(string communicationType, string to, string message);
 }

@@ -18,7 +18,7 @@ public class SendCommunicationSampleUsingEnumeration
         _smsSender = smsSender;
     }
 
-    public string SendCommunication(string communicationType, string message)
+    public string SendCommunication(string communicationType, string to, string message)
     {
         // Parse the string to Enumeration:
         var communicationTypeEnum = CommunicationType.GetFromValueOrDefault(communicationType);
@@ -42,7 +42,7 @@ public class SendCommunicationSampleUsingEnumeration
             return "Error: Communication type is not supported.";
         }
 
-        communicationSender.SendMessage(message);
+        communicationSender.SendMessage(to, message);
 
         return "Ok: Message sent successfully.";
     }

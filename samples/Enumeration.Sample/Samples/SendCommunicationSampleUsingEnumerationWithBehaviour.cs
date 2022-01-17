@@ -12,7 +12,7 @@ public class SendCommunicationSampleUsingEnumerationWithBehaviour
         _communicationSender = communicationSender;
     }
 
-    public string SendCommunication(string communicationType, string message)
+    public string SendCommunication(string communicationType, string to, string message)
     {
         var communicationTypeEnum = CommunicationTypeWithBehaviour.GetFromValueOrDefault(communicationType);
         
@@ -24,7 +24,7 @@ public class SendCommunicationSampleUsingEnumerationWithBehaviour
         // The enumeration has behaviour and each communication type implements its own way of parsing the message.
         var parsedMessage = communicationTypeEnum.ParseMessage(message);
         
-        _communicationSender.SendMessage(communicationTypeEnum.Value, parsedMessage);
+        _communicationSender.SendMessage(communicationTypeEnum.Value, to, parsedMessage);
 
         return "Ok: Message sent successfully.";
     }

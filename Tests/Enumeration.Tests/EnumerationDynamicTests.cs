@@ -38,7 +38,7 @@ public class EnumerationDynamicTests
     }
 
     [Fact]
-    public void GetFromValueOrDefault_ShouldBeCaseInsensitive()
+    public void GetFromValueOrNew_ShouldBeCaseInsensitive()
     {
         // Arrange
         var existentValue = TestEnumerationDynamic.CodeA.Value;
@@ -52,7 +52,7 @@ public class EnumerationDynamicTests
     }
 
     [Fact]
-    public void GetFromValueOrDefault_WhenValueIsNull_ShouldReturnNewInstanceWithNullValue()
+    public void GetFromValueOrNew_WhenValueIsNull_ShouldReturnNewInstanceWithNullValue()
     {
         // Arrange
         string? nullValue = null;

@@ -241,7 +241,7 @@ public class EnumerationTests
         var instance2 = TestEnumeration.CodeA;
 
         // Act
-        var result = instance1.Equals(instance2);
+        var result = Equals(instance1, instance2);
 
         // Assert
         Assert.True(result);

@@ -13,11 +13,11 @@ public class CommunicationTypeDynamic : EnumerationDynamic<CommunicationTypeDyna
     
     public static readonly CommunicationTypeDynamic PushNotification = new("PushNotification");
 
-    private CommunicationTypeDynamic(string value) : base(value)
+    public CommunicationTypeDynamic()
     {
     }
-
-    public CommunicationTypeDynamic()
+    
+    private CommunicationTypeDynamic(string value) : base(value)
     {
     }
 }
