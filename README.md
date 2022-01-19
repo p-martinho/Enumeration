@@ -548,7 +548,7 @@ private JsonSerializerOptions GetSerializerOptions()
 
 ## Swagger Support
 
-If you would like to add an enumeration property to a model from an API and would like to document it on Swagger like an `enum`, you should install the NuGet package `PMart.Enumeration.SwaggerGen` and add the schema filter `EnumerationSchemaFilter` to the Swagger options on your `Program.cs` (or `Startup.cs`), like in this [example](./samples/Enumeration.SwaggerGen.Sample/Enumerations/CommunicationType.cs):
+If you would like to add an enumeration property to a model from an API and would like to document it on Swagger like an `enum`, you should install the NuGet package `PMart.Enumeration.SwaggerGen` and add the schema filter `EnumerationSchemaFilter` to the Swagger options on your `Program.cs` (or `Startup.cs`), like in this [example](./samples/Enumeration.SwaggerGen.Sample/Program.cs):
 
 ```c#
 builder.Services.AddSwaggerGen(options =>
