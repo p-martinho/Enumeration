@@ -16,6 +16,8 @@ They enable features of an object-oriented language without the limitations of t
 
 They are useful, for instance, for business related enumerations on Domain-Driven Design (DDD).
 
+For more information, check the links on the section [References](#References).
+
 ## NuGet Packages
 
 __PMart.Enumeration__: The Enumeration base classes.
@@ -52,6 +54,9 @@ using PMart.Enumeration;
 
 namespace Enumeration.Sample.Enumerations;
 
+/// <summary>
+/// The communication type enumeration.
+/// </summary>
 public class CommunicationType : Enumeration<CommunicationType>
 {
     public static readonly CommunicationType Email = new("Email");
@@ -543,31 +548,16 @@ private JsonSerializerOptions GetSerializerOptions()
 
 ## Swagger Support
 
-If you would like to add an enumeration property to a model from an API and would like to document it on Swagger like an `enum`, you should install the NuGet package `PMart.Enumeration.SwaggerGen` and use the schema filter `EnumerationSchemaFilter`, like in this [example](./samples/Enumeration.SwaggerGen.Sample/Enumerations/CommunicationType.cs):
+If you would like to add an enumeration property to a model from an API and would like to document it on Swagger like an `enum`, you should install the NuGet package `PMart.Enumeration.SwaggerGen` and add the schema filter `EnumerationSchemaFilter` to the Swagger options on your `Program.cs` (or `Startup.cs`), like in this [example](./samples/Enumeration.SwaggerGen.Sample/Program.cs):
 
 ```c#
-using PMart.Enumeration;
-using PMart.Enumeration.SwaggerGen;
-using Swashbuckle.AspNetCore.Annotations;
-
-namespace Enumeration.SwaggerGen.Sample.Enumerations;
-
-[SwaggerSchemaFilter(typeof(EnumerationSchemaFilter))]
-public class CommunicationType : Enumeration<CommunicationType>
+builder.Services.AddSwaggerGen(options =>
 {
-    public static readonly CommunicationType Email = new("Email");
-
-    public static readonly CommunicationType Sms = new("SMS");
+    options.SwaggerDoc("v1", new OpenApiInfo {Version = "v1", Title = "Sample API"});
     
-    public static readonly CommunicationType PushNotification = new("PushNotification");
-
-    private CommunicationType(string value) : base(value)
-    {
-    }
-}
+    options.SchemaFilter<EnumerationSchemaFilter>();
+});
 ```
-
-__Note:__ you need to install the package `Swashbuckle.AspNetCore.Annotations`.
 
 Here's an example of the result:
 
@@ -586,4 +576,5 @@ Please, be aware that enumeration class may not fit your needs.
 - [Ardalis: Enum Alternatives in C#](https://ardalis.com/enum-alternatives-in-c)
 - [Ardalis: SmartEnum](https://github.com/ardalis/SmartEnum)
 - [Ankit Vijay: Enumeration Classes – DDD and beyond](https://ankitvijay.net/2020/06/12/series-enumeration-classes-ddd-and-beyond/)
-- [eShopOnContainers: Enumeration.cs](https://github.com/dotnet-architecture/eShopOnContainers/blob/dev/src/Services/Ordering/Ordering.Domain/SeedWork/Enumeration.cs)~~
+- [Ankit Vijay: Enumeration](https://github.com/ankitvijay/Enumeration)
+- [eShopOnContainers: Enumeration.cs](https://github.com/dotnet-architecture/eShopOnContainers/blob/dev/src/Services/Ordering/Ordering.Domain/SeedWork/Enumeration.cs)
