@@ -38,7 +38,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enumeration.SystemTextJson.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enumeration.JsonNet.Sample", "samples\Enumeration.JsonNet.Sample\Enumeration.JsonNet.Sample.csproj", "{7EDC740E-A1A9-4104-ACA0-000B29C2D097}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enumeration.SwaggerGen.Sample", "samples\Enumeration.SwaggerGen.Sample\Enumeration.SwaggerGen.Sample.csproj", "{243EFFB6-2ACB-4CA9-9E8A-9A3E0B394FA0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enumeration.SwaggerGen.Sample", "samples\Enumeration.SwaggerGen.Sample\Enumeration.SwaggerGen.Sample.csproj", "{E9DE2C87-45D1-4DC3-887E-D3DA51C3E6DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -98,10 +98,10 @@ Global
 		{7EDC740E-A1A9-4104-ACA0-000B29C2D097}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7EDC740E-A1A9-4104-ACA0-000B29C2D097}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7EDC740E-A1A9-4104-ACA0-000B29C2D097}.Release|Any CPU.Build.0 = Release|Any CPU
-		{243EFFB6-2ACB-4CA9-9E8A-9A3E0B394FA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{243EFFB6-2ACB-4CA9-9E8A-9A3E0B394FA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{243EFFB6-2ACB-4CA9-9E8A-9A3E0B394FA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{243EFFB6-2ACB-4CA9-9E8A-9A3E0B394FA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9DE2C87-45D1-4DC3-887E-D3DA51C3E6DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9DE2C87-45D1-4DC3-887E-D3DA51C3E6DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9DE2C87-45D1-4DC3-887E-D3DA51C3E6DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9DE2C87-45D1-4DC3-887E-D3DA51C3E6DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{4BD298FF-EB3E-4295-9B25-11F16DE8CA37} = {D5F0A5F7-1947-4E19-9946-436CEA9A5D95}
@@ -117,6 +117,6 @@ Global
 		{A3965431-46BF-4494-9CF7-0EA13E7EEB70} = {8D935BDC-5C2B-49FD-B72A-CFAA76578664}
 		{ABFE2F95-BD51-4865-89B9-51208BFE953A} = {8D935BDC-5C2B-49FD-B72A-CFAA76578664}
 		{7EDC740E-A1A9-4104-ACA0-000B29C2D097} = {8D935BDC-5C2B-49FD-B72A-CFAA76578664}
-		{243EFFB6-2ACB-4CA9-9E8A-9A3E0B394FA0} = {8D935BDC-5C2B-49FD-B72A-CFAA76578664}
+		{E9DE2C87-45D1-4DC3-887E-D3DA51C3E6DD} = {8D935BDC-5C2B-49FD-B72A-CFAA76578664}
 	EndGlobalSection
 EndGlobal
