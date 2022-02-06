@@ -23,17 +23,17 @@ public class SendCommunicationSampleUsingEnumerationDynamic
 
         DoSomethingAboutTheCommunicationTypeDynamicEnumeration(communicationTypeEnum);
 
-        SendMessage(communicationTypeEnum.Value, to, message);
+        SendMessage(communicationTypeEnum?.Value, to, message);
 
         return "Ok: Message sent successfully.";
     }
 
-    private void DoSomethingAboutTheCommunicationTypeDynamicEnumeration(CommunicationTypeDynamic communicationTypeDynamic)
+    private void DoSomethingAboutTheCommunicationTypeDynamicEnumeration(CommunicationTypeDynamic? communicationTypeDynamic)
     {
         // Check if the communication type is a new one or a known one.
-        var isCommunicationTypeDeclared = CommunicationTypeDynamic
-            .GetMembers()
-            .Any(ct => ct == communicationTypeDynamic);
+        var isCommunicationTypeDeclared = communicationTypeDynamic != null &&
+                                          CommunicationTypeDynamic.GetMembers()
+                                              .Any(ct => ct == communicationTypeDynamic);
 
         if (isCommunicationTypeDeclared)
         {
@@ -45,7 +45,7 @@ public class SendCommunicationSampleUsingEnumerationDynamic
         }
     }
 
-    private void SendMessage(string communicationType, string to, string message)
+    private void SendMessage(string? communicationType, string to, string message)
     {
         _communicationSender.SendMessage(communicationType, to, message);
     }
