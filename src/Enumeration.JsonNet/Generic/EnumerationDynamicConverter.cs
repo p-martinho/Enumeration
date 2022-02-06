@@ -21,7 +21,7 @@ public class EnumerationDynamicConverter<T> : JsonConverter<T> where T : Enumera
         return reader.TokenType switch
         {
             JsonToken.Null => null,
-            JsonToken.String => EnumerationDynamic<T>.GetFromValueOrNew((string?) reader.Value!),
+            JsonToken.String => EnumerationDynamic<T>.GetFromValueOrNew((string?) reader.Value),
             _ => throw new JsonSerializationException(
                 $"Unexpected token {reader.TokenType} when parsing an Enumeration.")
         };

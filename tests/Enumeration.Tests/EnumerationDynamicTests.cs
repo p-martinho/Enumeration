@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Immutable;
 using System.Linq;
 using Enumeration.Tests.EnumerationClasses;
@@ -20,7 +21,7 @@ public class EnumerationDynamicTests
 
         // Assert
         Assert.NotNull(instance);
-        Assert.Equal(newTestType, instance.Value);
+        Assert.Equal(newTestType, instance!.Value);
     }
 
     [Fact]
@@ -52,17 +53,16 @@ public class EnumerationDynamicTests
     }
 
     [Fact]
-    public void GetFromValueOrNew_WhenValueIsNull_ShouldReturnNewInstanceWithNullValue()
+    public void GetFromValueOrNew_WhenValueIsNull_ShouldReturnNull()
     {
         // Arrange
         string? nullValue = null;
 
         // Act
-        var instance = TestEnumerationDynamic.GetFromValueOrNew(nullValue!);
+        var instance = TestEnumerationDynamic.GetFromValueOrNew(nullValue);
 
         // Assert
-        Assert.NotNull(instance);
-        Assert.Null(instance.Value);
+        Assert.Null(instance);
     }
 
     #endregion
@@ -92,7 +92,7 @@ public class EnumerationDynamicTests
 
         // Act
         var membersList = (ImmutableHashSet<TestEnumerationDynamic>) TestEnumerationDynamic.GetMembers();
-        membersList = membersList.Add(newMember);
+        membersList = membersList.Add(newMember!);
         var originalMembersList = TestEnumerationDynamic.GetMembers();
 
         // Assert
@@ -116,40 +116,21 @@ public class EnumerationDynamicTests
 
         // Assert
         Assert.False(result);
-        Assert.Equal(newTestType, instanceWithDynamicValue.Value);
+        Assert.Equal(newTestType, instanceWithDynamicValue?.Value);
     }
 
     #endregion
 
-    #region Equals Tests
+    #region Instatition Tests
 
     [Fact]
-    public void Equals_WhenBothValuesAreNull_ShouldReturnTrue()
+    public void Instantiate_WhenNullValue_ShouldThrow()
     {
-        // Arrange
-        var instance1 = TestEnumerationDynamic.GetFromValueOrNew(null!);
-        var instance2 = TestEnumerationDynamic.GetFromValueOrNew(null!);
-
         // Act
-        var result = Equals(instance1, instance2);
+        var result = TestEnumerationDynamic.IncorrectInstantiation;
 
         // Assert
-        Assert.True(result);
-    }
-
-    [Fact]
-    public void Equals_WhenDifferentInstanceButSameValue_ShouldReturnTrue()
-    {
-        // Arrange
-        var newTestType = "newTestType";
-        var instance1 = TestEnumerationDynamic.GetFromValueOrNew(newTestType);
-        var instance2 = TestEnumerationDynamic.GetFromValueOrNew(newTestType);
-
-        // Act
-        var result = Equals(instance1, instance2);
-
-        // Assert
-        Assert.True(result);
+        Assert.Throws<ArgumentNullException>(result);
     }
 
     #endregion

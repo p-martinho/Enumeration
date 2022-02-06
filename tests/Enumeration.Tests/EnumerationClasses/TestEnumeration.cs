@@ -8,6 +8,8 @@ internal class TestEnumeration : Enumeration<TestEnumeration>
     public static readonly TestEnumeration CodeAClone = new(nameof(CodeA));
     public static readonly TestEnumeration CodeAUpper = new(nameof(CodeA).ToUpper());
     public static readonly TestEnumeration CodeB = new(nameof(CodeB));
+    
+    public static TestEnumeration IncorrectInstantiation() => new(null!);
 
     private TestEnumeration(string value) : base(value)
     {

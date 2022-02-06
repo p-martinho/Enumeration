@@ -23,6 +23,6 @@ public class EnumerationDynamicConverter<T> : ValueConverter<T?, string?> where 
 
     private static Expression<Func<string?, T?>> GetConvertFromProviderExpression()
     {
-        return key => EnumerationDynamic<T>.GetFromValueOrNew(key!);
+        return key => EnumerationDynamic<T>.GetFromValueOrNew(key);
     }
 }

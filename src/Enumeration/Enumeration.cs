@@ -10,6 +10,8 @@ namespace PMart.Enumeration;
 public abstract class Enumeration<T> : IEquatable<Enumeration<T>> where T : Enumeration<T>
 {
     private static readonly Lazy<ImmutableHashSet<T>> MembersLazy = new(BuildMembersHashSet);
+    
+    private readonly string _value = null!;
 
     /// <summary>
     /// Gets the value.
@@ -17,7 +19,11 @@ public abstract class Enumeration<T> : IEquatable<Enumeration<T>> where T : Enum
     /// <value>
     /// A <see cref="String"/> that is the value held by the instance of <see cref="T"/>.
     /// </value>
-    public string Value { get; init; } = null!;
+    public string Value
+    {
+        get => _value;
+        protected init => _value = value ?? throw new ArgumentNullException(nameof(value));
+    }
 
     /// <summary>
     /// Initializes a new instance of the class <see cref="Enumeration{T}"/>.
@@ -32,7 +38,7 @@ public abstract class Enumeration<T> : IEquatable<Enumeration<T>> where T : Enum
     /// <param name="value">The value.</param>
     protected Enumeration(string value)
     {
-        Value = value;
+        Value = value ?? throw new ArgumentNullException(nameof(value));
     }
 
     /// <summary>
@@ -53,9 +59,10 @@ public abstract class Enumeration<T> : IEquatable<Enumeration<T>> where T : Enum
     /// <returns>
     /// The declared instance of type <see cref="T"/> with the specified value, or <c>null</c> if not found.
     /// </returns>
+    /// <remarks>Returns <c>null</c> if the provided value is <c>null</c>.</remarks>
     public static T? GetFromValueOrDefault(string? value)
     {
-        return GetMembers().FirstOrDefault(i => AreValuesEquals(i.Value, value));
+        return value == null ? null : GetMembers().FirstOrDefault(i => AreValuesEquals(i.Value, value));
     }
 
     /// <summary>
