@@ -291,15 +291,17 @@ public class CommunicationTypeDynamic : EnumerationDynamic<CommunicationTypeDyna
 }
 ```
 
-Now, you can use the method `GetFromValueOrNew(string value)`, that returns always an instance of the enumeration type.
-If there is an enumeration with the provided value, it will return that instance, else it will create a new instance with the provided value and return it.
+Now, you can use the method `GetFromValueOrNew(string? value)`, that returns an instance of the enumeration type, or `null` if the provided value is `null`.
+If there is an enumeration with the provided value, it will return that instance, else it will create a new instance with the provided value and return it (or `null` if the provided value is `null`).
 
 ```c#
 var a = CommunicationTypeDynamic.GetFromValueOrNew("email"); // returns CommunicationTypeDynamic.Email
 var b = CommunicationTypeDynamic.GetFromValueOrNew("someUnknownType"); // returns new instance of CommunicationTypeDynamic, with value = "someUnknownType"
+var c = CommunicationTypeDynamic..GetFromValueOrNew(null); // returns null
 
-var aValue = a.Value; // "Email"
-var bValue = b.Value; // "someUnknownValue"
+var aValue = a?.Value; // "Email"
+var bValue = b?.Value; // "someUnknownValue"
+var cValue = c?.Value; // null
 ```
 
 `EnumerationDynamic` can be useful when you want to accept values that are not in the declared enumerations or when you want to have the possibility to create new enumerations at runtime.
@@ -322,7 +324,7 @@ public string SendCommunication(string communicationType, string to, string mess
 
     DoSomethingAboutTheCommunicationTypeDynamicEnumeration(communicationTypeEnum);
     
-    _communicationSender.SendMessage(communicationTypeEnum.Value, to, message);
+    _communicationSender.SendMessage(communicationTypeEnum?.Value, to, message);
 
     // ...
 }
@@ -389,6 +391,22 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
     });
 }
 ```
+
+An usage [sample](./samples/Enumeration.EFCore.Sample/Samples/CommunicationUsingEFCoreSample.cs):
+
+```c#
+public async Task<IEnumerable<CommunicationRecord>> GetCommunicationRecordsByType(CommunicationType communicationType)
+{
+    var records = await _context.CommunicationRecords
+        .Where(r => r.Type == communicationType)
+        .ToListAsync();
+
+    return records;
+}
+```
+
+__Note:__ In a query, the case sensitivity is determined by the database provider.
+Eg. if you save the record using an `EnumerationDynamic` with value `"Email"`, and then query the database using another instance of `EnumerationDynamic` with value `"EMAIL"`, it is possible you get no results, depending on the database. For example, SQL Server is, by default, case insensitive, so you would get the result.
 
 ## Json.NET Support
 

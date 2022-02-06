@@ -6,6 +6,8 @@ internal class TestEnumerationDynamic : EnumerationDynamic<TestEnumerationDynami
 {
     public static readonly TestEnumerationDynamic CodeA = new(nameof(CodeA));
 
+    public static TestEnumerationDynamic IncorrectInstantiation() => new() { Value = null! };
+
     public TestEnumerationDynamic()
     {
     }

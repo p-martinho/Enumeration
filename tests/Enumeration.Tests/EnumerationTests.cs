@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Enumeration.Tests.EnumerationClasses;
 using Xunit;
@@ -681,6 +682,20 @@ public class EnumerationTests
 
         // Assert
         Assert.False(result);
+    }
+
+    #endregion
+
+    #region Instantiation Tests
+
+    [Fact]
+    public void Instantiate_WhenNullValue_ShouldThrow()
+    {
+        // Act
+        var result = TestEnumeration.IncorrectInstantiation;
+        
+        // Assert
+        Assert.Throws<ArgumentNullException>(result);
     }
 
     #endregion

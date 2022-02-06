@@ -27,10 +27,11 @@ public abstract class EnumerationDynamic<T> : Enumeration<T> where T : Enumerati
     /// </summary>
     /// <param name="value">The value of the instance to get or to create.</param>
     /// <returns>
-    /// The instance of type <see cref="T"/> with the specified value, that can be an already declared instance on the class <see cref="T"/>v or a new one.
+    /// The instance of type <see cref="T"/> with the specified value, that can be an already declared instance on the class <see cref="T"/> or a new one.
     /// </returns>
-    public static T GetFromValueOrNew(string value)
+    /// <remarks>Returns <c>null</c> if the provided value is <c>null</c>.</remarks>
+    public static T? GetFromValueOrNew(string? value)
     {
-        return GetFromValueOrDefault(value) ?? new T {Value = value};
+        return value == null ? null : GetFromValueOrDefault(value) ?? new T { Value = value };
     }
 }
