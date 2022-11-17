@@ -1,145 +1,112 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
-using Enumeration.EFCore.Tests.DbContext;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using PMart.Enumeration;
+using PMart.Enumeration.EFCore;
 using Xunit;
 
 namespace Enumeration.EFCore.Tests;
 
-public class EnumerationDynamicConverterTests : EfCoreBaseTest
+public class EnumerationDynamicConverterTests
 {
-    [Fact]
-    public async Task SaveAndRetrieveData_ShouldSucceed()
+    private readonly ValueConverter _converter;
+
+    public EnumerationDynamicConverterTests()
     {
-        // Arrange
-        var entity = new TestEntity
-        {
-            TestDynamic = TestEnumerationDynamic.CodeA
-        };
-
-        // Act
-        Context.Add(entity);
-        await Context.SaveChangesAsync();
-
-        // Assert
-        var entities = await Context.TestEntities.ToListAsync();
-        Assert.Single(entities);
-        Assert.Equal(TestEnumerationDynamic.CodeA, entities.Single().TestDynamic);
+        _converter = new EnumerationDynamicConverter<TestEnumerationDynamic>();
     }
 
     [Fact]
-    public async Task SaveAndRetrieveData_WhenNull_ShouldSucceed()
+    public void ConvertToProvider_ShouldSucceed()
     {
         // Arrange
-        var entity = new TestEntity
-        {
-            TestDynamic = null
-        };
-
+        var enumeration = TestEnumerationDynamic.CodeA;
+        
         // Act
-        Context.Add(entity);
-        await Context.SaveChangesAsync();
+        var result = _converter.ConvertToProvider(enumeration) as string;
 
         // Assert
-        var entities = await Context.TestEntities.ToListAsync();
-        Assert.Single(entities);
-        Assert.Null(entities.Single().TestDynamic);
-    }
-
-    [Fact]
-    public async Task SaveAndRetrieveData_WhenDynamicValue_ShouldSucceed()
-    {
-        // Arrange
-        var newCode = "newCode";
-        var entity = new TestEntity
-        {
-            TestDynamic = TestEnumerationDynamic.GetFromValueOrNew(newCode)
-        };
-
-        // Act
-        Context.Add(entity);
-        await Context.SaveChangesAsync();
-
-        // Assert
-        var entities = await Context.TestEntities.ToListAsync();
-        Assert.Single(entities);
-        Assert.Equal(newCode, entities.Single().TestDynamic?.Value);
+        Assert.NotNull(result);
+        Assert.Equal(TestEnumerationDynamic.CodeA.Value, result);
     }
     
     [Fact]
-    public async Task QueryingData_ShouldSucceed()
+    public void ConvertToProvider_WhenNull_ShouldConvertToNull()
     {
         // Arrange
-        var entity1 = new TestEntity
-        {
-            TestDynamic = TestEnumerationDynamic.CodeA
-        };
-        var entity2 = new TestEntity
-        {
-            TestDynamic = TestEnumerationDynamic.CodeB
-        };
-
+        var enumeration = (TestEnumerationDynamic?)null;
+        
         // Act
-        Context.Add(entity1);
-        Context.Add(entity2);
-        await Context.SaveChangesAsync();
+        var result = _converter.ConvertToProvider(enumeration);
 
         // Assert
-        var entityWithCodeA = await Context.TestEntities
-            .FirstOrDefaultAsync(e => e.TestDynamic == TestEnumerationDynamic.CodeA);
-        Assert.NotNull(entityWithCodeA);
-        Assert.Equal(entityWithCodeA!.TestDynamic, TestEnumerationDynamic.CodeA);
+        Assert.Null(result);
     }
     
     [Fact]
-    public async Task QueryingData_WhenNull_ShouldSucceed()
+    public void ConvertToProvider_WhenDynamicValue_ShouldSucceed()
     {
         // Arrange
-        var entity1 = new TestEntity
-        {
-            TestDynamic = null
-        };
-        var entity2 = new TestEntity
-        {
-            TestDynamic = TestEnumerationDynamic.CodeB
-        };
-
+        var newValue = "newValue";
+        var enumeration = TestEnumerationDynamic.GetFromValueOrNew(newValue);
+        
         // Act
-        Context.Add(entity1);
-        Context.Add(entity2);
-        await Context.SaveChangesAsync();
+        var result = _converter.ConvertToProvider(enumeration) as string;
 
         // Assert
-        var entityWithCodeNull = await Context.TestEntities
-            .FirstOrDefaultAsync(e => e.TestDynamic == null);
-        Assert.NotNull(entityWithCodeNull);
-        Assert.Null(entityWithCodeNull!.TestDynamic);
+        Assert.NotNull(result);
+        Assert.Equal(newValue, result);
     }
     
     [Fact]
-    public async Task QueryingData_WhenDynamicValue_ShouldSucceed()
+    public void ConvertFromProvider_ShouldSucceed()
     {
         // Arrange
-        var newCode = "newCode";
-        var entity1 = new TestEntity
-        {
-            TestDynamic = TestEnumerationDynamic.GetFromValueOrNew(newCode)
-        };
-        var entity2 = new TestEntity
-        {
-            TestDynamic = TestEnumerationDynamic.CodeB
-        };
-
+        var valueToConvertFrom = TestEnumerationDynamic.CodeA.Value;
+        
         // Act
-        Context.Add(entity1);
-        Context.Add(entity2);
-        await Context.SaveChangesAsync();
+        var result = _converter.ConvertFromProvider(valueToConvertFrom) as TestEnumerationDynamic;
 
         // Assert
-        var newEnumerationDynamicInstance = TestEnumerationDynamic.GetFromValueOrNew(newCode);
-        var entityWithNewCode = await Context.TestEntities
-            .FirstOrDefaultAsync(e => e.TestDynamic == newEnumerationDynamicInstance);
-        Assert.NotNull(entityWithNewCode);
-        Assert.Equal(newEnumerationDynamicInstance, entityWithNewCode!.TestDynamic);
+        Assert.NotNull(result);
+        Assert.Equal(TestEnumerationDynamic.CodeA, result);
+    }
+    
+    [Fact]
+    public void ConvertFromProvider_WhenNull_ShouldConvertToNull()
+    {
+        // Arrange
+        var valueToConvertFrom = (string?)null;
+        
+        // Act
+        var result = _converter.ConvertFromProvider(valueToConvertFrom);
+
+        // Assert
+        Assert.Null(result);
+    }
+    
+    [Fact]
+    public void ConvertFromProvider_WhenDynamicValue_ShouldConvertToNull()
+    {
+        // Arrange
+        var newValue = "newValue";
+
+        // Act
+        var result = _converter.ConvertFromProvider(newValue) as TestEnumerationDynamic;
+
+        // Assert
+        Assert.NotNull(result);
+        Assert.Equal(newValue, result!.Value);
+    }
+    
+    private class TestEnumerationDynamic : EnumerationDynamic<TestEnumerationDynamic>
+    {
+        public static readonly TestEnumerationDynamic CodeA = new(nameof(CodeA));
+
+        public TestEnumerationDynamic()
+        {
+        }
+
+        private TestEnumerationDynamic(string value) : base(value)
+        {
+        }
     }
 }
