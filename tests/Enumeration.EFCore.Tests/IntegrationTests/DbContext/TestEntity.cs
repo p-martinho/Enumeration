@@ -1,7 +1,7 @@
 ﻿using System;
 using PMart.Enumeration;
 
-namespace Enumeration.EFCore.Tests.DbContext;
+namespace Enumeration.EFCore.Tests.IntegrationTests.DbContext;
 
 public class TestEntity
 {

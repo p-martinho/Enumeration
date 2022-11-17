@@ -1,8 +1,8 @@
 ﻿using System;
-using Enumeration.EFCore.Tests.DbContext;
+using Enumeration.EFCore.Tests.IntegrationTests.DbContext;
 using Microsoft.EntityFrameworkCore;
 
-namespace Enumeration.EFCore.Tests;
+namespace Enumeration.EFCore.Tests.IntegrationTests;
 
 public abstract class EfCoreBaseTest : IDisposable
 {
@@ -21,6 +21,14 @@ public abstract class EfCoreBaseTest : IDisposable
         Context.Database.OpenConnection();
 
         Context.Database.EnsureCreated();
+    }
+
+    protected void DetachAllEntries()
+    {
+        foreach (var entry in Context.ChangeTracker.Entries())
+        {
+            Context.Entry(entry.Entity).State = EntityState.Detached;
+        }
     }
 
     public void Dispose()

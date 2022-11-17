@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PMart.Enumeration.EFCore;
 
-namespace Enumeration.EFCore.Tests.DbContext;
+namespace Enumeration.EFCore.Tests.IntegrationTests.DbContext;
 
 public class TestDbContext : Microsoft.EntityFrameworkCore.DbContext
 {
