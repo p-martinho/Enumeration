@@ -384,10 +384,10 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
     modelBuilder.Entity<CommunicationRecord>(e =>
     {
         e.Property(p => p.Type)
-            .HasConversion(new EnumerationConverter<CommunicationType>());
+            .HasConversion<EnumerationConverter<CommunicationType>>();
 
         e.Property(p => p.TypeDynamic)
-            .HasConversion(new EnumerationDynamicConverter<CommunicationTypeDynamic>());
+            .HasConversion<EnumerationDynamicConverter<CommunicationTypeDynamic>>();
     });
 }
 ```
@@ -477,7 +477,7 @@ public string SerializeCommunicationRecord(CommunicationRecord communicationReco
 For enumerations of type `EnumerationDynamic`, you can use the generic converter `EnumerationDynamicConverter<T>`.
 
 When you have several enumeration types that you would like to register globally, instead of registering all the converters of type `EnumerationConverter<T>` (or `EnumerationDynamicConverter<T>`), one for each enumeration type, you can use the non-generic converter `EnumerationConverter`.
-This converter evaluates if the object is derived from `Enumeration` or `EnumerationDynamic` and handles it accordingly. But be aware that it is less performant.
+This converter evaluates if the object is derived from `Enumeration` or `EnumerationDynamic` and handles it accordingly. It might be a little less performant.
 
 ```c#
 public string SerializeCommunicationRecord(CommunicationRecord communicationRecord)
@@ -559,7 +559,7 @@ private JsonSerializerOptions GetSerializerOptions()
 {
     return new JsonSerializerOptions
     {
-        Converters = {new EnumerationConverterFactory()}
+        Converters = { new EnumerationConverterFactory() }
     };
 }
 ```
@@ -584,7 +584,7 @@ Here's an example of the result:
 ![Swagger sample 2](./samples/Enumeration.SwaggerGen.Sample/Samples/Swagger-sample-2.png)
 
 # Disclaimer
-While the enumeration class is a good alternative to `enum` type, it is more complex and also .NET doesn't handle is as it handles `enum` (eg. JSON serialization, model binding, etc.), requiring custom code.
+While the enumeration class is a good alternative to `enum` type, it is more complex and also .NET doesn't handle it as it handles `enum` (eg. JSON serialization, model binding, etc.), requiring custom code.
 Please, be aware that enumeration class may not fit your needs.
 
 # References

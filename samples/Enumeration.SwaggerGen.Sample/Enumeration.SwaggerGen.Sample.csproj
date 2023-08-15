@@ -8,10 +8,11 @@
 
     <ItemGroup>
         <ProjectReference Include="..\..\src\Enumeration.SwaggerGen\Enumeration.SwaggerGen.csproj" />
+        <ProjectReference Include="..\..\src\Enumeration.SystemTextJson\Enumeration.SystemTextJson.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     </ItemGroup>
 
     <PropertyGroup>

@@ -121,6 +121,54 @@ public class EnumerationDynamicTests
 
     #endregion
 
+    #region Tests with sub-classes
+
+    [Fact]
+    public void GetFromValueOrNew_WhenExistentValueOnSubClass_ReturnsNewInstanceButThatIsEqual()
+    {
+        // Arrange
+        var existentValueFromSubClass = SubTypeWithEnumerationsDeclared.SubTypeCodeA.Value;
+
+        // Act
+        var instance = SubTypeWithEnumerationsDeclared.GetFromValueOrNew(existentValueFromSubClass);
+
+        // Assert
+        Assert.NotNull(instance);
+        Assert.NotSame(SubTypeWithEnumerationsDeclared.SubTypeCodeA, instance);
+        Assert.Equal(SubTypeWithEnumerationsDeclared.SubTypeCodeA, instance);
+    }
+    
+    [Fact]
+    public void GetFromValueOrNew_UsingBaseClassMethod_WhenExistentValueOnSubClass_ReturnsNewInstanceButThatIsEqual()
+    {
+        // Arrange
+        var existentValueFromSubClass = SubTypeWithEnumerationsDeclared.SubTypeCodeA.Value;
+
+        // Act
+        var instance = TestEnumerationDynamicWithSubClasses.GetFromValueOrNew(existentValueFromSubClass);
+
+        // Assert
+        Assert.NotNull(instance);
+        Assert.NotSame(SubTypeWithEnumerationsDeclared.SubTypeCodeA, instance);
+        Assert.Equal(SubTypeWithEnumerationsDeclared.SubTypeCodeA, instance);
+    }
+    
+    [Fact]
+    public void GetFromValueOrNew_UsingSubClassMethod_WhenExistentValue_ShouldReturnInstanceWithValue()
+    {
+        // Arrange
+        var existentValue = TestEnumerationDynamicWithSubClasses.CodeA.Value;
+
+        // Act
+        var instance = SubTypeWithEnumerationsDeclared.GetFromValueOrNew(existentValue);
+
+        // Assert
+        Assert.NotNull(instance);
+        Assert.Same(TestEnumerationDynamicWithSubClasses.CodeA, instance);
+    }
+
+    #endregion
+
     #region Instatition Tests
 
     [Fact]
