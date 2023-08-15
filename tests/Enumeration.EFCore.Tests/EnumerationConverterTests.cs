@@ -1,98 +1,92 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
-using Enumeration.EFCore.Tests.DbContext;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using PMart.Enumeration;
+using PMart.Enumeration.EFCore;
 using Xunit;
 
 namespace Enumeration.EFCore.Tests;
 
-public class EnumerationConverterTests : EfCoreBaseTest
+public class EnumerationConverterTests
 {
-    [Fact]
-    public async Task SaveAndRetrieveData_ShouldSucceed()
+    private readonly ValueConverter _converter;
+
+    public EnumerationConverterTests()
     {
-        // Arrange
-        var entity = new TestEntity
-        {
-            Test = TestEnumeration.CodeA
-        };
-
-        // Act
-        Context.Add(entity);
-        await Context.SaveChangesAsync();
-
-        // Assert
-        var entities = await Context.TestEntities.ToListAsync();
-        Assert.Single(entities);
-        Assert.Equal(TestEnumeration.CodeA, entities.Single().Test);
+        _converter = new EnumerationConverter<TestEnumeration>();
     }
 
     [Fact]
-    public async Task SaveAndRetrieveData_WhenNull_ShouldSucceed()
+    public void ConvertToProvider_ShouldSucceed()
     {
         // Arrange
-        var entity = new TestEntity
-        {
-            Test = null
-        };
-
+        var enumeration = TestEnumeration.CodeA;
+        
         // Act
-        Context.Add(entity);
-        await Context.SaveChangesAsync();
+        var result = _converter.ConvertToProvider(enumeration) as string;
 
         // Assert
-        var entities = await Context.TestEntities.ToListAsync();
-        Assert.Single(entities);
-        Assert.Null(entities.Single().Test);
+        Assert.NotNull(result);
+        Assert.Equal(TestEnumeration.CodeA.Value, result);
     }
     
     [Fact]
-    public async Task QueryingData_ShouldSucceed()
+    public void ConvertToProvider_WhenNull_ShouldConvertToNull()
     {
         // Arrange
-        var entity1 = new TestEntity
-        {
-            Test = TestEnumeration.CodeA
-        };
-        var entity2 = new TestEntity
-        {
-            Test = TestEnumeration.CodeB
-        };
-
+        var enumeration = (TestEnumeration?)null;
+        
         // Act
-        Context.Add(entity1);
-        Context.Add(entity2);
-        await Context.SaveChangesAsync();
+        var result = _converter.ConvertToProvider(enumeration);
 
         // Assert
-        var entityWithCodeA = await Context.TestEntities
-            .FirstOrDefaultAsync(e => e.Test == TestEnumeration.CodeA);
-        Assert.NotNull(entityWithCodeA);
-        Assert.Equal(entityWithCodeA!.Test, TestEnumeration.CodeA);
+        Assert.Null(result);
     }
     
     [Fact]
-    public async Task QueryingData_WhenNull_ShouldSucceed()
+    public void ConvertFromProvider_ShouldSucceed()
     {
         // Arrange
-        var entity1 = new TestEntity
-        {
-            Test = null
-        };
-        var entity2 = new TestEntity
-        {
-            Test = TestEnumeration.CodeB
-        };
-
+        var valueToConvertFrom = TestEnumeration.CodeA.Value;
+        
         // Act
-        Context.Add(entity1);
-        Context.Add(entity2);
-        await Context.SaveChangesAsync();
+        var result = _converter.ConvertFromProvider(valueToConvertFrom) as TestEnumeration;
 
         // Assert
-        var entityWithCodeNull = await Context.TestEntities
-            .FirstOrDefaultAsync(e => e.Test == null);
-        Assert.NotNull(entityWithCodeNull);
-        Assert.Null(entityWithCodeNull!.Test);
+        Assert.NotNull(result);
+        Assert.Equal(TestEnumeration.CodeA, result);
+    }
+    
+    [Fact]
+    public void ConvertFromProvider_WhenNull_ShouldConvertToNull()
+    {
+        // Arrange
+        var valueToConvertFrom = (string?)null;
+        
+        // Act
+        var result = _converter.ConvertFromProvider(valueToConvertFrom);
+
+        // Assert
+        Assert.Null(result);
+    }
+    
+    [Fact]
+    public void ConvertFromProvider_WhenInvalidValue_ShouldConvertToNull()
+    {
+        // Arrange
+        var valueToConvertFrom = "someValue";
+        
+        // Act
+        var result = _converter.ConvertFromProvider(valueToConvertFrom);
+
+        // Assert
+        Assert.Null(result);
+    }
+    
+    private class TestEnumeration : Enumeration<TestEnumeration>
+    {
+        public static readonly TestEnumeration CodeA = new(nameof(CodeA));
+
+        private TestEnumeration(string value) : base(value)
+        {
+        }
     }
 }

@@ -20,10 +20,10 @@ public class SampleDbContext : Microsoft.EntityFrameworkCore.DbContext
         modelBuilder.Entity<CommunicationRecord>(e =>
         {
             e.Property(p => p.Type)
-                .HasConversion(new EnumerationConverter<CommunicationType>());
+                .HasConversion<EnumerationConverter<CommunicationType>>();
 
             e.Property(p => p.TypeDynamic)
-                .HasConversion(new EnumerationDynamicConverter<CommunicationTypeDynamic>());
+                .HasConversion<EnumerationDynamicConverter<CommunicationTypeDynamic>>();
         });
     }
 }

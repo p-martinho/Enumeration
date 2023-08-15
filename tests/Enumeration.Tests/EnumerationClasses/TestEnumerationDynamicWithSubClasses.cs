@@ -11,7 +11,7 @@ internal class TestEnumerationDynamicWithSubClasses : EnumerationDynamic<TestEnu
     {
     }
     
-    private TestEnumerationDynamicWithSubClasses(string value) : base(value)
+    protected TestEnumerationDynamicWithSubClasses(string value) : base(value)
     {
     }
 
@@ -27,5 +27,14 @@ internal class TestEnumerationDynamicWithSubClasses : EnumerationDynamic<TestEnu
         public CodeBType() : base(nameof(CodeB))
         {
         }
+    }
+}
+
+internal class SubTypeWithEnumerationsDeclared : TestEnumerationDynamicWithSubClasses
+{
+    public static readonly SubTypeWithEnumerationsDeclared SubTypeCodeA = new(nameof(SubTypeCodeA));
+
+    private SubTypeWithEnumerationsDeclared(string value) : base(value)
+    {
     }
 }

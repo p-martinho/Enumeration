@@ -28,7 +28,7 @@ public class SerializeCommunicationSample
     {
         return new JsonSerializerOptions
         {
-            Converters = {new EnumerationConverterFactory()}
+            Converters = { new EnumerationConverterFactory() }
         };
     }
 }
