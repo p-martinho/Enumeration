@@ -56,7 +56,7 @@ public class EnumerationConverterTests
 
         // Assert
         Assert.NotNull(result);
-        Assert.Same(enumeration, result!.Test);
+        Assert.Same(enumeration, result.Test);
         Assert.Equal(enumerationDynamicValue, result.TestDynamic?.Value);
     }
 
@@ -71,7 +71,7 @@ public class EnumerationConverterTests
 
         // Assert
         Assert.NotNull(result);
-        Assert.Null(result!.Test);
+        Assert.Null(result.Test);
         Assert.Null(result.TestDynamic);
     }
 
@@ -88,7 +88,7 @@ public class EnumerationConverterTests
         // Assert
         Assert.Throws<JsonSerializationException>(result);
     }
-    
+
     [Fact]
     public void Deserialize_WhenAttributeIncorrectlyAdded_ShouldFail()
     {

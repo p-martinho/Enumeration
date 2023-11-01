@@ -64,7 +64,7 @@ public class EnumerationConverterTests
 
         // Assert
         Assert.NotNull(result);
-        Assert.Same(instance, result!.Test);
+        Assert.Same(instance, result.Test);
     }
 
     [Fact]
@@ -82,7 +82,7 @@ public class EnumerationConverterTests
 
         // Assert
         Assert.NotNull(result);
-        Assert.Null(result!.Test);
+        Assert.Null(result.Test);
     }
 
     #endregion

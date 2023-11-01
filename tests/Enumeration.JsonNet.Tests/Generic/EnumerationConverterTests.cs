@@ -67,7 +67,7 @@ public class EnumerationConverterTests
 
         // Assert
         Assert.NotNull(result);
-        Assert.Same(instance, result!.Test);
+        Assert.Same(instance, result.Test);
     }
 
     [Fact]
@@ -83,7 +83,7 @@ public class EnumerationConverterTests
 
         // Assert
         Assert.NotNull(result);
-        Assert.Same(instance, result!.Test);
+        Assert.Same(instance, result.Test);
     }
 
     [Fact]
@@ -97,9 +97,9 @@ public class EnumerationConverterTests
 
         // Assert
         Assert.NotNull(result);
-        Assert.Null(result!.Test);
+        Assert.Null(result.Test);
     }
-    
+
     [Fact]
     public void Deserialize_WhenNotValid_ShouldFail()
     {
@@ -122,7 +122,7 @@ public class EnumerationConverterTests
         [JsonConverter(typeof(EnumerationConverter<TestEnumeration>))]
         public TestEnumeration? Test { get; init; }
     }
-    
+
     private class TestClassWithoutAttribute
     {
         public TestEnumeration? Test { get; init; }
