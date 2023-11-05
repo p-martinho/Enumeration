@@ -596,3 +596,14 @@ Please, be aware that enumeration class may not fit your needs.
 - [Ankit Vijay: Enumeration Classes – DDD and beyond](https://ankitvijay.net/2020/06/12/series-enumeration-classes-ddd-and-beyond/)
 - [Ankit Vijay: Enumeration](https://github.com/ankitvijay/Enumeration)
 - [eShopOnContainers: Enumeration.cs](https://github.com/dotnet-architecture/eShopOnContainers/blob/dev/src/Services/Ordering/Ordering.Domain/SeedWork/Enumeration.cs)
+
+# TODO
+- Mapperly:
+  - Fix warnings in mappers tests
+  - Unit tests for Mapperly:
+    - Test with current model
+    - Test with dynamic values not existent 
+    - Test with nullables
+    - Test with subclasses
+  - Sample
+  - Readme
