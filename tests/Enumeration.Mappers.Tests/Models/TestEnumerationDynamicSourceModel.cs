@@ -1,6 +1,6 @@
-﻿using Enumeration.Mapperly.Tests.EnumerationClasses;
+﻿using Enumeration.Mappers.Tests.EnumerationClasses;
 
-namespace Enumeration.Mapperly.Tests.Models;
+namespace Enumeration.Mappers.Tests.Models;
 
 internal class TestEnumerationDynamicSourceModel
 {

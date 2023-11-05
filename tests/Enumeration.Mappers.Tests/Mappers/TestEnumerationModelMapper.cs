@@ -1,9 +1,9 @@
-﻿using Enumeration.Mapperly.Tests.EnumerationClasses;
-using Enumeration.Mapperly.Tests.Models;
-using PMart.Enumeration.Mapperly;
+﻿using Enumeration.Mappers.Tests.EnumerationClasses;
+using Enumeration.Mappers.Tests.Models;
+using PMart.Enumeration.Mappers;
 using Riok.Mapperly.Abstractions;
 
-namespace Enumeration.Mapperly.Tests.Mappers;
+namespace Enumeration.Mappers.Tests.Mappers;
 
 [Mapper]
 [UseStaticMapper(typeof(StringToEnumerationMapper<TestEnumeration>))]

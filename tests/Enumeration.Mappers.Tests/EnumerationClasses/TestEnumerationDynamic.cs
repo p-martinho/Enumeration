@@ -1,6 +1,6 @@
 ﻿using PMart.Enumeration;
 
-namespace Enumeration.Mapperly.Tests.EnumerationClasses;
+namespace Enumeration.Mappers.Tests.EnumerationClasses;
 
 internal class TestEnumerationDynamic : EnumerationDynamic<TestEnumerationDynamic>
 {

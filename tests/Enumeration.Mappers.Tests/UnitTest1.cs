@@ -1,9 +1,9 @@
-using Enumeration.Mapperly.Tests.EnumerationClasses;
-using Enumeration.Mapperly.Tests.Mappers;
-using Enumeration.Mapperly.Tests.Models;
+using Enumeration.Mappers.Tests.EnumerationClasses;
+using Enumeration.Mappers.Tests.Mappers;
+using Enumeration.Mappers.Tests.Models;
 using Xunit;
 
-namespace Enumeration.Mapperly.Tests;
+namespace Enumeration.Mappers.Tests;
 
 public class UnitTest1
 {
