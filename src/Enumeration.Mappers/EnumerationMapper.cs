@@ -17,6 +17,6 @@ public static class EnumerationMapper<TSource, TTarget>
     /// </summary>
     /// <param name="sourceEnumeration">The enumeration to map from.</param>
     /// <returns>The <see cref="Enumeration{TTarget}"/> with the value of the source enumeration, or <c>null</c> if not found or if source enumeration is <c>null</c>.</returns>
-    public static TTarget? MapToEnumeration(TSource? sourceEnumeration) =>
-        sourceEnumeration.MapToEnumeration<TSource, TTarget>();
+    public static TTarget MapToEnumeration(TSource sourceEnumeration) =>
+        sourceEnumeration.MapToEnumeration<TSource, TTarget>()!;
 }

@@ -15,5 +15,5 @@ public static class StringToEnumerationMapper<TTarget>
     /// </summary>
     /// <param name="sourceString">The <c>string</c> value to convert.</param>
     /// <returns>The <see cref="Enumeration{TTarget}"/> with the value, or <c>null</c> if not found or if value is <c>null</c>.</returns>
-    public static TTarget? MapToEnumeration(string? sourceString) => sourceString.MapToEnumeration<TTarget>();
+    public static TTarget MapToEnumeration(string sourceString) => sourceString.MapToEnumeration<TTarget>()!;
 }

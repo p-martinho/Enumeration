@@ -14,6 +14,6 @@ public static class StringToEnumerationDynamicMapper<TTarget>
     /// </summary>
     /// <param name="sourceString">The <c>string</c> value to convert.</param>
     /// <returns>The <see cref="EnumerationDynamic{TTarget}"/> with the value, or <c>null</c> if the value is <c>null</c>.</returns>
-    public static TTarget? MapToEnumerationDynamic(string? sourceString) =>
-        sourceString.MapToEnumerationDynamic<TTarget>();
+    public static TTarget MapToEnumerationDynamic(string sourceString) =>
+        sourceString.MapToEnumerationDynamic<TTarget>()!;
 }

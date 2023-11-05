@@ -16,6 +16,6 @@ public static class EnumerationDynamicMapper<TSource, TTarget>
     /// </summary>
     /// <param name="sourceEnumeration">The enumeration to map from.</param>
     /// <returns>The <see cref="EnumerationDynamic{TTarget}"/> with the value of the source enumeration, or <c>null</c> if source enumeration is <c>null</c>.</returns>
-    public static TTarget? MapToEnumerationDynamic(TSource? sourceEnumeration) =>
-        sourceEnumeration.MapToEnumerationDynamic<TSource, TTarget>();
+    public static TTarget MapToEnumerationDynamic(TSource sourceEnumeration) =>
+        sourceEnumeration.MapToEnumerationDynamic<TSource, TTarget>()!;
 }

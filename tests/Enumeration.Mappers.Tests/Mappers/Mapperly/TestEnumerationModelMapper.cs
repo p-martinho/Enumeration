@@ -3,7 +3,7 @@ using Enumeration.Mappers.Tests.Models;
 using PMart.Enumeration.Mappers;
 using Riok.Mapperly.Abstractions;
 
-namespace Enumeration.Mappers.Tests.Mappers;
+namespace Enumeration.Mappers.Tests.Mappers.Mapperly;
 
 [Mapper]
 [UseStaticMapper(typeof(StringToEnumerationMapper<TestEnumeration>))]

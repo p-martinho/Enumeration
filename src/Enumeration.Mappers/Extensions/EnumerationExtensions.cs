@@ -53,6 +53,6 @@ public static class EnumerationExtensions
         where TSource : Enumeration<TSource>
         where TTarget : EnumerationDynamic<TTarget>, new()
     {
-        return Enumeration<TTarget>.GetFromValueOrDefault(sourceEnumeration?.Value);
+        return EnumerationDynamic<TTarget>.GetFromValueOrNew(sourceEnumeration?.Value);
     }
 }
