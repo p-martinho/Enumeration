@@ -1,8 +1,8 @@
 ﻿using Enumeration.Mappers.Tests.EnumerationClasses;
 
-namespace Enumeration.Mappers.Tests.Models;
+namespace Enumeration.Mappers.Tests.ThirdPartyMappers.Models;
 
-internal class TestEnumerationDynamicSourceModel
+internal class EnumerationDynamicSourceModel
 {
     public TestEnumerationDynamic TestEnumDynamicToEnumDynamicProperty { get; set; } = null!;
     

@@ -25,7 +25,7 @@ public class EnumerationMapperTests
     public void MapToEnumeration_WhenEnumerationIsNull_ShouldReturnNull()
     {
         // Arrange
-        TestEnumeration? enumeration = null;
+        TestEnumeration enumeration = null!;
 
         // Act
         var result = EnumerationMapper<TestEnumeration, TestDifferentEnumeration>.MapToEnumeration(enumeration);

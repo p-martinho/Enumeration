@@ -27,7 +27,7 @@ public class EnumerationDynamicMapperTests
     public void MapToEnumerationDynamic_WhenEnumerationIsNull_ShouldReturnNull()
     {
         // Arrange
-        TestEnumeration? enumeration = null;
+        TestEnumeration enumeration = null!;
 
         // Act
         var result =

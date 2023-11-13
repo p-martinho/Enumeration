@@ -9,6 +9,37 @@ public class EnumerationExtensionsTests
     #region MapToEnumeration from string tests
 
     [Fact]
+    public void MapToString_ShouldSucceed()
+    {
+        // Arrange
+        var enumeration = TestEnumeration.CodeA;
+
+        // Act
+        var result = enumeration.MapToString();
+
+        // Assert
+        Assert.NotNull(result);
+        Assert.Equal(enumeration.Value, result);
+    }
+
+    [Fact]
+    public void MapToString_WhenEnumerationIsNull_ShouldReturnNull()
+    {
+        // Arrange
+        TestEnumeration? enumeration = null;
+
+        // Act
+        var result = enumeration.MapToString();
+
+        // Assert
+        Assert.Null(result);
+    }
+
+    #endregion
+    
+    #region MapToEnumeration from string tests
+
+    [Fact]
     public void MapToEnumeration_FromString_ShouldSucceed()
     {
         // Arrange

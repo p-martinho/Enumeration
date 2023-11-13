@@ -6,27 +6,41 @@
 public static class EnumerationExtensions
 {
     /// <summary>
+    /// Maps from a type of <see cref="Enumeration{TSource}"/> or <see cref="EnumerationDynamic{TSource}"/> to a <c>string</c>./>.
+    /// </summary>
+    /// <param name="sourceEnumeration">The enumeration to map from.</param>
+    /// <typeparam name="T">The enumeration type (must be derived from <see cref="Enumeration{T}"/>).</typeparam>
+    /// <returns>The <c>string</c> value, or <c>null</c> if enumeration is <c>null</c>.</returns>
+    public static string? MapToString<T>(this T? sourceEnumeration)
+        where T : Enumeration<T>
+    {
+        return sourceEnumeration?.Value;
+    }
+    
+    /// <summary>
     /// Maps from a <c>string</c> value to a <see cref="Enumeration{TTarget}"/>.
     /// </summary>
     /// <param name="sourceString">The <c>string</c> value to convert.</param>
     /// <typeparam name="TTarget">The target type (must be derived from <see cref="Enumeration{T}"/>).</typeparam>
     /// <returns>The <see cref="Enumeration{TTarget}"/> with the value, or <c>null</c> if not found or if the value is <c>null</c>.</returns>
-    public static TTarget? MapToEnumeration<TTarget>(this string? sourceString) where TTarget : Enumeration<TTarget>
+    public static TTarget? MapToEnumeration<TTarget>(this string? sourceString)
+        where TTarget : Enumeration<TTarget>
     {
         return Enumeration<TTarget>.GetFromValueOrDefault(sourceString);
     }
-    
+
     /// <summary>
     /// Maps from a <c>string</c> value to a <see cref="EnumerationDynamic{TTarget}"/>.
     /// </summary>
     /// <param name="sourceString">The <c>string</c> value to convert.</param>
     /// <typeparam name="TTarget">The target type (must be derived from <see cref="EnumerationDynamic{T}"/>).</typeparam>
     /// <returns>The <see cref="EnumerationDynamic{TTarget}"/> with the value, or <c>null</c> if the value is <c>null</c>.</returns>
-    public static TTarget? MapToEnumerationDynamic<TTarget>(this string? sourceString) where TTarget : EnumerationDynamic<TTarget>, new()
+    public static TTarget? MapToEnumerationDynamic<TTarget>(this string? sourceString)
+        where TTarget : EnumerationDynamic<TTarget>, new()
     {
         return EnumerationDynamic<TTarget>.GetFromValueOrNew(sourceString);
     }
-    
+
     /// <summary>
     /// Maps from a <see cref="Enumeration{TSource}"/> to a different type of <see cref="Enumeration{TTarget}"/>.
     /// </summary>
@@ -41,7 +55,7 @@ public static class EnumerationExtensions
     {
         return Enumeration<TTarget>.GetFromValueOrDefault(sourceEnumeration?.Value);
     }
-    
+
     /// <summary>
     /// Maps from a type of <see cref="Enumeration{TSource}"/> or <see cref="EnumerationDynamic{TSource}"/> to a different type of <see cref="EnumerationDynamic{TTarget}"/>.
     /// </summary>
