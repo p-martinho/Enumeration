@@ -44,6 +44,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enumeration.Mappers.Tests",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enumeration.Mappers", "src\Enumeration.Mappers\Enumeration.Mappers.csproj", "{6378D270-ABD2-4B84-9660-FF58539DE06A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enumeration.Mappers.Sample", "samples\Enumeration.Mappers.Sample\Enumeration.Mappers.Sample.csproj", "{7FA662AC-5046-4DDA-8F57-F9C656CDAED6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -114,6 +116,10 @@ Global
 		{6378D270-ABD2-4B84-9660-FF58539DE06A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6378D270-ABD2-4B84-9660-FF58539DE06A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6378D270-ABD2-4B84-9660-FF58539DE06A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FA662AC-5046-4DDA-8F57-F9C656CDAED6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FA662AC-5046-4DDA-8F57-F9C656CDAED6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FA662AC-5046-4DDA-8F57-F9C656CDAED6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FA662AC-5046-4DDA-8F57-F9C656CDAED6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{4BD298FF-EB3E-4295-9B25-11F16DE8CA37} = {D5F0A5F7-1947-4E19-9946-436CEA9A5D95}
@@ -132,5 +138,6 @@ Global
 		{E9DE2C87-45D1-4DC3-887E-D3DA51C3E6DD} = {8D935BDC-5C2B-49FD-B72A-CFAA76578664}
 		{8B926822-1B4B-4175-B03F-BC8AE2F67AC9} = {6FDC7463-F8B8-4EDF-8FC5-78D544DD83AC}
 		{6378D270-ABD2-4B84-9660-FF58539DE06A} = {D5F0A5F7-1947-4E19-9946-436CEA9A5D95}
+		{7FA662AC-5046-4DDA-8F57-F9C656CDAED6} = {8D935BDC-5C2B-49FD-B72A-CFAA76578664}
 	EndGlobalSection
 EndGlobal

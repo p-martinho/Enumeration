@@ -598,12 +598,4 @@ Please, be aware that enumeration class may not fit your needs.
 - [eShopOnContainers: Enumeration.cs](https://github.com/dotnet-architecture/eShopOnContainers/blob/dev/src/Services/Ordering/Ordering.Domain/SeedWork/Enumeration.cs)
 
 # TODO
-- Mapperly:
-  - Fix warnings in mappers tests
-  - Unit tests for Mapperly:
-    - Test with current model
-    - Test with dynamic values not existent 
-    - Test with nullables
-    - Test with subclasses
-  - Sample
-  - Readme
+- Readme
