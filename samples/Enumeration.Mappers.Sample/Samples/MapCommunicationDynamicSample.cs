@@ -10,27 +10,27 @@ public class MapCommunicationDynamicSample
     {
         return communicationType.Value; // or: communicationType.ToString();
     }
-    
+
     public CommunicationTypeDynamic? MapStringToCommunicationType(string communicationType)
     {
         return CommunicationTypeDynamic.GetFromValueOrNew(communicationType);
     }
-    
+
     public string? MapCommunicationTypeToStringUsingExtensions(CommunicationTypeDynamic communicationType)
     {
         return communicationType.MapToString();
     }
-    
+
     public CommunicationTypeDynamic? MapStringToCommunicationTypeUsingExtensions(string communicationType)
     {
         return communicationType.MapToEnumerationDynamic<CommunicationTypeDynamic>();
     }
-    
+
     public string MapCommunicationTypeToStringUsingMapper(CommunicationTypeDynamic communicationType)
     {
         return StringEnumerationDynamicMapper<CommunicationTypeDynamic>.MapToString(communicationType);
     }
-    
+
     public CommunicationTypeDynamic MapStringToCommunicationTypeUsingMapper(string communicationType)
     {
         return StringEnumerationDynamicMapper<CommunicationTypeDynamic>.MapToEnumerationDynamic(communicationType);

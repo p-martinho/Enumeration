@@ -583,6 +583,10 @@ Here's an example of the result:
 
 ![Swagger sample 2](./samples/Enumeration.SwaggerGen.Sample/Samples/Swagger-sample-2.png)
 
+## Mapping
+
+
+
 # Disclaimer
 While the enumeration class is a good alternative to `enum` type, it is more complex and also .NET doesn't handle it as it handles `enum` (eg. JSON serialization, model binding, etc.), requiring custom code.
 Please, be aware that enumeration class may not fit your needs.
