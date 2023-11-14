@@ -64,7 +64,7 @@ public class EnumerationDynamicConverterTests
 
         // Assert
         Assert.NotNull(result);
-        Assert.Same(instance, result!.Test);
+        Assert.Same(instance, result.Test);
     }
 
     [Fact]
@@ -82,7 +82,7 @@ public class EnumerationDynamicConverterTests
 
         // Assert
         Assert.NotNull(result);
-        Assert.Null(result!.Test);
+        Assert.Null(result.Test);
     }
 
     [Fact]
@@ -101,7 +101,7 @@ public class EnumerationDynamicConverterTests
 
         // Assert
         Assert.NotNull(result);
-        Assert.NotNull(result!.Test);
+        Assert.NotNull(result.Test);
         Assert.Equal(newCode, result.Test!.Value);
     }
 

@@ -1,5 +1,8 @@
 ﻿namespace PMart.Enumeration.Extensions;
 
+/// <summary>
+/// The extensions related with <see cref="Enumeration{T}"/> and <see cref="EnumerationDynamic{T}"/>.
+/// </summary>
 public static class EnumerationExtensions
 {
     /// <summary>

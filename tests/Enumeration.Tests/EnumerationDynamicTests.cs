@@ -21,7 +21,7 @@ public class EnumerationDynamicTests
 
         // Assert
         Assert.NotNull(instance);
-        Assert.Equal(newTestType, instance!.Value);
+        Assert.Equal(newTestType, instance.Value);
     }
 
     [Fact]
@@ -96,7 +96,7 @@ public class EnumerationDynamicTests
         var originalMembersList = TestEnumerationDynamic.GetMembers();
 
         // Assert
-        Assert.Contains(newMember, membersList);
+        Assert.Contains(newMember, membersList!);
         Assert.DoesNotContain(newMember, originalMembersList);
     }
 
@@ -137,7 +137,7 @@ public class EnumerationDynamicTests
         Assert.NotSame(SubTypeWithEnumerationsDeclared.SubTypeCodeA, instance);
         Assert.Equal(SubTypeWithEnumerationsDeclared.SubTypeCodeA, instance);
     }
-    
+
     [Fact]
     public void GetFromValueOrNew_UsingBaseClassMethod_WhenExistentValueOnSubClass_ReturnsNewInstanceButThatIsEqual()
     {
@@ -152,7 +152,7 @@ public class EnumerationDynamicTests
         Assert.NotSame(SubTypeWithEnumerationsDeclared.SubTypeCodeA, instance);
         Assert.Equal(SubTypeWithEnumerationsDeclared.SubTypeCodeA, instance);
     }
-    
+
     [Fact]
     public void GetFromValueOrNew_UsingSubClassMethod_WhenExistentValue_ShouldReturnInstanceWithValue()
     {

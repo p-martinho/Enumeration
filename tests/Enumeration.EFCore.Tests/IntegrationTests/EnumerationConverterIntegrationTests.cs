@@ -47,7 +47,7 @@ public class EnumerationConverterIntegrationTests : EfCoreBaseTest
         Assert.Single(entities);
         Assert.Null(entities.Single().Test);
     }
-    
+
     [Fact]
     public async Task QueryingData_ShouldSucceed()
     {
@@ -71,9 +71,9 @@ public class EnumerationConverterIntegrationTests : EfCoreBaseTest
         var entityWithCodeA = await Context.TestEntities
             .FirstOrDefaultAsync(e => e.Test == TestEnumeration.CodeA);
         Assert.NotNull(entityWithCodeA);
-        Assert.Equal(entityWithCodeA!.Test, TestEnumeration.CodeA);
+        Assert.Equal(entityWithCodeA.Test, TestEnumeration.CodeA);
     }
-    
+
     [Fact]
     public async Task QueryingData_WhenNull_ShouldSucceed()
     {
@@ -97,6 +97,6 @@ public class EnumerationConverterIntegrationTests : EfCoreBaseTest
         var entityWithCodeNull = await Context.TestEntities
             .FirstOrDefaultAsync(e => e.Test == null);
         Assert.NotNull(entityWithCodeNull);
-        Assert.Null(entityWithCodeNull!.Test);
+        Assert.Null(entityWithCodeNull.Test);
     }
 }
