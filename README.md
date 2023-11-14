@@ -35,6 +35,9 @@ __PMart.Enumeration.SystemTextJson__: The System.Text.Json support for PMart.Enu
 __PMart.Enumeration.SwaggerGen__: Support to generate Swagger documentation when using PMart.Enumeration.
 [![NuGet](https://img.shields.io/nuget/v/PMart.Enumeration.SwaggerGen.svg)](https://www.nuget.org/packages/PMart.Enumeration.SwaggerGen)
 
+__PMart.Enumeration.Mappers__: Mappers and mapping extensions for Enumerations.
+[![NuGet](https://img.shields.io/nuget/v/PMart.Enumeration.Mappers.svg)](https://www.nuget.org/packages/PMart.Enumeration.Mappers)
+
 # Installation
 
 Install one or more of the available NuGet packages:
