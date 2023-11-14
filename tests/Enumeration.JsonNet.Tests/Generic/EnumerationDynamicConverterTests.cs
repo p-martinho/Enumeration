@@ -22,7 +22,7 @@ public class EnumerationDynamicConverterTests
         // Assert
         Assert.Equal("{\"Test\":\"" + instance.Value + "\"}", result);
     }
-    
+
     [Fact]
     public void Serialize_WithoutAttribute_ShouldSucceed()
     {
@@ -67,9 +67,9 @@ public class EnumerationDynamicConverterTests
 
         // Assert
         Assert.NotNull(result);
-        Assert.Same(instance, result!.Test);
+        Assert.Same(instance, result.Test);
     }
-    
+
     [Fact]
     public void Deserialize_WithoutAttribute_ShouldSucceed()
     {
@@ -79,11 +79,12 @@ public class EnumerationDynamicConverterTests
 
         // Act
         var result = JsonConvert
-            .DeserializeObject<TestClassWithoutAttribute>(json, new EnumerationDynamicConverter<TestEnumerationDynamic>());
+            .DeserializeObject<TestClassWithoutAttribute>(json,
+                new EnumerationDynamicConverter<TestEnumerationDynamic>());
 
         // Assert
         Assert.NotNull(result);
-        Assert.Same(instance, result!.Test);
+        Assert.Same(instance, result.Test);
     }
 
     [Fact]
@@ -97,7 +98,7 @@ public class EnumerationDynamicConverterTests
 
         // Assert
         Assert.NotNull(result);
-        Assert.Null(result!.Test);
+        Assert.Null(result.Test);
     }
 
     [Fact]
@@ -112,10 +113,10 @@ public class EnumerationDynamicConverterTests
 
         // Assert
         Assert.NotNull(result);
-        Assert.NotNull(result!.Test);
+        Assert.NotNull(result.Test);
         Assert.Equal(newCode, result.Test!.Value);
     }
-    
+
     [Fact]
     public void Deserialize_WhenNotValid_ShouldFail()
     {
@@ -138,7 +139,7 @@ public class EnumerationDynamicConverterTests
         [JsonConverter(typeof(EnumerationDynamicConverter<TestEnumerationDynamic>))]
         public TestEnumerationDynamic? Test { get; init; }
     }
-    
+
     private class TestClassWithoutAttribute
     {
         public TestEnumerationDynamic? Test { get; init; }

@@ -92,7 +92,7 @@ public class EnumerationDynamicConverterIntegrationTests : EfCoreBaseTest
         var entityWithCodeA = await Context.TestEntities
             .FirstOrDefaultAsync(e => e.TestDynamic == TestEnumerationDynamic.CodeA);
         Assert.NotNull(entityWithCodeA);
-        Assert.Equal(entityWithCodeA!.TestDynamic, TestEnumerationDynamic.CodeA);
+        Assert.Equal(entityWithCodeA.TestDynamic, TestEnumerationDynamic.CodeA);
     }
     
     [Fact]
@@ -118,7 +118,7 @@ public class EnumerationDynamicConverterIntegrationTests : EfCoreBaseTest
         var entityWithCodeNull = await Context.TestEntities
             .FirstOrDefaultAsync(e => e.TestDynamic == null);
         Assert.NotNull(entityWithCodeNull);
-        Assert.Null(entityWithCodeNull!.TestDynamic);
+        Assert.Null(entityWithCodeNull.TestDynamic);
     }
     
     [Fact]
@@ -146,6 +146,6 @@ public class EnumerationDynamicConverterIntegrationTests : EfCoreBaseTest
         var entityWithNewCode = await Context.TestEntities
             .FirstOrDefaultAsync(e => e.TestDynamic == newEnumerationDynamicInstance);
         Assert.NotNull(entityWithNewCode);
-        Assert.Equal(newEnumerationDynamicInstance, entityWithNewCode!.TestDynamic);
+        Assert.Equal(newEnumerationDynamicInstance, entityWithNewCode.TestDynamic);
     }
 }
