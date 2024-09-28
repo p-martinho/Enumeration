@@ -12,7 +12,7 @@ namespace Enumeration.Mappers.Sample.Samples.Mapperly.Mappers;
 [UseStaticMapper(typeof(StringEnumerationMapper<CommunicationType>))]
 [UseStaticMapper(typeof(EnumerationMapper<CommunicationType, OtherCommunicationType>))]
 [UseStaticMapper(typeof(StringEnumerationDynamicMapper<CommunicationTypeDynamic>))]
-[UseStaticMapper(typeof(EnumerationDynamicMapper<CommunicationType, OtherCommunicationTypeDynamic>))]
+[UseStaticMapper(typeof(EnumerationDynamicMapper<CommunicationTypeDynamic, OtherCommunicationTypeDynamic>))]
 internal partial class SampleMapper
 {
     public partial DestinationObject SourceToDestination(SourceObject sourceModel);
