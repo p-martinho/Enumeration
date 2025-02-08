@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <LangVersion>Latest</LangVersion>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AssemblyName>PMart.Enumeration.Generator</AssemblyName>
+        <RootNamespace>PMart.Enumeration.Generator</RootNamespace>
+        <PackageId>PMart.Enumeration.Generator</PackageId>
+        <Authors>Paulo Martinho</Authors>
+        <Company>PMart</Company>
+        <Title>PMart.Enumeration.Generator</Title>
+        <Description>Source code generator to easly create Enumeration classes.</Description>
+        <PackageProjectUrl>https://github.com/p-martinho/Enumeration</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/p-martinho/Enumeration</RepositoryUrl>
+        <PackageTags>enum;enumeration;ddd;sourceGenerator</PackageTags>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageIcon>icon.png</PackageIcon>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageVersion>1.0.0</PackageVersion>
+        <AssemblyVersion>1.0.0</AssemblyVersion>
+        <FileVersion>1.0.0</FileVersion>
+
+        <IncludeBuildOutput>false</IncludeBuildOutput>
+        <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.11.0" PrivateAssets="all"/>
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.12.0" PrivateAssets="all"/>
+        <PackageReference Include="Microsoft.Bcl.HashCode" Version="1.1.1" />
+    </ItemGroup>
+
+    <!-- This ensures the library will be packaged as a source generator when we use `dotnet pack` -->
+    <ItemGroup>
+        <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="../../icon.png" Pack="true" PackagePath="\" Visible="false" />
+        <None Include="../../README.md" Pack="true" PackagePath="\" Visible="false" />
+    </ItemGroup>
+
+</Project>
