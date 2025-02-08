@@ -50,6 +50,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enumeration.Generator", "sr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enumeration.Generator.Tests", "tests\Enumeration.Generator.Tests\Enumeration.Generator.Tests.csproj", "{9D5A3C04-8452-4370-B42B-22D5B378E833}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enumeration.Generator.IntegrationTests", "tests\Enumeration.Generator.IntegrationTests\Enumeration.Generator.IntegrationTests.csproj", "{540C0A21-2920-4217-BAF9-0D20FD8BEC66}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -132,6 +134,10 @@ Global
 		{9D5A3C04-8452-4370-B42B-22D5B378E833}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9D5A3C04-8452-4370-B42B-22D5B378E833}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9D5A3C04-8452-4370-B42B-22D5B378E833}.Release|Any CPU.Build.0 = Release|Any CPU
+		{540C0A21-2920-4217-BAF9-0D20FD8BEC66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{540C0A21-2920-4217-BAF9-0D20FD8BEC66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{540C0A21-2920-4217-BAF9-0D20FD8BEC66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{540C0A21-2920-4217-BAF9-0D20FD8BEC66}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{4BD298FF-EB3E-4295-9B25-11F16DE8CA37} = {D5F0A5F7-1947-4E19-9946-436CEA9A5D95}
@@ -153,5 +159,6 @@ Global
 		{7FA662AC-5046-4DDA-8F57-F9C656CDAED6} = {8D935BDC-5C2B-49FD-B72A-CFAA76578664}
 		{8DC99049-D85D-4F5C-9D1F-1E1202559D68} = {D5F0A5F7-1947-4E19-9946-436CEA9A5D95}
 		{9D5A3C04-8452-4370-B42B-22D5B378E833} = {6FDC7463-F8B8-4EDF-8FC5-78D544DD83AC}
+		{540C0A21-2920-4217-BAF9-0D20FD8BEC66} = {6FDC7463-F8B8-4EDF-8FC5-78D544DD83AC}
 	EndGlobalSection
 EndGlobal
