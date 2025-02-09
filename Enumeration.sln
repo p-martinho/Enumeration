@@ -52,6 +52,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enumeration.Generator.Tests
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enumeration.Generator.IntegrationTests", "tests\Enumeration.Generator.IntegrationTests\Enumeration.Generator.IntegrationTests.csproj", "{540C0A21-2920-4217-BAF9-0D20FD8BEC66}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5. Solution Files", "5. Solution Files", "{5887EC58-2D0E-460E-83A3-7342D6E8CE08}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		global.json = global.json
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
