@@ -12,6 +12,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4. Docs", "4. Docs", "{29E0
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5. Solution Files", "5. Solution Files", "{5887EC58-2D0E-460E-83A3-7342D6E8CE08}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		global.json = global.json
+	EndProjectSection
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enumeration", "src\Enumeration\Enumeration.csproj", "{4BD298FF-EB3E-4295-9B25-11F16DE8CA37}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enumeration.SystemTextJson", "src\Enumeration.SystemTextJson\Enumeration.SystemTextJson.csproj", "{7F2BBBBB-1AEB-49D2-826A-A42A8074792B}"
@@ -52,11 +58,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enumeration.Generator.Tests
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enumeration.Generator.IntegrationTests", "tests\Enumeration.Generator.IntegrationTests\Enumeration.Generator.IntegrationTests.csproj", "{540C0A21-2920-4217-BAF9-0D20FD8BEC66}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5. Solution Files", "5. Solution Files", "{5887EC58-2D0E-460E-83A3-7342D6E8CE08}"
-	ProjectSection(SolutionItems) = preProject
-		.gitignore = .gitignore
-		global.json = global.json
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enumeration.Generator.Sample", "samples\Enumeration.Generator.Sample\Enumeration.Generator.Sample.csproj", "{56C30CAE-257F-4AF2-893B-3004AB7F0B9D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -144,6 +146,10 @@ Global
 		{540C0A21-2920-4217-BAF9-0D20FD8BEC66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{540C0A21-2920-4217-BAF9-0D20FD8BEC66}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{540C0A21-2920-4217-BAF9-0D20FD8BEC66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56C30CAE-257F-4AF2-893B-3004AB7F0B9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56C30CAE-257F-4AF2-893B-3004AB7F0B9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56C30CAE-257F-4AF2-893B-3004AB7F0B9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56C30CAE-257F-4AF2-893B-3004AB7F0B9D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{4BD298FF-EB3E-4295-9B25-11F16DE8CA37} = {D5F0A5F7-1947-4E19-9946-436CEA9A5D95}
@@ -166,5 +172,6 @@ Global
 		{8DC99049-D85D-4F5C-9D1F-1E1202559D68} = {D5F0A5F7-1947-4E19-9946-436CEA9A5D95}
 		{9D5A3C04-8452-4370-B42B-22D5B378E833} = {6FDC7463-F8B8-4EDF-8FC5-78D544DD83AC}
 		{540C0A21-2920-4217-BAF9-0D20FD8BEC66} = {6FDC7463-F8B8-4EDF-8FC5-78D544DD83AC}
+		{56C30CAE-257F-4AF2-893B-3004AB7F0B9D} = {8D935BDC-5C2B-49FD-B72A-CFAA76578664}
 	EndGlobalSection
 EndGlobal
