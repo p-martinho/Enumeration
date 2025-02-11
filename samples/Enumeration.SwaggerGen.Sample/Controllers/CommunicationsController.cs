@@ -13,29 +13,65 @@ namespace Enumeration.SwaggerGen.Sample.Controllers;
 public class CommunicationsController : ControllerBase
 {
     /// <summary>
-    /// Gets all communication records.
+    /// Gets all communication records by type.
     /// </summary>
+    /// <param name="type">The communication type.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A collection of all communication records.</returns>
     /// <response code="200">Returns the list of all communication records.</response>
     [HttpGet]
     [ProducesResponseType(typeof(IEnumerable<CommunicationRecord>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetAllAsync(CancellationToken cancellationToken = default)
+    public async Task<IActionResult> GetAllAsync([FromQuery] string? type = null,
+        CancellationToken cancellationToken = default)
     {
-        var response = await GetSampleResponseAsync();
+        var communicationTypes = GetCommunicationTypesToFilter(type);
+
+        var response = await GetSampleResponseAsync(communicationTypes);
 
         return Ok(response);
     }
 
-    private Task<IEnumerable<CommunicationRecord>> GetSampleResponseAsync()
+    private static IEnumerable<CommunicationType> GetCommunicationTypesToFilter(string? requestedType)
     {
-        return Task.FromResult<IEnumerable<CommunicationRecord>>([
+        if (requestedType is null)
+        {
+            return CommunicationType.GetMembers();
+        }
+        
+        var communicationType = CommunicationType.GetFromValueOrDefault(requestedType);
+
+        return communicationType is null ? [] : [communicationType];
+    }
+
+    private static Task<IEnumerable<CommunicationRecord>> GetSampleResponseAsync(
+        IEnumerable<CommunicationType> communicationTypes)
+    {
+        return Task.FromResult<IEnumerable<CommunicationRecord>>(
+            GetAllCommunicationRecords().Where(c => communicationTypes.Contains(c.Type)));
+    }
+
+    private static IEnumerable<CommunicationRecord> GetAllCommunicationRecords()
+    {
+        return
+        [
             new CommunicationRecord
             {
                 To = "sample@email.com",
                 SentAt = DateTime.UtcNow,
                 Type = CommunicationType.Email
+            },
+            new CommunicationRecord
+            {
+                To = "123456",
+                SentAt = DateTime.UtcNow,
+                Type = CommunicationType.Sms
+            },
+            new CommunicationRecord
+            {
+                To = "sample@email.com",
+                SentAt = DateTime.UtcNow,
+                Type = CommunicationType.PushNotification
             }
-        ]);
+        ];
     }
 }
