@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using PMart.Enumeration.Generator.Attributes;
 
 namespace PMart.Enumeration.Generator.Helpers;
 
@@ -37,7 +38,7 @@ internal static class ErrorIds
     {
         return errorId switch
         {
-            InvalidMemberName => $"Invalid name for the Enumeration member in the {SourceGenerationBuilder.EnumerationMemberAttributeName}",
+            InvalidMemberName => $"Invalid name for the Enumeration member in the {nameof(EnumerationMemberAttribute)}",
             MemberHasSameNameAsConstant => "The name '{0}' of the Enumeration member is the same as the field name",
             MemberWithSameNameAlreadyDeclared => "A member with the name '{0}' is already declared",
             MemberNameDuplicated => "The name '{0}' for the Enumeration member is duplicated",

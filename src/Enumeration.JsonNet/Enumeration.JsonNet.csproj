@@ -1,38 +1,22 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
-        <AssemblyName>PMart.Enumeration.JsonNet</AssemblyName>
-        <RootNamespace>PMart.Enumeration.JsonNet</RootNamespace>
         <PackageId>PMart.Enumeration.JsonNet</PackageId>
-        <Authors>Paulo Martinho</Authors>
-        <Company>PMart</Company>
-        <Title>PMart.Enumeration.JsonNet</Title>
+        <AssemblyName>$(PackageId)</AssemblyName>
+        <RootNamespace>$(PackageId)</RootNamespace>
+        
+        <Title>$(PackageId)</Title>
         <Description>Json.NET serialization support for PMart.Enumeration.</Description>
-        <PackageProjectUrl>https://github.com/p-martinho/Enumeration</PackageProjectUrl>
-        <RepositoryUrl>https://github.com/p-martinho/Enumeration</RepositoryUrl>
+        
         <PackageTags>enum;enumeration;ddd;json;json.net</PackageTags>
-        <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <PackageIcon>icon.png</PackageIcon>
-        <PackageReadmeFile>README.md</PackageReadmeFile>
-        <PackageVersion>3.0.0</PackageVersion>
-        <AssemblyVersion>3.0.0</AssemblyVersion>
-        <FileVersion>3.0.0</FileVersion>
     </PropertyGroup>
 
     <ItemGroup>
-        <None Include="../../icon.png" Pack="true" PackagePath="\" Visible="false" />
-        <None Include="../../README.md" Pack="true" PackagePath="\" Visible="false" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\Enumeration\Enumeration.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
       <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Enumeration\Enumeration.csproj" />
     </ItemGroup>
 
 </Project>

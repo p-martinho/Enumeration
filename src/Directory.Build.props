@@ -1,0 +1,27 @@
+<Project>
+
+    <!-- import parent: https://learn.microsoft.com/en-us/visualstudio/msbuild/customize-by-directory#use-case-multi-level-merging -->
+    <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
+    
+    <PropertyGroup>
+        <PackageProjectUrl>https://github.com/p-martinho/Enumeration</PackageProjectUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageIcon>icon.png</PackageIcon>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+
+        <VersionPrefix>3.0.0</VersionPrefix>
+        <VersionSuffix></VersionSuffix>
+        <PackageVersion Condition="'$(VersionSuffix)' == ''">$(VersionPrefix)</PackageVersion>
+        <PackageVersion Condition="'$(VersionSuffix)' != ''">$(VersionPrefix)-$(VersionSuffix)</PackageVersion>
+        <AssemblyVersion Condition="'$(VersionSuffix)' == ''">$(VersionPrefix)</AssemblyVersion>
+        <AssemblyVersion Condition="'$(VersionSuffix)' != ''">$(VersionPrefix)-$(VersionSuffix)</AssemblyVersion>
+        <FileVersion Condition="'$(VersionSuffix)' == ''">$(VersionPrefix)</FileVersion>
+        <FileVersion Condition="'$(VersionSuffix)' != ''">$(VersionPrefix)-$(VersionSuffix)</FileVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="../../icon.png" Pack="true" PackagePath="\" Visible="false" />
+        <None Include="../../README.md" Pack="true" PackagePath="\" Visible="false" />
+    </ItemGroup>
+
+</Project>

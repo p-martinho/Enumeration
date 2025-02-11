@@ -1,31 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
-        <AssemblyName>PMart.Enumeration.SystemTextJson</AssemblyName>
-        <RootNamespace>PMart.Enumeration.SystemTextJson</RootNamespace>
         <PackageId>PMart.Enumeration.SystemTextJson</PackageId>
-        <Authors>Paulo Martinho</Authors>
-        <Company>PMart</Company>
-        <Title>PMart.Enumeration.SystemTextJson</Title>
-        <Description>System.Text.Json support for PMart.Enumeration.</Description>
-        <PackageProjectUrl>https://github.com/p-martinho/Enumeration</PackageProjectUrl>
-        <RepositoryUrl>https://github.com/p-martinho/Enumeration</RepositoryUrl>
-        <PackageTags>enum;enumeration;ddd;json;system.text.json</PackageTags>
-        <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <PackageIcon>icon.png</PackageIcon>
-        <PackageReadmeFile>README.md</PackageReadmeFile>
-        <PackageVersion>3.0.0</PackageVersion>
-        <AssemblyVersion>3.0.0</AssemblyVersion>
-        <FileVersion>3.0.0</FileVersion>
-    </PropertyGroup>
+        <AssemblyName>$(PackageId)</AssemblyName>
+        <RootNamespace>$(PackageId)</RootNamespace>
 
-    <ItemGroup>
-        <None Include="../../icon.png" Pack="true" PackagePath="\" Visible="false" />
-        <None Include="../../README.md" Pack="true" PackagePath="\" Visible="false" />
-    </ItemGroup>
+        <Title>$(PackageId)</Title>
+        <Description>System.Text.Json support for PMart.Enumeration.</Description>
+        
+        <PackageTags>enum;enumeration;ddd;json;system.text.json</PackageTags>
+    </PropertyGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\Enumeration\Enumeration.csproj" />
