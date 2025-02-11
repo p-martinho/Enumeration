@@ -1,4 +1,4 @@
-﻿using PMart.Enumeration.Generator;
+﻿using PMart.Enumeration.Generator.Attributes;
 #pragma warning disable CS0414 // Field is assigned but its value is never used
 
 namespace Enumeration.Generator.IntegrationTests.EnumerationClasses;

@@ -16,7 +16,7 @@ public class EnumerationGeneratorSnapshotTests
         var source = TestingSourceBuilder.BuildEnumerationWithPrefixValueFor();
 
         // Act
-        var driver = GeneratorDriverBuilder.Generate(source);
+        var driver = GeneratorDriverBuilder.GenerateDriver(source);
 
         // Assert
         return Verify(driver);
@@ -29,7 +29,7 @@ public class EnumerationGeneratorSnapshotTests
         var source = TestingSourceBuilder.BuildEnumerationWithNamedMembers();
 
         // Act
-        var driver = GeneratorDriverBuilder.Generate(source);
+        var driver = GeneratorDriverBuilder.GenerateDriver(source);
 
         // Assert
         return Verify(driver);
@@ -42,7 +42,7 @@ public class EnumerationGeneratorSnapshotTests
         var source = TestingSourceBuilder.BuildEnumerationDynamic();
 
         // Act
-        var driver = GeneratorDriverBuilder.Generate(source);
+        var driver = GeneratorDriverBuilder.GenerateDriver(source);
 
         // Assert
         return Verify(driver);
@@ -55,7 +55,7 @@ public class EnumerationGeneratorSnapshotTests
         var source = TestingSourceBuilder.BuildEnumerationWithMembersToIgnore();
 
         // Act
-        var driver = GeneratorDriverBuilder.Generate(source);
+        var driver = GeneratorDriverBuilder.GenerateDriver(source);
 
         // Assert
         return Verify(driver);
@@ -68,7 +68,7 @@ public class EnumerationGeneratorSnapshotTests
         var source = TestingSourceBuilder.BuildInternalEnumeration();
 
         // Act
-        var driver = GeneratorDriverBuilder.Generate(source);
+        var driver = GeneratorDriverBuilder.GenerateDriver(source);
 
         // Assert
         return Verify(driver);
@@ -81,7 +81,7 @@ public class EnumerationGeneratorSnapshotTests
         var source = TestingSourceBuilder.BuildEnumerationWithThreeMembers();
 
         // Act
-        var driver = GeneratorDriverBuilder.Generate(source);
+        var driver = GeneratorDriverBuilder.GenerateDriver(source);
 
         // Assert
         return Verify(driver);
@@ -94,7 +94,7 @@ public class EnumerationGeneratorSnapshotTests
         var source = TestingSourceBuilder.BuildEnumerationWithValueDifferentFromMemberName();
 
         // Act
-        var driver = GeneratorDriverBuilder.Generate(source);
+        var driver = GeneratorDriverBuilder.GenerateDriver(source);
 
         // Assert
         return Verify(driver);
@@ -107,7 +107,7 @@ public class EnumerationGeneratorSnapshotTests
         var source = TestingSourceBuilder.BuildEnumerationWithOtherNonEnumerationMembers();
 
         // Act
-        var driver = GeneratorDriverBuilder.Generate(source);
+        var driver = GeneratorDriverBuilder.GenerateDriver(source);
 
         // Assert
         return Verify(driver);
@@ -120,7 +120,7 @@ public class EnumerationGeneratorSnapshotTests
         var source = TestingSourceBuilder.BuildTwoEnumerationsInSameFile();
 
         // Act
-        var driver = GeneratorDriverBuilder.Generate(source);
+        var driver = GeneratorDriverBuilder.GenerateDriver(source);
 
         // Assert
         return Verify(driver);
@@ -133,7 +133,7 @@ public class EnumerationGeneratorSnapshotTests
         var source = TestingSourceBuilder.BuildTwoEnumerationsInSameFileOneWithoutAttribute();
 
         // Act
-        var driver = GeneratorDriverBuilder.Generate(source);
+        var driver = GeneratorDriverBuilder.GenerateDriver(source);
 
         // Assert
         return Verify(driver);
@@ -146,7 +146,7 @@ public class EnumerationGeneratorSnapshotTests
         var source = TestingSourceBuilder.BuildEnumerationWithBlockScopedNamespace();
 
         // Act
-        var driver = GeneratorDriverBuilder.Generate(source);
+        var driver = GeneratorDriverBuilder.GenerateDriver(source);
 
         // Assert
         return Verify(driver);
@@ -159,7 +159,7 @@ public class EnumerationGeneratorSnapshotTests
         var source = TestingSourceBuilder.BuildEnumerationWithNestedNamespaces();
 
         // Act
-        var driver = GeneratorDriverBuilder.Generate(source);
+        var driver = GeneratorDriverBuilder.GenerateDriver(source);
 
         // Assert
         return Verify(driver);
@@ -172,7 +172,7 @@ public class EnumerationGeneratorSnapshotTests
         var source = TestingSourceBuilder.BuildEnumerationWithoutNamespace();
 
         // Act
-        var driver = GeneratorDriverBuilder.Generate(source);
+        var driver = GeneratorDriverBuilder.GenerateDriver(source);
 
         // Assert
         return Verify(driver);
@@ -185,7 +185,7 @@ public class EnumerationGeneratorSnapshotTests
         var source = TestingSourceBuilder.BuildEnumerationWithAttributeWithFullNameAndDynamic();
 
         // Act
-        var driver = GeneratorDriverBuilder.Generate(source);
+        var driver = GeneratorDriverBuilder.GenerateDriver(source);
 
         // Assert
         return Verify(driver);
@@ -198,7 +198,7 @@ public class EnumerationGeneratorSnapshotTests
         var source = TestingSourceBuilder.BuildEnumerationWithOtherAttributes();
 
         // Act
-        var driver = GeneratorDriverBuilder.Generate(source);
+        var driver = GeneratorDriverBuilder.GenerateDriver(source);
 
         // Assert
         return Verify(driver);
@@ -211,7 +211,7 @@ public class EnumerationGeneratorSnapshotTests
         var source = TestingSourceBuilder.BuildEnumerationWithAttributeAndInheritFromEnumeration();
 
         // Act
-        var driver = GeneratorDriverBuilder.Generate(source);
+        var driver = GeneratorDriverBuilder.GenerateDriver(source);
 
         // Assert
         return Verify(driver);
@@ -228,7 +228,7 @@ public class EnumerationGeneratorSnapshotTests
         string? source = null;
 
         // Act
-        var driver = GeneratorDriverBuilder.Generate(source);
+        var driver = GeneratorDriverBuilder.GenerateDriver(source);
 
         // Assert
         return Verify(driver);
@@ -241,7 +241,7 @@ public class EnumerationGeneratorSnapshotTests
         var source = TestingSourceBuilder.BuildEnumerationEmpty();
 
         // Act
-        var driver = GeneratorDriverBuilder.Generate(source);
+        var driver = GeneratorDriverBuilder.GenerateDriver(source);
 
         // Assert
         return Verify(driver);
@@ -254,7 +254,7 @@ public class EnumerationGeneratorSnapshotTests
         var source = TestingSourceBuilder.BuildEnumerationWithoutAttribute();
 
         // Act
-        var driver = GeneratorDriverBuilder.Generate(source);
+        var driver = GeneratorDriverBuilder.GenerateDriver(source);
 
         // Assert
         return Verify(driver);
@@ -267,7 +267,7 @@ public class EnumerationGeneratorSnapshotTests
         var source = TestingSourceBuilder.BuildEnumerationNotPartial();
 
         // Act
-        var driver = GeneratorDriverBuilder.Generate(source);
+        var driver = GeneratorDriverBuilder.GenerateDriver(source);
 
         // Assert
         return Verify(driver);
@@ -280,7 +280,7 @@ public class EnumerationGeneratorSnapshotTests
         var source = TestingSourceBuilder.BuildEnumerationWithMemberNotString();
 
         // Act
-        var driver = GeneratorDriverBuilder.Generate(source);
+        var driver = GeneratorDriverBuilder.GenerateDriver(source);
 
         // Assert
         return Verify(driver);
@@ -293,7 +293,7 @@ public class EnumerationGeneratorSnapshotTests
         var source = TestingSourceBuilder.BuildEnumerationWithMemberNotPrivate();
 
         // Act
-        var driver = GeneratorDriverBuilder.Generate(source);
+        var driver = GeneratorDriverBuilder.GenerateDriver(source);
 
         // Assert
         return Verify(driver);
@@ -306,7 +306,7 @@ public class EnumerationGeneratorSnapshotTests
         var source = TestingSourceBuilder.BuildEnumerationWithMemberNotStatic();
 
         // Act
-        var driver = GeneratorDriverBuilder.Generate(source);
+        var driver = GeneratorDriverBuilder.GenerateDriver(source);
 
         // Assert
         return Verify(driver);
@@ -319,7 +319,7 @@ public class EnumerationGeneratorSnapshotTests
         var source = TestingSourceBuilder.BuildEnumerationWithMemberConstant();
 
         // Act
-        var driver = GeneratorDriverBuilder.Generate(source);
+        var driver = GeneratorDriverBuilder.GenerateDriver(source);
 
         // Assert
         return Verify(driver);
@@ -332,7 +332,7 @@ public class EnumerationGeneratorSnapshotTests
         var source = TestingSourceBuilder.BuildEnumerationWithMemberNamedJustValueFor();
 
         // Act
-        var driver = GeneratorDriverBuilder.Generate(source);
+        var driver = GeneratorDriverBuilder.GenerateDriver(source);
 
         // Assert
         return Verify(driver);
@@ -349,7 +349,7 @@ public class EnumerationGeneratorSnapshotTests
         var source = TestingSourceBuilder.BuildEnumerationWithMemberNameEqualsToFieldName();
 
         // Act
-        var driver = GeneratorDriverBuilder.Generate(source);
+        var driver = GeneratorDriverBuilder.GenerateDriver(source);
 
         // Assert
         return Verify(driver);
@@ -362,7 +362,7 @@ public class EnumerationGeneratorSnapshotTests
         var source = TestingSourceBuilder.BuildEnumerationWithMemberNameEqualsToExistentMember();
 
         // Act
-        var driver = GeneratorDriverBuilder.Generate(source);
+        var driver = GeneratorDriverBuilder.GenerateDriver(source);
 
         // Assert
         return Verify(driver);
@@ -375,7 +375,7 @@ public class EnumerationGeneratorSnapshotTests
         var source = TestingSourceBuilder.BuildEnumerationWithMemberWithPrefixValueForEqualsToExistentMember();
 
         // Act
-        var driver = GeneratorDriverBuilder.Generate(source);
+        var driver = GeneratorDriverBuilder.GenerateDriver(source);
 
         // Assert
         return Verify(driver);
@@ -388,7 +388,7 @@ public class EnumerationGeneratorSnapshotTests
         var source = TestingSourceBuilder.BuildEnumerationWithMemberNameEqualsToMemberWithPrefixValueFor();
 
         // Act
-        var driver = GeneratorDriverBuilder.Generate(source);
+        var driver = GeneratorDriverBuilder.GenerateDriver(source);
 
         // Assert
         return Verify(driver);
@@ -401,7 +401,7 @@ public class EnumerationGeneratorSnapshotTests
         var source = TestingSourceBuilder.BuildEnumerationWithEmptyMemberName();
 
         // Act
-        var driver = GeneratorDriverBuilder.Generate(source);
+        var driver = GeneratorDriverBuilder.GenerateDriver(source);
 
         // Assert
         return Verify(driver);
@@ -414,7 +414,7 @@ public class EnumerationGeneratorSnapshotTests
         var source = TestingSourceBuilder.BuildEnumerationWithNullMemberName();
 
         // Act
-        var driver = GeneratorDriverBuilder.Generate(source);
+        var driver = GeneratorDriverBuilder.GenerateDriver(source);
 
         // Assert
         return Verify(driver);
@@ -427,7 +427,7 @@ public class EnumerationGeneratorSnapshotTests
         var source = TestingSourceBuilder.BuildEnumerationWithInvalidMemberName();
 
         // Act
-        var driver = GeneratorDriverBuilder.Generate(source);
+        var driver = GeneratorDriverBuilder.GenerateDriver(source);
 
         // Assert
         return Verify(driver);

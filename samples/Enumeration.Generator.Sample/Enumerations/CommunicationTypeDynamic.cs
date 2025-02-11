@@ -1,4 +1,4 @@
-﻿using PMart.Enumeration.Generator;
+﻿using PMart.Enumeration.Generator.Attributes;
 
 namespace Enumeration.Generator.Sample.Enumerations;
 

@@ -4,6 +4,7 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Text;
+using PMart.Enumeration.Generator.Attributes;
 using PMart.Enumeration.Generator.Helpers;
 using PMart.Enumeration.Generator.Models;
 
@@ -23,21 +24,10 @@ public class EnumerationGenerator : IIncrementalGenerator
     /// <inheritdoc />
     public void Initialize(IncrementalGeneratorInitializationContext context)
     {
-        // Add the marker attributes
-        context.RegisterPostInitializationOutput(static ctx => ctx.AddSource(
-            "EnumerationAttribute.g.cs",
-            SourceText.From(SourceGenerationBuilder.GenerateEnumerationAttribute(), Encoding.UTF8)));
-        context.RegisterPostInitializationOutput(static ctx => ctx.AddSource(
-            "EnumerationMemberAttribute.g.cs",
-            SourceText.From(SourceGenerationBuilder.GenerateEnumerationMemberAttribute(), Encoding.UTF8)));
-        context.RegisterPostInitializationOutput(static ctx => ctx.AddSource(
-            "EnumerationIgnoreAttribute.g.cs",
-            SourceText.From(SourceGenerationBuilder.GenerateEnumerationIgnoreAttribute(), Encoding.UTF8)));
-
         // Do a filter for Enumeration classes
         var enumerationsToGenerate = context.SyntaxProvider
             .ForAttributeWithMetadataName(
-                $"{SourceGenerationBuilder.GeneratorNamespace}.{SourceGenerationBuilder.EnumerationAttributeName}",
+                $"{typeof(EnumerationAttribute).FullName}",
                 predicate: IsPartialClass,
                 transform: static (ctx, _) => GetEnumerationToGenerate(ctx.SemanticModel, ctx.TargetNode))
             .Where(static m => m is not null) // Filter out errors that we don't care about
@@ -164,14 +154,14 @@ public class EnumerationGenerator : IIncrementalGenerator
     private static bool IsToIgnoreFieldByAttribute(IFieldSymbol field)
     {
         return field.GetAttributes()
-            .Any(a => a.AttributeClass?.Name == SourceGenerationBuilder.EnumerationIgnoreAttributeName);
+            .Any(a => a.AttributeClass?.Name == nameof(EnumerationIgnoreAttribute));
     }
 
     private static (bool HasAttribute, string? MemberNameFromAttribute) GetMemberNameFromAttribute(IFieldSymbol field)
     {
         foreach (var attribute in field.GetAttributes())
         {
-            if (attribute.AttributeClass?.Name == SourceGenerationBuilder.EnumerationMemberAttributeName)
+            if (attribute.AttributeClass?.Name == nameof(EnumerationMemberAttribute))
             {
                 return (true, GetMemberNameFromAttribute(attribute));
             }
@@ -256,9 +246,30 @@ public class EnumerationGenerator : IIncrementalGenerator
 
     private static bool IsEnumerationAttribute(AttributeSyntax attributeSyntax)
     {
-        return attributeSyntax.Name.ToString() == SourceGenerationBuilder.EnumerationAttributeNameWithoutSuffix ||
-               attributeSyntax.Name.ToString() ==
-               $"{SourceGenerationBuilder.GeneratorNamespace}.{SourceGenerationBuilder.EnumerationAttributeNameWithoutSuffix}";
+        return attributeSyntax.Name.ToString() == GetEnumerationAttributeNameWithoutSuffix() ||
+               attributeSyntax.Name.ToString() == GetEnumerationAttributeFullNameWithoutSuffix();
+    }
+
+    private static string? GetEnumerationAttributeNameWithoutSuffix()
+    {
+        return RemoveAttributeSuffix(nameof(EnumerationAttribute));
+    }
+
+    private static string? RemoveAttributeSuffix(string? attributeName)
+    {
+        const string suffix = "Attribute";
+
+        if (attributeName is null || !attributeName.EndsWith(suffix) || attributeName.Length == suffix.Length)
+        {
+            return attributeName;
+        }
+        
+        return attributeName.Substring(0, attributeName.Length - suffix.Length);
+    }
+    
+    private static string? GetEnumerationAttributeFullNameWithoutSuffix()
+    {
+        return RemoveAttributeSuffix(typeof(EnumerationAttribute).FullName);
     }
 
     private static bool GetIsDynamicFromAttribute(AttributeSyntax attribute)
@@ -277,7 +288,7 @@ public class EnumerationGenerator : IIncrementalGenerator
     private static bool IsArgumentForIsDynamic(AttributeArgumentSyntax argumentSyntax)
     {
         return argumentSyntax.NameEquals?.Name.Identifier.Text ==
-               SourceGenerationBuilder.EnumerationAttributeIsDynamicArgumentName;
+               nameof(EnumerationAttribute.IsDynamic);
     }
 
     private static bool GetArgumentBoolValue(AttributeArgumentSyntax argumentSyntax)

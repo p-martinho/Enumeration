@@ -12,21 +12,11 @@ namespace Enumeration.SwaggerGen.Sample.Controllers;
 [Produces("application/json")]
 public class CommunicationsController : ControllerBase
 {
-    private readonly ILogger<CommunicationsController> _logger;
-
-    /// <summary>
-    /// Initializes a new instance of the class <see cref="CommunicationsController"/>.
-    /// </summary>
-    public CommunicationsController(ILogger<CommunicationsController> logger)
-    {
-        _logger = logger;
-    }
-
     /// <summary>
     /// Gets all communication records.
     /// </summary>
     /// <param name="cancellationToken">The cancellation token.</param>
-    /// <returns>A enumerable of all communication records.</returns>
+    /// <returns>A collection of all communication records.</returns>
     /// <response code="200">Returns the list of all communication records.</response>
     [HttpGet]
     [ProducesResponseType(typeof(IEnumerable<CommunicationRecord>), StatusCodes.Status200OK)]
@@ -39,14 +29,13 @@ public class CommunicationsController : ControllerBase
 
     private Task<IEnumerable<CommunicationRecord>> GetSampleResponseAsync()
     {
-        return Task.FromResult<IEnumerable<CommunicationRecord>>(new[]
-        {
+        return Task.FromResult<IEnumerable<CommunicationRecord>>([
             new CommunicationRecord
             {
                 To = "sample@email.com",
                 SentAt = DateTime.UtcNow,
                 Type = CommunicationType.Email
             }
-        });
+        ]);
     }
 }

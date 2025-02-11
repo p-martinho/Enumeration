@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <LangVersion>Latest</LangVersion>
+        <ImplicitUsings>disable</ImplicitUsings>
+        
+        <AssemblyName>PMart.Enumeration.Generator.Attributes</AssemblyName>
+        <RootNamespace>$(AssemblyName)</RootNamespace>
+        
+        <Title>$(AssemblyName)</Title>
+        <Description>Attributes to be used in the context of the code generator to create Enumeration classes.</Description>
+
+        <IsPackable>false</IsPackable>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    </PropertyGroup>
+
+</Project>

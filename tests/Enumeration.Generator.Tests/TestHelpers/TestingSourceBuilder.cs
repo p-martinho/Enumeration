@@ -18,7 +18,7 @@ internal static class TestingSourceBuilder
     
     public static string BuildEnumerationDynamic() =>
         """
-        using PMart.Enumeration.Generator;
+        using PMart.Enumeration.Generator.Attributes;
 
         namespace Enumeration.Generator.Tests.Source;
 
@@ -89,7 +89,7 @@ internal static class TestingSourceBuilder
     
     public static string BuildEnumerationWithBlockScopedNamespace() =>
         """
-        using PMart.Enumeration.Generator;
+        using PMart.Enumeration.Generator.Attributes;
 
         namespace Enumeration.Generator.Tests.Source
         {
@@ -103,7 +103,7 @@ internal static class TestingSourceBuilder
     
     public static string BuildEnumerationWithNestedNamespaces() =>
         """
-        using PMart.Enumeration.Generator;
+        using PMart.Enumeration.Generator.Attributes;
         
         namespace Enumeration.Generator.Tests.Source
         {
@@ -123,7 +123,7 @@ internal static class TestingSourceBuilder
     
     public static string BuildEnumerationWithoutNamespace() =>
         """
-        using PMart.Enumeration.Generator;
+        using PMart.Enumeration.Generator.Attributes;
 
         [Enumeration]
         public partial class TestEnumeration
@@ -135,7 +135,7 @@ internal static class TestingSourceBuilder
         """
         namespace Enumeration.Generator.Tests.Source;
 
-        [PMart.Enumeration.Generator.Enumeration(IsDynamic = true)]
+        [PMart.Enumeration.Generator.Attributes.Enumeration(IsDynamic = true)]
         public partial class TestEnumeration
         {
 
@@ -143,7 +143,7 @@ internal static class TestingSourceBuilder
     
     public static string BuildEnumerationWithOtherAttributes() =>
         """
-        using PMart.Enumeration.Generator;
+        using PMart.Enumeration.Generator.Attributes;
 
         namespace Enumeration.Generator.Tests.Source;
 
@@ -165,7 +165,7 @@ internal static class TestingSourceBuilder
     
     public static string BuildEnumerationWithAttributeAndInheritFromEnumeration() =>
         """
-        using PMart.Enumeration.Generator;
+        using PMart.Enumeration.Generator.Attributes;
 
         namespace Enumeration.Generator.Tests.Source;
 
@@ -183,7 +183,7 @@ internal static class TestingSourceBuilder
     
     public static string BuildEnumerationWithoutAttribute() =>
         """
-        using PMart.Enumeration.Generator;
+        using PMart.Enumeration.Generator.Attributes;
 
         namespace Enumeration.Generator.Tests.Source;
 
@@ -194,7 +194,7 @@ internal static class TestingSourceBuilder
     
     public static string BuildEnumerationNotPartial() =>
         """
-        using PMart.Enumeration.Generator;
+        using PMart.Enumeration.Generator.Attributes;
 
         namespace Enumeration.Generator.Tests.Source;
 
@@ -296,7 +296,7 @@ internal static class TestingSourceBuilder
 
     private static string BuildHeadSection() =>
         """
-        using PMart.Enumeration.Generator;
+        using PMart.Enumeration.Generator.Attributes;
 
         namespace Enumeration.Generator.Tests.Source;
 

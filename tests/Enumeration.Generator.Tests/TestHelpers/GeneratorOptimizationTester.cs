@@ -16,37 +16,21 @@ internal static class GeneratorOptimizationTester
     // It runs the generator, asserts the outputs are ok, 
     public static (ImmutableArray<Diagnostic> Diagnostics, string[] Output) GetGeneratedTreesAndRunAssertions<T>(
         string[] sources, // C# source code 
-        string[] stages,  // The tracking stages we expect
+        string[] stages, // The tracking stages we expect
         bool assertOutputs = true) // You can disable cacheability checking during dev
         where T : IIncrementalGenerator, new() // T is your generator
     {
-        // Convert the source files to SyntaxTrees
-        var syntaxTrees = sources.Select(static x => CSharpSyntaxTree.ParseText(x));
-
-        // Configure the assembly references you need
-        // This will vary depending on your generator and requirements
-        var references = AppDomain.CurrentDomain.GetAssemblies()
-            .Where(a => !a.IsDynamic && !string.IsNullOrWhiteSpace(a.Location))
-            .Select(a => MetadataReference.CreateFromFile(a.Location))
-            .Concat([MetadataReference.CreateFromFile(typeof(T).Assembly.Location)]);
-
-        // Create a Compilation object
-        // You may want to specify other results here
-        var compilation = CSharpCompilation.Create(
-            "EnumExtensions.Generated",
-            syntaxTrees,
-            references,
-            new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
+        var compilation = GeneratorDriverBuilder.BuildCompilation(sources);
 
         // Run the generator, get the results, and assert cacheability if applicable
-        var runResult = RunGeneratorAndAssertOutput<T>(
-            compilation, stages, assertOutputs);
+        var runResult = RunGeneratorAndAssertOutput<T>(compilation, stages, assertOutputs);
 
         // Return the generator diagnostics and generated sources
         return (runResult.Diagnostics, runResult.GeneratedTrees.Select(x => x.ToString()).ToArray());
     }
-    
-    private static GeneratorDriverRunResult RunGeneratorAndAssertOutput<T>(CSharpCompilation compilation, string[] trackingNames, bool assertOutput = true)
+
+    private static GeneratorDriverRunResult RunGeneratorAndAssertOutput<T>(CSharpCompilation compilation,
+        string[] trackingNames, bool assertOutput = true)
         where T : IIncrementalGenerator, new()
     {
         var generator = new T().AsSourceGenerator();
@@ -58,7 +42,7 @@ internal static class GeneratorOptimizationTester
             trackIncrementalGeneratorSteps: true);
 
         GeneratorDriver driver = CSharpGeneratorDriver.Create([generator], driverOptions: opts);
-    
+
         // Create a clone of the compilation that we will use later
         var clone = compilation.Clone();
 
@@ -87,7 +71,7 @@ internal static class GeneratorOptimizationTester
 
         return runResult;
     }
-    
+
     private static void AssertRunsEqual(
         GeneratorDriverRunResult runResult1,
         GeneratorDriverRunResult runResult2,
@@ -111,7 +95,7 @@ internal static class GeneratorOptimizationTester
             var runSteps2 = trackedSteps2[trackingName];
             AssertEqual(runSteps1, runSteps2);
         }
-    
+
         return;
 
         // Local function that extracts the tracked steps
@@ -123,7 +107,7 @@ internal static class GeneratorOptimizationTester
                 .Where(step => trackingNames.Contains(step.Key)) // filter to known steps
                 .ToDictionary(x => x.Key, x => x.Value); // Convert to a dictionary
     }
-    
+
     private static void AssertEqual(
         ImmutableArray<IncrementalGeneratorRunStep> runSteps1,
         ImmutableArray<IncrementalGeneratorRunStep> runSteps2)
@@ -145,7 +129,7 @@ internal static class GeneratorOptimizationTester
             // - Unchanged is when the _input_ has changed, but the output hasn't
             // - Cached is when the input has not changed, so the cached output is used 
             Assert.True(runStep2.Outputs.All(
-                    x => x.Reason == IncrementalStepRunReason.Cached || x.Reason == IncrementalStepRunReason.Unchanged));
+                x => x.Reason == IncrementalStepRunReason.Cached || x.Reason == IncrementalStepRunReason.Unchanged));
 
             // Make sure we're not using anything we shouldn't
             AssertObjectGraph(runStep1);
