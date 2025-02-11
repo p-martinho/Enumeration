@@ -1,6 +1,5 @@
 ﻿using Enumeration.Mappers.Tests.EnumerationClasses;
 using Enumeration.Mappers.Tests.ThirdPartyMappers.Models;
-using Xunit;
 
 namespace Enumeration.Mappers.Tests.ThirdPartyMappers.Mapperly;
 

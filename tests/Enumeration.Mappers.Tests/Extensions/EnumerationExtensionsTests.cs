@@ -1,6 +1,5 @@
 ﻿using Enumeration.Mappers.Tests.EnumerationClasses;
 using PMart.Enumeration.Mappers.Extensions;
-using Xunit;
 
 namespace Enumeration.Mappers.Tests.Extensions;
 

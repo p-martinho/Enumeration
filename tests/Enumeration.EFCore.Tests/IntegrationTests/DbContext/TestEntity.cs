@@ -1,5 +1,4 @@
-﻿using System;
-using PMart.Enumeration;
+﻿using PMart.Enumeration;
 
 namespace Enumeration.EFCore.Tests.IntegrationTests.DbContext;
 

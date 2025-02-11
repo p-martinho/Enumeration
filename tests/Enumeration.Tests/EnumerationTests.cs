@@ -1,7 +1,4 @@
-using System;
-using System.Linq;
 using Enumeration.Tests.EnumerationClasses;
-using Xunit;
 
 namespace Enumeration.Tests;
 
