@@ -259,15 +259,10 @@ public class EnumerationGenerator : IIncrementalGenerator
     private static string? RemoveAttributeSuffix(string? attributeName)
     {
         const string suffix = "Attribute";
-
-        if (attributeName is null)
-        {
-            return null;
-        }
         
         var attributeNameAsSpan = attributeName.AsSpan();
 
-        if (!attributeNameAsSpan.EndsWith(suffix.AsSpan()) || attributeName.Length == suffix.Length)
+        if (attributeName is null || !attributeNameAsSpan.EndsWith(suffix.AsSpan()) || attributeName.Length == suffix.Length)
         {
             return attributeName;
         }

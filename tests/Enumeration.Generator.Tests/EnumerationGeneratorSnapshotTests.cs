@@ -49,7 +49,7 @@ public class EnumerationGeneratorSnapshotTests
     }
     
     [Fact]
-    public Task BuildEnumerationWithMembersToIgnore_ShouldGenerateEnumerationWithoutIgnoredMembers()
+    public Task EnumerationWithMembersToIgnore_ShouldGenerateEnumerationWithoutIgnoredMembers()
     {
         // Arrange
         var source = TestingSourceBuilder.BuildEnumerationWithMembersToIgnore();
