@@ -18,7 +18,7 @@ namespace PMart.Enumeration.Generator;
 public class EnumerationGenerator : IIncrementalGenerator
 {
     private const string MemberNameConstPrefix = "ValueFor";
-    
+
     public const string InitialExtractionTrackingName = "InitialExtraction";
 
     /// <inheritdoc />
@@ -191,13 +191,14 @@ public class EnumerationGenerator : IIncrementalGenerator
         var prefixLength = MemberNameConstPrefix.Length;
 
         var fieldName = field.Name;
+        var fieldNameAsSpan = fieldName.AsSpan();
 
-        if (!fieldName.StartsWith(MemberNameConstPrefix) || fieldName.Length == prefixLength)
+        if (!fieldNameAsSpan.StartsWith(MemberNameConstPrefix.AsSpan()) || fieldName.Length == prefixLength)
         {
             return null;
         }
 
-        return fieldName.Substring(prefixLength);
+        return fieldNameAsSpan.Slice(prefixLength).ToString();
     }
 
     private static EnumerationToGenerate BuildEnumerationToGenerateWithError(ErrorToReport errorToReport)
@@ -259,14 +260,21 @@ public class EnumerationGenerator : IIncrementalGenerator
     {
         const string suffix = "Attribute";
 
-        if (attributeName is null || !attributeName.EndsWith(suffix) || attributeName.Length == suffix.Length)
+        if (attributeName is null)
+        {
+            return null;
+        }
+        
+        var attributeNameAsSpan = attributeName.AsSpan();
+
+        if (!attributeNameAsSpan.EndsWith(suffix.AsSpan()) || attributeName.Length == suffix.Length)
         {
             return attributeName;
         }
-        
-        return attributeName.Substring(0, attributeName.Length - suffix.Length);
+
+        return attributeNameAsSpan.Slice(0, attributeName.Length - suffix.Length).ToString();
     }
-    
+
     private static string? GetEnumerationAttributeFullNameWithoutSuffix()
     {
         return RemoveAttributeSuffix(typeof(EnumerationAttribute).FullName);
