@@ -37,7 +37,7 @@ public class CommunicationsController : ControllerBase
         {
             return CommunicationType.GetMembers();
         }
-        
+
         var communicationType = CommunicationType.GetFromValueOrDefault(requestedType);
 
         return communicationType is null ? [] : [communicationType];
@@ -46,8 +46,8 @@ public class CommunicationsController : ControllerBase
     private static Task<IEnumerable<CommunicationRecord>> GetSampleResponseAsync(
         IEnumerable<CommunicationType> communicationTypes)
     {
-        return Task.FromResult<IEnumerable<CommunicationRecord>>(
-            GetAllCommunicationRecords().Where(c => communicationTypes.Contains(c.Type)));
+        return Task.FromResult(GetAllCommunicationRecords()
+            .Where(c => communicationTypes.Contains(c.Type)));
     }
 
     private static IEnumerable<CommunicationRecord> GetAllCommunicationRecords()
