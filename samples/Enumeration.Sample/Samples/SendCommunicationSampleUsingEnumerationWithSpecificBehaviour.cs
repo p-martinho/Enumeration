@@ -3,18 +3,18 @@ using Enumeration.Sample.Senders;
 
 namespace Enumeration.Sample.Samples;
 
-public class SendCommunicationSampleUsingEnumerationWithBehaviour
+public class SendCommunicationSampleUsingEnumerationWithSpecificBehaviour
 {
     private readonly ICommunicationSender _communicationSender;
 
-    public SendCommunicationSampleUsingEnumerationWithBehaviour(ICommunicationSender communicationSender)
+    public SendCommunicationSampleUsingEnumerationWithSpecificBehaviour(ICommunicationSender communicationSender)
     {
         _communicationSender = communicationSender;
     }
 
     public string SendCommunication(string communicationType, string to, string message)
     {
-        var communicationTypeEnum = CommunicationTypeWithBehaviour.GetFromValueOrDefault(communicationType);
+        var communicationTypeEnum = CommunicationTypeWithSpecificBehaviour.GetFromValueOrDefault(communicationType);
         
         if (communicationTypeEnum is null)
         {
