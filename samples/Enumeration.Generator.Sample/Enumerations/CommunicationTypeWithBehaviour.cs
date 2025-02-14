@@ -8,58 +8,30 @@ namespace Enumeration.Generator.Sample.Enumerations;
 [Enumeration]
 public partial class CommunicationTypeWithBehaviour
 {
-    public static readonly CommunicationTypeWithBehaviour Email = new EmailType();
+    private static readonly string ValueForEmail = "Email";
 
-    public static readonly CommunicationTypeWithBehaviour Sms = new SmsType();
-    
-    public static readonly CommunicationTypeWithBehaviour PushNotification = new PushNotificationType();
-    
-    private static readonly string ValueForOther = "Other";
+    private static readonly string ValueForSms = "SMS";
+
+    private static readonly string ValueForPushNotification = "PushNotification";
 
     /// <summary>
     /// Parses the message.
     /// </summary>
-    /// <remarks>Each communication type, implements its own way of parsing the message.</remarks>
     /// <param name="message">The message content.</param>
     /// <returns>The parsed message.</returns>
-    public virtual string ParseMessage(string message) => message;
+    public string ParseMessage(string message)
+    {
+        return $"Message parsed by the communication type {this}: {message}";
+    }
 
-    private sealed class EmailType : CommunicationTypeWithBehaviour
+    /// <summary>
+    /// Gets a value indicating if this communication type requires phone number.
+    /// </summary>
+    /// <returns><c>true</c> if this communication type requires phone number; <c>false</c> otherwise.</returns>
+    public bool IsPhoneNumberRequired => this switch
     {
-        public EmailType() : base("Email")
-        {
-        }
-        
-        /// <inheritdoc />
-        public override string ParseMessage(string message)
-        {
-            return $"<html>{message}</html>";
-        }
-    }
-    
-    private sealed class SmsType : CommunicationTypeWithBehaviour
-    {
-        public SmsType() : base("Sms")
-        {
-        }
-        
-        /// <inheritdoc />
-        public override string ParseMessage(string message)
-        {
-            return $"Message encoded for SMS: {message}";
-        }
-    }
-    
-    private sealed class PushNotificationType : CommunicationTypeWithBehaviour
-    {
-        public PushNotificationType() : base("PushNotification")
-        {
-        }
-        
-        /// <inheritdoc />
-        public override string ParseMessage(string message)
-        {
-            return $"Message encoded for push notification: {message}";
-        }
-    }
+        _ when this == Sms => true,
+        _ when this == PushNotification => true,
+        _ => false
+    };
 }

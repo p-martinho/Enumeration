@@ -3,11 +3,11 @@ using Enumeration.Generator.Sample.Senders;
 
 namespace Enumeration.Generator.Sample.Samples;
 
-public class SendCommunicationSampleUsingGeneratedEnumerationWithBehaviour
+public class SendCommunicationSampleUsingGeneratedEnumerationWithSpecificBehaviour
 {
     private readonly ICommunicationSender _communicationSender;
 
-    public SendCommunicationSampleUsingGeneratedEnumerationWithBehaviour(ICommunicationSender communicationSender)
+    public SendCommunicationSampleUsingGeneratedEnumerationWithSpecificBehaviour(ICommunicationSender communicationSender)
     {
         _communicationSender = communicationSender;
     }
@@ -15,7 +15,7 @@ public class SendCommunicationSampleUsingGeneratedEnumerationWithBehaviour
     public string SendCommunication(string communicationType, string to, string message)
     {
         // If this code compiles, the CommunicationTypeWithBehaviour enumeration was properly generated.
-        var communicationTypeEnum = CommunicationTypeWithBehaviour.GetFromValueOrDefault(communicationType);
+        var communicationTypeEnum = CommunicationTypeWithSpecificBehaviour.GetFromValueOrDefault(communicationType);
         
         if (communicationTypeEnum is null)
         {

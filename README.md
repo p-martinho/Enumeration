@@ -7,7 +7,7 @@
 This set of libraries provide base classes to implement __Enumeration classes__, based on `string` values.
 It enables the strongly typed advantages, while using `string` enumerations.
 
-It has, also, the possibility to create new enumerations at runtime (let's call it [dynamic enumerations](#dynamic-enumerations)).
+It has, also, the possibility to create new enumerations at runtime (let's call it [Dynamic Enumerations](#dynamic-enumerations)).
 
 ## What are Enumeration Classes?
 
@@ -16,23 +16,23 @@ They enable features of an object-oriented language without the limitations of t
 
 They are useful, for instance, for business related enumerations on Domain-Driven Design (DDD).
 
-For more information, check the links on the section [References](#references).
+For more information about enumeration classes, check the links on the section [References](#references).
 
 ## NuGet Packages
 
 __PMart.Enumeration__: The Enumeration base classes.
 [![NuGet](https://img.shields.io/nuget/v/PMart.Enumeration.svg)](https://www.nuget.org/packages/PMart.Enumeration)
 
-__PMart.Enumeration.EFCore__: The Entity Framework Core support for PMart.Enumeration.
+__PMart.Enumeration.EFCore__: The Entity Framework Core support for `PMart.Enumeration`.
 [![NuGet](https://img.shields.io/nuget/v/PMart.Enumeration.EFCore.svg)](https://www.nuget.org/packages/PMart.Enumeration.EFCore)
 
-__PMart.Enumeration.JsonNet__: The Json.NET support for PMart.Enumeration.
+__PMart.Enumeration.JsonNet__: The Json.NET support for `PMart.Enumeration`.
 [![NuGet](https://img.shields.io/nuget/v/PMart.Enumeration.JsonNet.svg)](https://www.nuget.org/packages/PMart.Enumeration.JsonNet)
 
-__PMart.Enumeration.SystemTextJson__: The System.Text.Json support for PMart.Enumeration.
+__PMart.Enumeration.SystemTextJson__: The `System.Text.Json` support for `PMart.Enumeration`.
 [![NuGet](https://img.shields.io/nuget/v/PMart.Enumeration.SystemTextJson.svg)](https://www.nuget.org/packages/PMart.Enumeration.SystemTextJson)
 
-__PMart.Enumeration.SwaggerGen__: Support to generate Swagger documentation when using PMart.Enumeration.
+__PMart.Enumeration.SwaggerGen__: Support to generate __Swagger__ documentation when using `PMart.Enumeration`.
 [![NuGet](https://img.shields.io/nuget/v/PMart.Enumeration.SwaggerGen.svg)](https://www.nuget.org/packages/PMart.Enumeration.SwaggerGen)
 
 __PMart.Enumeration.Mappers__: Mappers and mapping extensions for Enumerations.
@@ -43,21 +43,22 @@ __PMart.Enumeration.Generator__: A source generator for generating Enumeration c
 
 # Installation
 
-Install one or more of the available NuGet packages:
+Install one or more of the available NuGet packages in your project.
 
-```
-Install-Package <package name>
+Use your IDE or the command:
+```bash
+dotnet add package <package name>
 ```
 
 # Usage
 
 An `Enumeration` is a class that holds a value of type `string`. Each `Enumeration` class should have declared one or more static instances to set the available enumeration members.
 
-- Create a new enumeration class by extending `Enumeration`.
+- Create a new enumeration class by extending `Enumeration<T>`, where `T` is the class itself.
 - Add a private constructor, as in the example bellow.
-- Create `public static readonly` instances for each enumeration member.
+- Create a `public static readonly` instance of the class for each enumeration member.
 
-> Or you can use the [generator](#source-generator) in `PMart.Enumeration.Generator` package to generate the code for you!
+> Or you can use the [Generator](#source-generator) in `PMart.Enumeration.Generator` package to generate the code for you!
 
 Here is a [sample](./samples/Enumeration.Sample/Enumerations/CommunicationType.cs) for communication types:
 
@@ -97,7 +98,6 @@ You can check some usage examples in the [samples](./samples/Enumeration.Sample/
 ## Features
 
 The Enumeration classes enables the several features described bellow.
-
 For instance, you can add [behaviour](#enumeration-with-behaviour), and/or you can use [dynamic enumerations](#dynamic-enumerations) (created in runtime), etc.
 
 ### Value
@@ -136,7 +136,7 @@ var communicationTypeValuesCount = CommunicationType.GetValues().Count(); // ret
 
 ### HasValue
 
-Find out if there is any enumeration with a specific value (__ignoring letters case__):
+Find out if there is any enumeration member with a specific value (__ignoring letters case__):
 
 ```c#
 var hasValue = CommunicationType.HasValue("someUnknownValue"); // false
@@ -186,6 +186,8 @@ It is also possible to test the equality between a `string` and an `Enumeration`
 ```c#
 var isStringEqualToEnumeration = "email" == CommunicationType.Email; // true
 isStringEqualToEnumeration = "EMAIL" == CommunicationType.Email; // true
+var isStringNotEqualToEnumeration = "email" != CommunicationType.Email; // false
+isStringNotEqualToEnumeration = "EMAIL" != CommunicationType.Email; // false
 ```
 
 ### Switch
@@ -208,7 +210,9 @@ private ISender? GetCommunicationSenderForCommunicationType(CommunicationType co
 
 ### Enumeration with Behaviour
 
-We can add custom methods to the Enumeration class (it's an object, after all). A simple example, with a method `ParseMessage` and with a property `IsPhoneNumberRequired`:
+We can add custom methods to the Enumeration class (it's an object, after all).
+
+Here is a simple example, with a method `ParseMessage` and with a property `IsPhoneNumberRequired`:
 
 ```c#
 using PMart.Enumeration;
@@ -253,7 +257,7 @@ public class CommunicationTypeWithBehaviour : Enumeration<CommunicationTypeWithB
 }
 ```
 
-We can also use inheritance to add specific behaviour or properties for each enumeration member in an enumeration class.
+We can also use inheritance to add specific behaviour or properties for each enumeration member in an Enumeration class.
 Check this [example](./samples/Enumeration.Sample/Enumerations/CommunicationTypeWithBehaviour.cs), where the communication type has subclasses with a specific implementation of `ParseMessage()` and `IsPhoneNumberRequired`:
 
 ```c#
@@ -392,14 +396,19 @@ var cValue = c?.Value; // "someUnknownValue"
 var dValue = d?.Value; // null
 ```
 
-__Note:__ Instances with same value in different case are equal (check section [Equality](#equality)):
+__Note:__ Instances created with equivalent values are equal (check section [Equality](#equality)), but not the same instance:
 
  ```c#
 var a = CommunicationTypeDynamic.GetFromValueOrNew("someUnknownType"); // returns a new instance of CommunicationTypeDynamic, with value = "someUnknownType"
-var b = CommunicationTypeDynamic.GetFromValueOrNew("SOMEuNKNOWtTYPE"); // returns another new instance of CommunicationTypeDynamic, with value = "SOMEuNKNOWtTYPE"
+var b = CommunicationTypeDynamic.GetFromValueOrNew("someUnknownType"); // returns another new instance of CommunicationTypeDynamic, with value = "someUnknownType"
+var c = CommunicationTypeDynamic.GetFromValueOrNew("SOMEuNKNOWtTYPE"); // returns another new instance of CommunicationTypeDynamic, with value = "SOMEuNKNOWtTYPE"
 
 var isAEqualToB = a == b; // true
+var isAEqualToC = a == c; // true
+var isBEqualToC = b == c; // true
 var isASameInstanceThanB = ReferenceEquals(a, b); // false
+var isASameInstanceThanC = ReferenceEquals(a, c); // false
+var isBSameInstanceThanC = ReferenceEquals(b, c); // false
 ```
 
 __Note:__ when you create a new enumeration with `EnumerationDynamic`, that enumeration will not be added to the list of existent enumeration members:
@@ -851,7 +860,244 @@ For enumerations of type `EnumerationDynamic`, you can use the mappers [`StringE
 You can check the sample [here](./samples/Enumeration.Mappers.Sample/Samples/Mapperly).
 
 # Source Generator
-TODO
+Creating a new Enumeration class is a little bit verbose. For instance, you can't forget to inherit from `Enumeration<T>` and to create the `private` constructor (else, it wouldn't compile anyway).
+Therefore, the package `PMart.Enumeration.Generator` was added to help on that. It is an [incremental source generator](https://github.com/dotnet/roslyn/blob/main/docs/features/incremental-generators.md).
+
+## Generator Installation
+
+Add the package to your project:
+```bash
+dotnet add package PMart.Enumeration.Generator
+```
+
+> You need to keep the package `PMart.Enumeration` installed.
+
+In order to any project referring that project don't get a reference to the `PMart.Enumeration.Generator`, you can add `PrivateAssets="all"` to the package reference.
+And you can also add `ExcludeAssets="runtime"`, to avoid the `PMart.Enumeration.Generator.dll` file being copied to your build output (it is not required at runtime, it is a generator, so it works in compile time only):
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- ... -->
+
+  <PackageReference Include="PMart.Enumeration" Version="3.0.0" />
+  <PackageReference Include="PMart.Enumeration.Generator" Version="3.0.0" PrivateAssets="all" ExcludeAssets="runtime" />
+  
+  <!-- ... -->
+
+</Project>
+```
+
+## Generator Usage
+
+To create a new Enumeration with the generator, it is easy:
+- Create a `partial` class, for the Enumeration class.
+- Add the `EnumerationAttribute` (namespace `PMart.Enumeration.Generator.Attributes`) on the class.
+- Add fields of type `private static readonly string` named with the prefix `ValueFor` (this prefix is one of the ways of doing it, as you can check next), that hold the values that will be used to create the enumeration members (check the examples bellow).
+
+> The fields that are not `private static readonly string` are ignored.
+
+For example, without the generator the communication type enumeration was like this:
+
+```c#
+using PMart.Enumeration;
+
+namespace Enumeration.Sample.Enumerations;
+
+/// <summary>
+/// The communication type enumeration.
+/// </summary>
+public class CommunicationType : Enumeration<CommunicationType>
+{
+    public static readonly CommunicationType Email = new("Email");
+
+    public static readonly CommunicationType Sms = new("SMS");
+    
+    public static readonly CommunicationType PushNotification = new("PushNotification");
+
+    private CommunicationType(string value) : base(value)
+    {
+    }
+}
+```
+
+Using the generator and the prefix `ValueFor` (this prefix is one of the ways of doing it, as you can check next), it is just like this:
+
+```c#
+using PMart.Enumeration.Generator.Attributes;
+
+namespace Enumeration.Generator.Sample.Enumerations;
+
+/// <summary>
+/// The communication type enumeration.
+/// </summary>
+[Enumeration]
+public partial class CommunicationType
+{
+    private static readonly string ValueForEmail = "Email";
+
+    private static readonly string ValueForSms = "SMS";
+    
+    private static readonly string ValueForPushNotification = "PushNotification";
+}
+```
+
+And the __generated code__ will be something like this:
+
+```c#
+// <auto-generated />
+
+namespace Enumeration.Generator.Sample.Enumerations
+{
+    public partial class CommunicationType : Enumeration<CommunicationType>
+    {
+        public static readonly CommunicationType Email = new CommunicationType(ValueForEmail!);
+
+        public static readonly CommunicationType Sms = new CommunicationType(ValueForSms!);
+
+        public static readonly CommunicationType PushNotification = new CommunicationType(ValueForPushNotification!);
+
+        private CommunicationType(string value) : base(value)
+        {
+        }
+    }
+}
+```
+
+If you don't worry about instantiating the enumeration members and your only concern is about the inheritance from `Enumeration<T>` and constructors, you can use the generator to build just that parts:
+
+```c#
+[Enumeration]
+public partial class CommunicationType
+{    
+    public static readonly CommunicationType Email = new("Email");
+
+    public static readonly CommunicationType Sms = new("SMS");
+    
+    public static readonly CommunicationType PushNotification = new("PushNotification");
+}
+```
+
+You can check other examples in the [samples](./samples/Enumeration.Generator.Sample/Enumerations).
+
+### The EnumerationMember Attribute
+
+If you don't like the use of the prefix `ValueFor` to define the member names, you can use the `EnumerationMemberAttribute` to define the name of the enumeration member (but remember, it is not possible two fields have the same name, it will return a compile error if you try to do that):
+
+```c#
+[Enumeration]
+public partial class CommunicationType
+{
+    [EnumerationMember("Email")]
+    private static readonly string EmailCode = "Email";
+
+    [EnumerationMember("Sms")]
+    private static readonly string SmsCode = "SMS";
+    
+    [EnumerationMember("PushNotification")]
+    private static readonly string PushNotificationCode = "PushNotification";
+}
+```
+
+### The EnumerationIgnore Attribute
+
+If, for some reason, you already have a field `private readonly string`, but you don't want it to be used to generate a new enumeration member, use the `EnumerationIgnoreAttribute`:
+
+```c#
+[Enumeration]
+public partial class CommunicationType
+{
+    private static readonly string ValueForEmail = "Email";
+
+    private static readonly string ValueForSms = "SMS";
+    
+    private static readonly string ValueForPushNotification = "PushNotification";
+    
+    [EnumerationIgnore]
+    private static readonly string SomeFieldThatShouldBeIgnored = "SomeValue";
+}
+```
+
+### Generate EnumerationDynamic
+
+To generate an Enumeration class of type `EnumerationDynamic<T>`, enable the option `IsDynamic` of the `EnumerationAttribute`:
+
+```c#
+[Enumeration(IsDynamic = true)]
+public partial class CommunicationTypeDynamic
+{
+    private static readonly string ValueForEmail = "Email";
+
+    private static readonly string ValueForSms = "SMS";
+    
+    private static readonly string ValueForPushNotification = "PushNotification";
+}
+```
+
+The generated code will be something like this:
+
+```c#
+// <auto-generated />
+
+namespace Enumeration.Generator.Sample.Enumerations
+{
+    public partial class CommunicationTypeDynamic : EnumerationDynamic<CommunicationTypeDynamic>
+    {
+        public static readonly CommunicationTypeDynamic Email = new CommunicationTypeDynamic(ValueForEmail!);
+
+        public static readonly CommunicationTypeDynamic Sms = new CommunicationTypeDynamic(ValueForSms!);
+
+        public static readonly CommunicationTypeDynamic PushNotification = new CommunicationTypeDynamic(ValueForPushNotification!);
+
+        public CommunicationTypeDynamic()
+        {
+        }
+
+        private CommunicationTypeDynamic(string value) : base(value)
+        {
+        }
+    }
+}
+```
+
+### Generator Diagnostics
+
+The generator tries to report errors when the user does common mistakes, namely about naming the enumeration members with names already in use.
+In some cases, there are no compile errors on the user code. Without the diagnostics report from the generator, the user would not know why the generator doesn't work.
+
+For instance, naming the enumeration member and field the same, the Enumeration class will not be generated and an error is reported:
+
+```c#
+[Enumeration]
+public partial class CommunicationType
+{
+    [EnumerationMember("Email")]
+    private static readonly string Email = "Email";
+                                   ^^^^^ // Error ENUM0002: The name 'Email' of the Enumeration member is the same as the field name
+}
+```
+
+Or, defining an invalid name for the enumeration member:
+
+```c#
+[Enumeration]
+public partial class CommunicationType
+{
+    // 123 is not a valid name for a class member in C#
+    [EnumerationMember("123")]
+    private static readonly string Email = "Email";
+                                   ^^^^^ // Error ENUM0001: Invalid name for the Enumeration member in the EnumerationMemberAttribute
+}
+```
+
+There are other diagnostics reported for different cases. All are of type `Error` with an ID like `ENUMXXXX` and with a descriptive message.
+
+### Generator Limitations
+- The minimum versions supported are:
+  - .NET SDK: >= 8.0.100
+  - MSBuild/Visual Studio: >= 17.8.
+- It does not work for `abstract` classes. In the example provided in [Enumeration with behavior](#enumeration-with-behaviour), we use an `abstract` class and subclasses. When using the generator, you can do the same without being `abstract`, check this [sample](./samples/Enumeration.Generator.Sample/Enumerations/CommunicationTypeWithBehaviour.cs).
+- It does not support nested classes (the usage of the `EnumerationAttribute` in a nested class does not have effect). But, it supports nested namespaces.
 
 # Disclaimer
 While the enumeration class is a good alternative to `enum` type, it is more complex and also .NET doesn't handle it as it handles `enum` (e.g. JSON des/serialization, model binding, etc.), requiring custom code.
@@ -860,9 +1106,12 @@ Please, be aware that enumeration class may not fit your needs.
 # References
 
 - [Microsoft Docs: Using enumeration classes instead of enum types](https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/enumeration-classes-over-enum-types)
-- [Jimmy Bogard: Enumeration Classes](https://lostechies.com/jimmybogard/2008/08/12/enumeration-classes/)
+- [Jimmy Bogard: Enumeration Classes](https://lostechies.com/jimmybogard/2008/08/12/enumeration-classes)
 - [Ardalis: Enum Alternatives in C#](https://ardalis.com/enum-alternatives-in-c)
 - [Ardalis: SmartEnum](https://github.com/ardalis/SmartEnum)
-- [Ankit Vijay: Enumeration Classes – DDD and beyond](https://ankitvijay.net/2020/06/12/series-enumeration-classes-ddd-and-beyond/)
+- [Ankit Vijay: Enumeration Classes – DDD and beyond](https://ankitvijay.net/2020/06/12/series-enumeration-classes-ddd-and-beyond)
 - [Ankit Vijay: Enumeration](https://github.com/ankitvijay/Enumeration)
 - [eShopOnContainers: Enumeration.cs](https://github.com/dotnet-architecture/eShopOnContainers/blob/dev/src/Services/Ordering/Ordering.Domain/SeedWork/Enumeration.cs)
+- Regarding the source generator:
+  - [Andrew Lock: Creating a source generator](https://andrewlock.net/series/creating-a-source-generator)
+  - [Andrew Lock: NetEscapades.EnumGenerators](https://github.com/andrewlock/NetEscapades.EnumGenerators)

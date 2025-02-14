@@ -229,7 +229,7 @@ internal static class TestingSourceBuilder
     
     public static string BuildEnumerationWithMemberNotString() => BuildHeadSection() +
        """
-           public static readonly object ValueForCodeA = "CodeA";
+           private static readonly object ValueForCodeA = "CodeA";
        }
        """;
 
