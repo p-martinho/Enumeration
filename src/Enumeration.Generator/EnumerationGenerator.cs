@@ -29,7 +29,7 @@ public class EnumerationGenerator : IIncrementalGenerator
             .ForAttributeWithMetadataName(
                 $"{typeof(EnumerationAttribute).FullName}",
                 predicate: IsPartialClass,
-                transform: static (ctx, _) => GetEnumerationToGenerate(ctx.SemanticModel, ctx.TargetNode))
+                transform: static (ctx, ct) => GetEnumerationToGenerate(ctx.SemanticModel, ctx.TargetNode, ct))
             .Where(static m => m is not null) // Filter out errors that we don't care about
             .WithTrackingName(InitialExtractionTrackingName);
 
@@ -39,6 +39,8 @@ public class EnumerationGenerator : IIncrementalGenerator
 
     private static bool IsPartialClass(SyntaxNode syntaxNode, CancellationToken cancellationToken)
     {
+        cancellationToken.ThrowIfCancellationRequested();
+        
         return syntaxNode is ClassDeclarationSyntax classDeclaration &&
                IsPartial(classDeclaration);
     }
@@ -49,13 +51,15 @@ public class EnumerationGenerator : IIncrementalGenerator
     }
 
     private static EnumerationToGenerate? GetEnumerationToGenerate(SemanticModel semanticModel,
-        SyntaxNode enumerationDeclarationSyntax)
+        SyntaxNode enumerationDeclarationSyntax, CancellationToken cancellationToken)
     {
         if (enumerationDeclarationSyntax is not ClassDeclarationSyntax classDeclarationSyntax ||
             semanticModel.GetDeclaredSymbol(enumerationDeclarationSyntax) is not INamedTypeSymbol enumerationSymbol)
         {
             return null;
         }
+        
+        cancellationToken.ThrowIfCancellationRequested();
 
         var symbolMembers = enumerationSymbol.GetMembers();
 
