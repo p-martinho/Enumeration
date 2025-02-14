@@ -23,13 +23,13 @@ For more information about enumeration classes, check the links on the section [
 __PMart.Enumeration__: The Enumeration base classes.
 [![NuGet](https://img.shields.io/nuget/v/PMart.Enumeration.svg)](https://www.nuget.org/packages/PMart.Enumeration)
 
-__PMart.Enumeration.EFCore__: The Entity Framework Core support for `PMart.Enumeration`.
+__PMart.Enumeration.EFCore__: The __Entity Framework Core__ support for `PMart.Enumeration`.
 [![NuGet](https://img.shields.io/nuget/v/PMart.Enumeration.EFCore.svg)](https://www.nuget.org/packages/PMart.Enumeration.EFCore)
 
-__PMart.Enumeration.JsonNet__: The Json.NET support for `PMart.Enumeration`.
+__PMart.Enumeration.JsonNet__: The __Newtonsoft Json.NET__ support for `PMart.Enumeration`.
 [![NuGet](https://img.shields.io/nuget/v/PMart.Enumeration.JsonNet.svg)](https://www.nuget.org/packages/PMart.Enumeration.JsonNet)
 
-__PMart.Enumeration.SystemTextJson__: The `System.Text.Json` support for `PMart.Enumeration`.
+__PMart.Enumeration.SystemTextJson__: The __System.Text.Json__ support for `PMart.Enumeration`.
 [![NuGet](https://img.shields.io/nuget/v/PMart.Enumeration.SystemTextJson.svg)](https://www.nuget.org/packages/PMart.Enumeration.SystemTextJson)
 
 __PMart.Enumeration.SwaggerGen__: Support to generate __Swagger__ documentation when using `PMart.Enumeration`.
@@ -38,7 +38,7 @@ __PMart.Enumeration.SwaggerGen__: Support to generate __Swagger__ documentation 
 __PMart.Enumeration.Mappers__: Mappers and mapping extensions for Enumerations.
 [![NuGet](https://img.shields.io/nuget/v/PMart.Enumeration.Mappers.svg)](https://www.nuget.org/packages/PMart.Enumeration.Mappers)
 
-__PMart.Enumeration.Generator__: A source generator for generating Enumeration classes from a few lines of code.
+__PMart.Enumeration.Generator__: A source generator to generate Enumeration classes from a few lines of code.
 [![NuGet](https://img.shields.io/nuget/v/PMart.Enumeration.Generator.svg)](https://www.nuget.org/packages/PMart.Enumeration.Generator)
 
 # Installation
@@ -351,7 +351,7 @@ With this type, you will have an extra method that adds the possibility to creat
 
 To create an `EnumerationDynamic` is the same as `Enumeration`, but it requires a `public` empty constructor, in addition to the `private` constructor.
 
-> You can use the [generator](#source-generator) in `PMart.Enumeration.Generator` package, that generates the code for you, and therefore you don't need to worry about the constructors.
+> You can use the [Generator](#source-generator) in `PMart.Enumeration.Generator` package, that generates the code for you, and therefore you don't need to worry about the constructors.
 
 Continuing with the communication types, here is an [example](./samples/Enumeration.Sample/Enumerations/CommunicationTypeDynamic.cs) using `EnumerationDynamic`:
 
@@ -429,25 +429,7 @@ For example, an API __A__ sends data to API __B__ that then redirects the data t
 All these APIs use enumeration classes, but API __B__ don't care about the value, it just sends it to API __C__. So, using `EnumerationDynamic` on API __B__ you don't need to deploy API __B__ every time you had a new value to the enumeration on API __A__.
 Other way, using `Enumeration` instead of `EnumerationDynamic`, you would need to update API __B__ in order to recognize the new enumeration member and send it to the API __C__.
 
-Here is an [example](./samples/Enumeration.Sample/Samples/SendCommunicationSampleUsingEnumerationDynamic.cs):
-
- ```c#
-public string SendCommunication(string communicationType, string to, string message)
-{
-    // Parse the string to an EnumerationDynamic.
-    // It returns the enumeration with the value or a new instance of the enumeration if does not exist any enumeration declared with the value.
-    var communicationTypeEnum = CommunicationTypeDynamic.GetFromValueOrNew(communicationType);
-    
-    // In this service, I don't care if the communication type is valid or not (if it is declared in the list of communication types).
-    // I just need to parse it to use the Enumeration features (eg. type safety) and then redirect it to another service/API that will handle it.
-
-    DoSomethingAboutTheCommunicationTypeDynamicEnumeration(communicationTypeEnum);
-    
-    _communicationSender.SendMessage(communicationTypeEnum?.Value, to, message);
-
-    // ...
-}
-```
+You can check the example [here](./samples/Enumeration.Sample/Samples/SendCommunicationSampleUsingEnumerationDynamic.cs).
 
 # EFCore Support
 
@@ -506,9 +488,9 @@ public async Task<IEnumerable<CommunicationRecord>> GetCommunicationRecordsByTyp
 E.g. if you save the record using an `EnumerationDynamic` with value `"Email"`, and then query the database using another instance of `EnumerationDynamic` with value `"EMAIL"`, it is possible you get no results, depending on the database.
 > For example, __MS SQL Server__ is, by default, case-insensitive, so you would get the result.
 
-# Json.NET Support
+# Newtonsoft Json.NET Support
 
-Using [Json.NET](https://www.newtonsoft.com), if you need to serialize/deserialize objects that contain properties of type `Enumeration`, without any converters, the enumeration property would act like a regular object.
+Using [Newtonsoft Json.NET](https://www.newtonsoft.com), if you need to serialize/deserialize objects that contain properties of type `Enumeration`, without any converters, the enumeration property would act like a regular object.
 
 For example, using this model:
 
@@ -664,7 +646,7 @@ private JsonSerializerOptions GetSerializerOptions()
 
 # Swagger Support
 
-If you would like to add an enumeration property to a model from an API and would like to document it on Swagger like an `enum`, you should install the NuGet package `PMart.Enumeration.SwaggerGen` and add the schema filter `EnumerationSchemaFilter` to the Swagger options on your `Program.cs` (or `Startup.cs`), like in this [example](./samples/Enumeration.SwaggerGen.Sample/Program.cs):
+If you would like to add an enumeration property to a model from an API and would like to document it on __Swagger__ like an `enum`, you should install the NuGet package `PMart.Enumeration.SwaggerGen` and add the schema filter `EnumerationSchemaFilter` to the __Swagger__ options on your `Program.cs` (or `Startup.cs`), like in this [example](./samples/Enumeration.SwaggerGen.Sample/Program.cs):
 
 ```c#
 builder.Services.AddSwaggerGen(options =>
@@ -1001,7 +983,7 @@ public partial class CommunicationType
 
 ### The EnumerationIgnore Attribute
 
-If, for some reason, you already have a field `private readonly string`, but you don't want it to be used to generate a new enumeration member, use the `EnumerationIgnoreAttribute`:
+If, for some reason, you already have a field `private static readonly string`, but you don't want it to be used to generate a new enumeration member, use the `EnumerationIgnoreAttribute`:
 
 ```c#
 [Enumeration]
@@ -1063,9 +1045,9 @@ namespace Enumeration.Generator.Sample.Enumerations
 ### Generator Diagnostics
 
 The generator tries to report errors when the user does common mistakes, namely about naming the enumeration members with names already in use.
-In some cases, there are no compile errors on the user code. Without the diagnostics report from the generator, the user would not know why the generator doesn't work.
+In some cases, there are no compile errors on the user code. Without the diagnostics from the generator, the user would not know why the generator doesn't work.
 
-For instance, naming the enumeration member and field the same, the Enumeration class will not be generated and an error is reported:
+For instance, assigning the same name for the enumeration member and for the field, the Enumeration class will not be generated and an error is reported:
 
 ```c#
 [Enumeration]
@@ -1096,7 +1078,7 @@ There are other diagnostics reported for different cases. All are of type `Error
 - The minimum versions supported are:
   - .NET SDK: >= 8.0.100
   - MSBuild/Visual Studio: >= 17.8.
-- It does not work for `abstract` classes. In the example provided in [Enumeration with behavior](#enumeration-with-behaviour), we use an `abstract` class and subclasses. When using the generator, you can do the same without being `abstract`, check this [sample](./samples/Enumeration.Generator.Sample/Enumerations/CommunicationTypeWithBehaviour.cs).
+- It does not work for `abstract` classes. In the example provided in [Enumeration with behavior](#enumeration-with-behaviour), we use an `abstract` class and subclasses. When using the generator, you can do the same without being `abstract`, check this [sample](./samples/Enumeration.Generator.Sample/Enumerations/CommunicationTypeWithSpecificBehaviour.cs).
 - It does not support nested classes (the usage of the `EnumerationAttribute` in a nested class does not have effect). But, it supports nested namespaces.
 
 # Disclaimer
