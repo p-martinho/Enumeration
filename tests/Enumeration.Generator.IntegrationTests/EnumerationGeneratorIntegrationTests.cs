@@ -84,4 +84,14 @@ public class EnumerationGeneratorIntegrationTests
         Assert.NotNull(enumerationDynamic);
         Assert.Equal("CodeB", enumerationDynamic.Value);
     }
+    
+    [Fact]
+    public void EnumerationWithAlreadyDefinedMember_ShouldGenerateEnumeration()
+    {
+        // Act
+        var enumeration = TestEnumerationWithAlreadyDefinedMember.CodeA;
+    
+        // Assert
+        Assert.Equal("CodeA", enumeration.Value);
+    }
 }

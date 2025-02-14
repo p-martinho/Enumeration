@@ -78,7 +78,7 @@ public class EnumerationGenerator : IIncrementalGenerator
             }
         }
 
-        if (!enumerationMembersDic.Any())
+        if (!enumerationMembersDic.Any() && !HasExistentEnumerationMembersDefined(enumerationSymbol, symbolMembers))
         {
             return null;
         }
@@ -125,7 +125,7 @@ public class EnumerationGenerator : IIncrementalGenerator
         }
 
         // Check if there is any other member with same name
-        if (symbolMembers.Any(s => s.Name == memberName))
+        if (symbolMembers.Any(m => m.Name == memberName))
         {
             return new ErrorToReport(field.Locations.FirstOrDefault(), ErrorIds.MemberWithSameNameAlreadyDeclared,
                 memberName);
@@ -247,32 +247,32 @@ public class EnumerationGenerator : IIncrementalGenerator
 
     private static bool IsEnumerationAttribute(AttributeSyntax attributeSyntax)
     {
-        return attributeSyntax.Name.ToString() == GetEnumerationAttributeNameWithoutSuffix() ||
-               attributeSyntax.Name.ToString() == GetEnumerationAttributeFullNameWithoutSuffix();
+        var attributeName = attributeSyntax.Name.ToString();
+
+        return attributeName == GetEnumerationAttributeNameWithoutSuffix() ||
+               attributeName == GetEnumerationAttributeFullNameWithoutSuffix();
     }
 
-    private static string? GetEnumerationAttributeNameWithoutSuffix()
+    private static string GetEnumerationAttributeNameWithoutSuffix()
     {
         return RemoveAttributeSuffix(nameof(EnumerationAttribute));
     }
 
-    private static string? RemoveAttributeSuffix(string? attributeName)
+    private static string RemoveAttributeSuffix(string attributeName)
     {
         const string suffix = "Attribute";
         
         var attributeNameAsSpan = attributeName.AsSpan();
-
-        if (attributeName is null || !attributeNameAsSpan.EndsWith(suffix.AsSpan()) || attributeName.Length == suffix.Length)
-        {
-            return attributeName;
-        }
-
+        
+        // Assuming that attributeName always includes "Attribute" in the string
         return attributeNameAsSpan.Slice(0, attributeName.Length - suffix.Length).ToString();
     }
 
     private static string? GetEnumerationAttributeFullNameWithoutSuffix()
     {
-        return RemoveAttributeSuffix(typeof(EnumerationAttribute).FullName);
+        var attributeFullname = typeof(EnumerationAttribute).FullName;
+        
+        return attributeFullname == null ? null : RemoveAttributeSuffix(attributeFullname);
     }
 
     private static bool GetIsDynamicFromAttribute(AttributeSyntax attribute)
@@ -299,6 +299,21 @@ public class EnumerationGenerator : IIncrementalGenerator
         return argumentSyntax.Expression is LiteralExpressionSyntax literal &&
                literal.Token.Value is bool boolValue &&
                boolValue;
+    }
+
+    private static bool HasExistentEnumerationMembersDefined(INamedTypeSymbol enumerationSymbol,
+        ImmutableArray<ISymbol> symbolMembers)
+    {
+        return symbolMembers.Any(m =>
+            m is IFieldSymbol field && IsStaticReadonlyThisClassTypeNotPrivate(enumerationSymbol, field));
+    }
+
+    private static bool IsStaticReadonlyThisClassTypeNotPrivate(INamedTypeSymbol enumerationSymbol, IFieldSymbol field)
+    {
+        return field.DeclaredAccessibility != Accessibility.Private &&
+               field.IsStatic &&
+               field.IsReadOnly &&
+               SymbolEqualityComparer.Default.Equals(field.Type, enumerationSymbol);
     }
 
     private static void Execute(SourceProductionContext context, EnumerationToGenerate? enumerationToGenerate)

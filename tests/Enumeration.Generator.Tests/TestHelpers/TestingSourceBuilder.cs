@@ -174,6 +174,29 @@ internal static class TestingSourceBuilder
         {
 
         """ + BuildBodySection();
+
+    public static string BuildEnumerationWithAlreadyDefinedMembers() => BuildHeadSection() +
+        """
+           public static readonly TestEnumeration CodeA = "CodeA";
+        
+           public static readonly TestEnumeration CodeB = "CodeB";
+        }
+        """;
+    
+    public static string BuildEnumerationDynamicWithAlreadyDefinedMembers() => BuildHeadSection() +
+        """
+        using PMart.Enumeration.Generator.Attributes;
+        
+        namespace Enumeration.Generator.Tests.Source;
+        
+        [Enumeration(IsDynamic = true)]
+        public partial class TestEnumeration
+        {
+           public static readonly TestEnumeration CodeA = "CodeA";
+        
+           public static readonly TestEnumeration CodeB = "CodeB";
+        }
+        """;
     
     #endregion
     

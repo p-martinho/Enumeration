@@ -2,7 +2,7 @@
 
 namespace Enumeration.Generator.IntegrationTests.EnumerationClasses;
 
-[Enumeration(IsDynamic = true)]
+[Enumeration]
 public partial class TestEnumerationWithValueFor
 {
     private static readonly string ValueForCodeA = "CodeA";

@@ -217,6 +217,32 @@ public class EnumerationGeneratorSnapshotTests
         return Verify(driver);
     }
     
+    [Fact]
+    public Task EnumerationWithAlreadyDefinedMembers_ShouldGenerateEnumerationClass()
+    {
+        // Arrange
+        var source = TestingSourceBuilder.BuildEnumerationWithAlreadyDefinedMembers();
+
+        // Act
+        var driver = GeneratorDriverBuilder.GenerateDriver(source);
+
+        // Assert
+        return Verify(driver);
+    }
+    
+    [Fact]
+    public Task EnumerationDynamicWithAlreadyDefinedMembers_ShouldGenerateEnumerationClass()
+    {
+        // Arrange
+        var source = TestingSourceBuilder.BuildEnumerationDynamicWithAlreadyDefinedMembers();
+
+        // Act
+        var driver = GeneratorDriverBuilder.GenerateDriver(source);
+
+        // Assert
+        return Verify(driver);
+    }
+    
     #endregion
 
     #region Do not generate Enumeration class (without reporting diagnostics) Tests

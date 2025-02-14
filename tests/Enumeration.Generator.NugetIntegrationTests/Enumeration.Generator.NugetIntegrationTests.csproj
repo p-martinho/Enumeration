@@ -1,44 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
-
-        <IsPackable>false</IsPackable>
-        <IsTestProject>true</IsTestProject>
-    </PropertyGroup>
-
-    <ItemGroup>
-        <PackageReference Include="coverlet.collector" Version="6.0.4">
-            <PrivateAssets>all</PrivateAssets>
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0"/>
-        <PackageReference Include="xunit" Version="2.9.3"/>
-        <PackageReference Include="xunit.runner.visualstudio" Version="3.0.1">
-            <PrivateAssets>all</PrivateAssets>
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
-    </ItemGroup>
-
     <!-- Add the temporary package -->
     <ItemGroup>
-      <PackageReference Include="PMart.Enumeration.Generator" Version="1.0.0" />
+      <PackageReference Include="PMart.Enumeration.Generator" Version="3.0.0-rc.1" PrivateAssets="all" ExcludeAssets="runtime" />
+      <PackageReference Include="PMart.Enumeration" Version="3.0.0" />
     </ItemGroup>
 
     <!-- Link in all the files from the integration test project, so we run the same tests -->
     <ItemGroup>
       <Compile Include="..\Enumeration.Generator.IntegrationTests\*.cs" Link="%(Filename)%(Extension)"/>
       <Compile Include="..\Enumeration.Generator.IntegrationTests\EnumerationClasses\*.cs" Link="%(Filename)%(Extension)"/>
-    </ItemGroup>
-
-    <ItemGroup>
-        <ProjectReference Include="..\..\src\Enumeration\Enumeration.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <Using Include="Xunit"/>
     </ItemGroup>
 
 </Project>
