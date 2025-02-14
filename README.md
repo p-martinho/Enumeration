@@ -4,7 +4,7 @@
 
 # PMart.Enumeration
 
-This set of libraries provide base classes to implement __Enumeration classes__, based on `string` values.
+This set of libraries provides base classes to implement __Enumeration classes__, based on `string` values.
 It enables the strongly typed advantages, while using `string` enumerations.
 
 It has, also, the possibility to create new enumerations at runtime (let's call it [Dynamic Enumerations](#dynamic-enumerations)).
@@ -55,7 +55,7 @@ dotnet add package <package name>
 An `Enumeration` is a class that holds a value of type `string`. Each `Enumeration` class should have declared one or more static instances to set the available enumeration members.
 
 - Create a new enumeration class by extending `Enumeration<T>`, where `T` is the class itself.
-- Add a private constructor, as in the example bellow.
+- Add a private constructor, as in the bellow example.
 - Create a `public static readonly` instance of the class for each enumeration member.
 
 > Or you can use the [Generator](#source-generator) in `PMart.Enumeration.Generator` package to generate the code for you!
@@ -98,7 +98,7 @@ You can check some usage examples in the [samples](./samples/Enumeration.Sample/
 ## Features
 
 The Enumeration classes enables the several features described bellow.
-For instance, you can add [behaviour](#enumeration-with-behaviour), and/or you can use [dynamic enumerations](#dynamic-enumerations) (created in runtime), etc.
+For instance, you can add [behavior](#enumeration-with-behavior), and/or you can use [dynamic enumerations](#dynamic-enumerations) (created in runtime), etc.
 
 ### Value
 
@@ -156,7 +156,7 @@ var communicationType = CommunicationType.GetFromValueOrDefault("email"); // ret
 var isValid = communicationType is not null; // true
 ```
 
-__Note__: When there's instances with equivalent values (same value ignoring case), the `GetValueOrDefault` can return any of the instances (is nondeterministic). Therefore, enumerations members with equivalent values are not recommended.
+__Note__: When there's instances with equivalent values (same value ignoring case), the `GetValueOrDefault` can return any of the instances (is nondeterministic). Therefore, enumeration members with equivalent values are not recommended.
 
 ```c#
 // Let's imagine we have these two members:
@@ -170,7 +170,8 @@ var isEqual = emailType == EmailWithDifferentCase; // always true. Even if they 
 
 ### Equality
 
-Two different instances of a type derived from `Enumeration` are equal if they are from the same enumeration type and if the value of both are equivalent, __ignoring letters case__.
+Two different instances of a type derived from `Enumeration` are equal if they are from the same enumeration type
+and if the value of both is equivalent, __ignoring letters case__.
 
 ```c#
 // Let's imagine we have these two members:
@@ -208,7 +209,7 @@ private ISender? GetCommunicationSenderForCommunicationType(CommunicationType co
 }
 ```
 
-### Enumeration with Behaviour
+### Enumeration with Behavior
 
 We can add custom methods to the Enumeration class (it's an object, after all).
 
@@ -257,7 +258,7 @@ public class CommunicationTypeWithBehaviour : Enumeration<CommunicationTypeWithB
 }
 ```
 
-We can also use inheritance to add specific behaviour or properties for each enumeration member in an Enumeration class.
+We can also use inheritance to add specific behavior or properties for each enumeration member in an Enumeration class.
 Check this [example](./samples/Enumeration.Sample/Enumerations/CommunicationTypeWithBehaviour.cs), where the communication type has subclasses with a specific implementation of `ParseMessage()` and `IsPhoneNumberRequired`:
 
 ```c#
@@ -346,7 +347,8 @@ public abstract class CommunicationTypeWithSpecificBehaviour : Enumeration<Commu
 
 ## Dynamic Enumerations
 
-Instead of extending `Enumeration` class, you can extend the `EnumerationDynamic` class. The `EnumerationDynamic` class extends the `Enumeration` class, therefore it has the same features.
+Instead of extending `Enumeration` class, you can extend the `EnumerationDynamic` class.
+The `EnumerationDynamic` class extends the `Enumeration` class, therefore, it has the same features.
 With this type, you will have an extra method that adds the possibility to create new `EnumerationDynamic` instances at runtime, if there isn't any enumeration member with a specific value.
 
 To create an `EnumerationDynamic` is the same as `Enumeration`, but it requires a `public` empty constructor, in addition to the `private` constructor.
@@ -396,7 +398,7 @@ var cValue = c?.Value; // "someUnknownValue"
 var dValue = d?.Value; // null
 ```
 
-__Note:__ Instances created with equivalent values are equal (check section [Equality](#equality)), but not the same instance:
+__Note:__ Instances created with equivalent values are equal (check section [Equality](#equality)), but different instances:
 
  ```c#
 var a = CommunicationTypeDynamic.GetFromValueOrNew("someUnknownType"); // returns a new instance of CommunicationTypeDynamic, with value = "someUnknownType"
@@ -433,7 +435,7 @@ You can check the example [here](./samples/Enumeration.Sample/Samples/SendCommun
 
 # EFCore Support
 
-In EF Core, adding a property of type `Enumeration` or `EnumerationDynamic` to an entity requires to set the conversion in order to store the value of the enumeration on the database.
+In EF Core, adding a property of type `Enumeration` or `EnumerationDynamic` to an entity requires setting the conversion to store the value of the enumeration on the database.
 The NuGet package `PMart.Enumeration.EFCore` has the required converters, you just need to add them to your model configuration. Check this [sample](./samples/Enumeration.EFCore.Sample/DbContext/SampleDbContext.cs):
 
 For this entity:
@@ -485,8 +487,8 @@ public async Task<IEnumerable<CommunicationRecord>> GetCommunicationRecordsByTyp
 ```
 
 > __Note:__ In a query, the case sensitivity is determined by the database provider.
-E.g. if you save the record using an `EnumerationDynamic` with value `"Email"`, and then query the database using another instance of `EnumerationDynamic` with value `"EMAIL"`, it is possible you get no results, depending on the database.
-> For example, __MS SQL Server__ is, by default, case-insensitive, so you would get the result.
+E.g., if you save the record using an `EnumerationDynamic` with value `"Email"`, and then query the database using another instance of `EnumerationDynamic` with value `"EMAIL"`, it is possible you get no results, depending on the database.
+For example, __MS SQL Server__ is, by default, case-insensitive, so you would get the result.
 
 # Newtonsoft Json.NET Support
 
@@ -675,7 +677,7 @@ var stringValue = CommunicationType.Email.Value; // "Email"
 var stringValue = CommunicationType.Email.ToString(); // "Email"
 ```
 
-To map from a `string` to a `Enumeration`, is also very easy, as explained in the section [Features](#GetFromValueOrDefault):
+To map from a `string` to a `Enumeration`, is also straightforward, as explained in the section [Features](#GetFromValueOrDefault):
 
 ```c#
 var enumeration = CommunicationType.GetFromValueOrDefault("Email"); // returns CommunicationType.Email
@@ -800,7 +802,7 @@ public OtherCommunicationTypeDynamic MapToOtherTypeOfEnumerationTypeUsingMapper(
 
 The [Mapperly](https://github.com/riok/mapperly) is a source generator for generating object mappings. To map objects that have properties of type `Enumeration` or `EnumerationDynamic` with __Mapperly__, you need to implement the mapping in the object mapper.
 
-The NuGet package `PMart.Enumeration.Mappers` provides a set of [mappers](./src/Enumeration.Mappers) that can be used in __Mapperly__ mappers, without the need to implement manually the mapping.
+The NuGet package `PMart.Enumeration.Mappers` provides a set of [mappers](./src/Enumeration.Mappers) that can be used in __Mapperly__ mappers, without the need to implement the mapping manually.
 
 In this example, we have a source object that is mapped to a destination object, which requires mapping from `Enumeration` to `string` (from `CommunicationType` to `string`) and between different types of `Enumeration` (from `CommunicationType` to `OtherCommunicationType`):
 
@@ -854,7 +856,7 @@ dotnet add package PMart.Enumeration.Generator
 
 > You need to keep the package `PMart.Enumeration` installed.
 
-In order to any project referring that project don't get a reference to the `PMart.Enumeration.Generator`, you can add `PrivateAssets="all"` to the package reference.
+To any project referring that project don't get a reference to the `PMart.Enumeration.Generator`, you can add `PrivateAssets="all"` to the package reference.
 And you can also add `ExcludeAssets="runtime"`, to avoid the `PMart.Enumeration.Generator.dll` file being copied to your build output (it is not required at runtime, it is a generator, so it works in compile time only):
 
 ```xml
@@ -875,11 +877,11 @@ And you can also add `ExcludeAssets="runtime"`, to avoid the `PMart.Enumeration.
 To create a new Enumeration with the generator, it is easy:
 - Create a `partial` class, for the Enumeration class.
 - Add the `EnumerationAttribute` (namespace `PMart.Enumeration.Generator.Attributes`) on the class.
-- Add fields of type `private static readonly string` named with the prefix `ValueFor` (this prefix is one of the ways of doing it, as you can check next), that hold the values that will be used to create the enumeration members (check the examples bellow).
+- Add fields of type `private static readonly string` named with the prefix `ValueFor` (this prefix is one of the ways of doing it, as you can check next), that hold the values that will be used to create the enumeration members (check the bellow examples).
 
 > The fields that are not `private static readonly string` are ignored.
 
-For example, without the generator the communication type enumeration was like this:
+For example, without the generator, the communication type enumeration was like this:
 
 ```c#
 using PMart.Enumeration;
@@ -964,7 +966,8 @@ You can check other examples in the [samples](./samples/Enumeration.Generator.Sa
 
 ### The EnumerationMember Attribute
 
-If you don't like the use of the prefix `ValueFor` to define the member names, you can use the `EnumerationMemberAttribute` to define the name of the enumeration member (but remember, it is not possible two fields have the same name, it will return a compile error if you try to do that):
+If you don't like the use of the prefix `ValueFor` to define the member names, you can use the `EnumerationMemberAttribute` to define the name of the enumeration member
+(but remember, it is not possible two fields have the same name, it will return a compilation error if you try to do that):
 
 ```c#
 [Enumeration]
@@ -1045,7 +1048,7 @@ namespace Enumeration.Generator.Sample.Enumerations
 ### Generator Diagnostics
 
 The generator tries to report errors when the user does common mistakes, namely about naming the enumeration members with names already in use.
-In some cases, there are no compile errors on the user code. Without the diagnostics from the generator, the user would not know why the generator doesn't work.
+In some cases, there are no compilation errors on the user code. Without the diagnostics from the generator, the user would not know why the generator doesn't work.
 
 For instance, assigning the same name for the enumeration member and for the field, the Enumeration class will not be generated and an error is reported:
 
@@ -1078,12 +1081,12 @@ There are other diagnostics reported for different cases. All are of type `Error
 - The minimum versions supported are:
   - .NET SDK: >= 8.0.100
   - MSBuild/Visual Studio: >= 17.8.
-- It does not work for `abstract` classes. In the example provided in [Enumeration with behavior](#enumeration-with-behaviour), we use an `abstract` class and subclasses. When using the generator, you can do the same without being `abstract`, check this [sample](./samples/Enumeration.Generator.Sample/Enumerations/CommunicationTypeWithSpecificBehaviour.cs).
-- It does not support nested classes (the usage of the `EnumerationAttribute` in a nested class does not have effect). But, it supports nested namespaces.
+- It does not work for `abstract` classes. In the example provided in [Enumeration with behavior](#enumeration-with-behavior), we use an `abstract` class and subclasses. When using the generator, you can do the same without being `abstract`, check this [sample](./samples/Enumeration.Generator.Sample/Enumerations/CommunicationTypeWithSpecificBehaviour.cs).
+- It does not support nested classes (the usage of the `EnumerationAttribute` in a nested class does not have effect). But it supports nested namespaces.
 
 # Disclaimer
 While the enumeration class is a good alternative to `enum` type, it is more complex and also .NET doesn't handle it as it handles `enum` (e.g. JSON des/serialization, model binding, etc.), requiring custom code.
-Please, be aware that enumeration class may not fit your needs.
+Please be aware that enumeration class may not fit your needs.
 
 # References
 
