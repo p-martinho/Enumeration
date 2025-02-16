@@ -10,8 +10,6 @@
         
         <Title>$(AssemblyName)</Title>
         <Description>Attributes to be used in the context of the code generator to create Enumeration classes.</Description>
-        
-        <VersionSuffix>rc.1</VersionSuffix>
 
         <IsPackable>false</IsPackable>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>

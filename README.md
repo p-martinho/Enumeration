@@ -35,7 +35,7 @@ __PMart.Enumeration.SystemTextJson__: The __System.Text.Json__ support for `PMar
 __PMart.Enumeration.SwaggerGen__: Support to generate __Swagger__ documentation when using `PMart.Enumeration`.
 [![NuGet](https://img.shields.io/nuget/v/PMart.Enumeration.SwaggerGen.svg)](https://www.nuget.org/packages/PMart.Enumeration.SwaggerGen)
 
-__PMart.Enumeration.Mappers__: Mappers and mapping extensions for Enumerations.
+__PMart.Enumeration.Mappers__: Mappers and mapping extensions for Enumerations (includes mapper for __Mapperly__).
 [![NuGet](https://img.shields.io/nuget/v/PMart.Enumeration.Mappers.svg)](https://www.nuget.org/packages/PMart.Enumeration.Mappers)
 
 __PMart.Enumeration.Generator__: A source generator to generate Enumeration classes from a few lines of code.
@@ -58,7 +58,7 @@ An `Enumeration` is a class that holds a value of type `string`. Each `Enumerati
 - Add a private constructor, as in the bellow example.
 - Create a `public static readonly` instance of the class for each enumeration member.
 
-> Or you can use the [Generator](#source-generator) in `PMart.Enumeration.Generator` package to generate the code for you!
+> Or you can use the [Generator](#enumeration-generator) in `PMart.Enumeration.Generator` package to generate the code for you!
 
 Here is a [sample](./samples/Enumeration.Sample/Enumerations/CommunicationType.cs) for communication types:
 
@@ -353,7 +353,7 @@ With this type, you will have an extra method that adds the possibility to creat
 
 To create an `EnumerationDynamic` is the same as `Enumeration`, but it requires a `public` empty constructor, in addition to the `private` constructor.
 
-> You can use the [Generator](#source-generator) in `PMart.Enumeration.Generator` package, that generates the code for you, and therefore you don't need to worry about the constructors.
+> You can use the [Generator](#enumeration-generator) in `PMart.Enumeration.Generator` package, that generates the code for you, and therefore you don't need to worry about the constructors.
 
 Continuing with the communication types, here is an [example](./samples/Enumeration.Sample/Enumerations/CommunicationTypeDynamic.cs) using `EnumerationDynamic`:
 
@@ -843,9 +843,9 @@ For enumerations of type `EnumerationDynamic`, you can use the mappers [`StringE
 
 You can check the sample [here](./samples/Enumeration.Mappers.Sample/Samples/Mapperly).
 
-# Source Generator
-Creating a new Enumeration class is a little bit verbose. For instance, you can't forget to inherit from `Enumeration<T>` and to create the `private` constructor (else, it wouldn't compile anyway).
-Therefore, the package `PMart.Enumeration.Generator` was added to help on that. It is an [incremental source generator](https://github.com/dotnet/roslyn/blob/main/docs/features/incremental-generators.md).
+# Enumeration Generator
+Creating a new Enumeration class is a little bit verbose. For instance, you can't forget to extend `Enumeration<T>` and to create the `private` constructor (else, it wouldn't compile anyway).
+Therefore, the package `PMart.Enumeration.Generator` was added to help on that. It is an [incremental generator](https://github.com/dotnet/roslyn/blob/main/docs/features/incremental-generators.md).
 
 ## Generator Installation
 
@@ -1089,14 +1089,16 @@ While the enumeration class is a good alternative to `enum` type, it is more com
 Please be aware that enumeration class may not fit your needs.
 
 # References
-
-- [Microsoft Docs: Using enumeration classes instead of enum types](https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/enumeration-classes-over-enum-types)
-- [Jimmy Bogard: Enumeration Classes](https://lostechies.com/jimmybogard/2008/08/12/enumeration-classes)
-- [Ardalis: Enum Alternatives in C#](https://ardalis.com/enum-alternatives-in-c)
-- [Ardalis: SmartEnum](https://github.com/ardalis/SmartEnum)
-- [Ankit Vijay: Enumeration Classes – DDD and beyond](https://ankitvijay.net/2020/06/12/series-enumeration-classes-ddd-and-beyond)
-- [Ankit Vijay: Enumeration](https://github.com/ankitvijay/Enumeration)
-- [eShopOnContainers: Enumeration.cs](https://github.com/dotnet-architecture/eShopOnContainers/blob/dev/src/Services/Ordering/Ordering.Domain/SeedWork/Enumeration.cs)
-- Regarding the source generator:
+- Enumeration Classes:
+  - [Microsoft Docs: Using enumeration classes instead of enum types](https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/enumeration-classes-over-enum-types)
+  - [Jimmy Bogard: Enumeration Classes](https://lostechies.com/jimmybogard/2008/08/12/enumeration-classes)
+  - [Ardalis: Enum Alternatives in C#](https://ardalis.com/enum-alternatives-in-c)
+  - [Ardalis: SmartEnum](https://github.com/ardalis/SmartEnum)
+  - [Ankit Vijay: Enumeration Classes – DDD and beyond](https://ankitvijay.net/2020/06/12/series-enumeration-classes-ddd-and-beyond)
+  - [Ankit Vijay: Enumeration](https://github.com/ankitvijay/Enumeration)
+  - [eShopOnContainers: Enumeration.cs](https://github.com/dotnet-architecture/eShopOnContainers/blob/dev/src/Services/Ordering/Ordering.Domain/SeedWork/Enumeration.cs)
+- Incremental Generators:
+  - [Roslyn Documentation: Incremental Generators](https://github.com/dotnet/roslyn/blob/main/docs/features/incremental-generators.md)
+  - [Roslyn Documentation: Incremental Generators Cookbook](https://github.com/dotnet/roslyn/blob/main/docs/features/incremental-generators.cookbook.md)
   - [Andrew Lock: Creating a source generator](https://andrewlock.net/series/creating-a-source-generator)
   - [Andrew Lock: NetEscapades.EnumGenerators](https://github.com/andrewlock/NetEscapades.EnumGenerators)
