@@ -13,7 +13,7 @@
         
         <PackageTags>enum;enumeration;ddd;sourceGenerator</PackageTags>
 
-        <VersionSuffix>rc.1</VersionSuffix>
+        <VersionSuffix>preview.1</VersionSuffix>
 
         <IncludeBuildOutput>false</IncludeBuildOutput>
         <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
