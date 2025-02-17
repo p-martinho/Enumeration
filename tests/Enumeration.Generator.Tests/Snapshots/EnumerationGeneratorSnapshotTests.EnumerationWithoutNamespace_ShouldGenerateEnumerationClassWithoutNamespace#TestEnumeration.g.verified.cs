@@ -7,10 +7,10 @@
 
     public partial class TestEnumeration : global::PMart.Enumeration.Enumeration<global::TestEnumeration>
     {
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("PMart.Enumeration.Generator", "3.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("PMart.Enumeration.Generator", "3.1.0.0")]
         public static readonly global::TestEnumeration CodeA = new global::TestEnumeration(ValueForCodeA!);
 
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("PMart.Enumeration.Generator", "3.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("PMart.Enumeration.Generator", "3.1.0.0")]
         private TestEnumeration(string value) : base(value)
         {
         }

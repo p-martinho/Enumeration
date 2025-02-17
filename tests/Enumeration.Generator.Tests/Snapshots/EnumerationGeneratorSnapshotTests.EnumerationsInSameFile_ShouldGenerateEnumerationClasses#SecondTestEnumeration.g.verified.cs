@@ -9,10 +9,10 @@ namespace Enumeration.Generator.Tests.Source
 {
     public partial class SecondTestEnumeration : global::PMart.Enumeration.Enumeration<global::Enumeration.Generator.Tests.Source.SecondTestEnumeration>
     {
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("PMart.Enumeration.Generator", "3.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("PMart.Enumeration.Generator", "3.1.0.0")]
         public static readonly global::Enumeration.Generator.Tests.Source.SecondTestEnumeration CodeA = new global::Enumeration.Generator.Tests.Source.SecondTestEnumeration(ValueForCodeA!);
 
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("PMart.Enumeration.Generator", "3.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("PMart.Enumeration.Generator", "3.1.0.0")]
         private SecondTestEnumeration(string value) : base(value)
         {
         }

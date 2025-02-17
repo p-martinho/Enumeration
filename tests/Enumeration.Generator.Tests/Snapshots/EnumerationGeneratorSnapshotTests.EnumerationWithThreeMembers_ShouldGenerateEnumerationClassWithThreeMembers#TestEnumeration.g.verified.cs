@@ -9,16 +9,16 @@ namespace Enumeration.Generator.Tests.Source
 {
     public partial class TestEnumeration : global::PMart.Enumeration.Enumeration<global::Enumeration.Generator.Tests.Source.TestEnumeration>
     {
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("PMart.Enumeration.Generator", "3.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("PMart.Enumeration.Generator", "3.1.0.0")]
         public static readonly global::Enumeration.Generator.Tests.Source.TestEnumeration CodeA = new global::Enumeration.Generator.Tests.Source.TestEnumeration(ValueForCodeA!);
 
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("PMart.Enumeration.Generator", "3.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("PMart.Enumeration.Generator", "3.1.0.0")]
         public static readonly global::Enumeration.Generator.Tests.Source.TestEnumeration CodeB = new global::Enumeration.Generator.Tests.Source.TestEnumeration(ValueForCodeB!);
 
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("PMart.Enumeration.Generator", "3.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("PMart.Enumeration.Generator", "3.1.0.0")]
         public static readonly global::Enumeration.Generator.Tests.Source.TestEnumeration CodeC = new global::Enumeration.Generator.Tests.Source.TestEnumeration(ValueForCodeC!);
 
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("PMart.Enumeration.Generator", "3.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("PMart.Enumeration.Generator", "3.1.0.0")]
         private TestEnumeration(string value) : base(value)
         {
         }
