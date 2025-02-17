@@ -1,0 +1,23 @@
+﻿{
+  Diagnostics: [
+    {
+      Location: /*
+    [EnumerationMember("CodeA")]
+    private static readonly string CodeAa = "CodeA";
+                                   ^^^^^^
+}
+*/
+ : (10,35)-(10,41),
+      Message: The name 'CodeA' for the Enumeration member is duplicated,
+      Severity: Error,
+      Descriptor: {
+        Id: ENUM0004,
+        Title: An error generating an Enumeration class,
+        MessageFormat: The name '{0}' for the Enumeration member is duplicated,
+        Category: EnumerationGeneratorAnalyzer,
+        DefaultSeverity: Error,
+        IsEnabledByDefault: true
+      }
+    }
+  ]
+}

@@ -1,7 +1,6 @@
 ﻿using System.Text.Json;
 using Enumeration.SystemTextJson.Tests.EnumerationClasses;
 using PMart.Enumeration.SystemTextJson;
-using Xunit;
 
 namespace Enumeration.SystemTextJson.Tests;
 

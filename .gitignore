@@ -399,3 +399,7 @@ FodyWeavers.xsd
 riderModule.iml
 /_ReSharper.Caches/
 **/.idea/
+
+# Verify snapshot test files
+*.received.*
+*.received/

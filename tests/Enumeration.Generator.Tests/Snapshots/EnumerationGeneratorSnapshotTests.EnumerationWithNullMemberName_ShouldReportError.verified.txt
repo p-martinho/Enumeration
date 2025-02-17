@@ -1,0 +1,23 @@
+﻿{
+  Diagnostics: [
+    {
+      Location: /*
+    [EnumerationMember(null)]
+    private static readonly string CodeA = "CodeA";
+                                   ^^^^^
+}
+*/
+ : (8,35)-(8,40),
+      Message: Invalid name for the Enumeration member in the EnumerationMemberAttribute,
+      Severity: Error,
+      Descriptor: {
+        Id: ENUM0001,
+        Title: An error generating an Enumeration class,
+        MessageFormat: Invalid name for the Enumeration member in the EnumerationMemberAttribute,
+        Category: EnumerationGeneratorAnalyzer,
+        DefaultSeverity: Error,
+        IsEnabledByDefault: true
+      }
+    }
+  ]
+}

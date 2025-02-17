@@ -1,8 +1,5 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
-using Enumeration.EFCore.Tests.IntegrationTests.DbContext;
+﻿using Enumeration.EFCore.Tests.IntegrationTests.DbContext;
 using Microsoft.EntityFrameworkCore;
-using Xunit;
 
 namespace Enumeration.EFCore.Tests.IntegrationTests;
 

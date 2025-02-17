@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PMart.Enumeration;
 using PMart.Enumeration.EFCore;
-using Xunit;
 
 namespace Enumeration.EFCore.Tests;
 
