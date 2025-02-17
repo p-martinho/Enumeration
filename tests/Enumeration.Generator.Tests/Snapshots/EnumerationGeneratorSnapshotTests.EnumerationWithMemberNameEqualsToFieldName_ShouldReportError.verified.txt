@@ -1,0 +1,23 @@
+﻿{
+  Diagnostics: [
+    {
+      Location: /*
+    [EnumerationMember("CodeA")]
+    private static readonly string CodeA = "CodeA";
+                                   ^^^^^
+}
+*/
+ : (8,35)-(8,40),
+      Message: The name 'CodeA' of the Enumeration member is the same as the field name,
+      Severity: Error,
+      Descriptor: {
+        Id: ENUM0002,
+        Title: An error generating an Enumeration class,
+        MessageFormat: The name '{0}' of the Enumeration member is the same as the field name,
+        Category: EnumerationGeneratorAnalyzer,
+        DefaultSeverity: Error,
+        IsEnabledByDefault: true
+      }
+    }
+  ]
+}

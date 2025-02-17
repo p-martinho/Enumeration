@@ -1,0 +1,13 @@
+<Project>
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+
+        <Authors>Paulo Martinho</Authors>
+        <Company>PMart</Company>
+        <RepositoryUrl>https://github.com/p-martinho/Enumeration</RepositoryUrl>
+    </PropertyGroup>
+
+</Project>

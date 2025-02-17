@@ -1,5 +1,4 @@
-﻿using System;
-using Enumeration.EFCore.Tests.IntegrationTests.DbContext;
+﻿using Enumeration.EFCore.Tests.IntegrationTests.DbContext;
 using Microsoft.EntityFrameworkCore;
 
 namespace Enumeration.EFCore.Tests.IntegrationTests;

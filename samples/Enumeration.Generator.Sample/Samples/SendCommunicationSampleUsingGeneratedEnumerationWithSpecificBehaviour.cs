@@ -1,20 +1,21 @@
-﻿using Enumeration.Sample.Enumerations;
-using Enumeration.Sample.Senders;
+﻿using Enumeration.Generator.Sample.Enumerations;
+using Enumeration.Generator.Sample.Senders;
 
-namespace Enumeration.Sample.Samples;
+namespace Enumeration.Generator.Sample.Samples;
 
-public class SendCommunicationSampleUsingEnumerationWithBehaviour
+public class SendCommunicationSampleUsingGeneratedEnumerationWithSpecificBehaviour
 {
     private readonly ICommunicationSender _communicationSender;
 
-    public SendCommunicationSampleUsingEnumerationWithBehaviour(ICommunicationSender communicationSender)
+    public SendCommunicationSampleUsingGeneratedEnumerationWithSpecificBehaviour(ICommunicationSender communicationSender)
     {
         _communicationSender = communicationSender;
     }
 
     public string SendCommunication(string communicationType, string to, string message)
     {
-        var communicationTypeEnum = CommunicationTypeWithBehaviour.GetFromValueOrDefault(communicationType);
+        // If this code compiles, the CommunicationTypeWithBehaviour enumeration was properly generated.
+        var communicationTypeEnum = CommunicationTypeWithSpecificBehaviour.GetFromValueOrDefault(communicationType);
         
         if (communicationTypeEnum is null)
         {

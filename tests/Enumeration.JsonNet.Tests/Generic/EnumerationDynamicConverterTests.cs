@@ -1,7 +1,6 @@
 ﻿using Enumeration.JsonNet.Tests.EnumerationClasses;
 using Newtonsoft.Json;
 using PMart.Enumeration.JsonNet.Generic;
-using Xunit;
 
 namespace Enumeration.JsonNet.Tests.Generic;
 

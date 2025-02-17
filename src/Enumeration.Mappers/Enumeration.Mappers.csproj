@@ -1,34 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
-        <AssemblyName>PMart.Enumeration.Mappers</AssemblyName>
-        <RootNamespace>PMart.Enumeration.Mappers</RootNamespace>
         <PackageId>PMart.Enumeration.Mappers</PackageId>
-        <Authors>Paulo Martinho</Authors>
-        <Company>PMart</Company>
-        <Title>PMart.Enumeration.Mappers</Title>
+        <AssemblyName>$(PackageId)</AssemblyName>
+        <RootNamespace>$(PackageId)</RootNamespace>
+        
+        <Title>$(PackageId)</Title>
         <Description>Mappers support for PMart.Enumeration.</Description>
-        <PackageProjectUrl>https://github.com/p-martinho/Enumeration</PackageProjectUrl>
-        <RepositoryUrl>https://github.com/p-martinho/Enumeration</RepositoryUrl>
         <PackageTags>enum;enumeration;ddd;mapper;mapperly</PackageTags>
-        <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <PackageIcon>icon.png</PackageIcon>
-        <PackageReadmeFile>README.md</PackageReadmeFile>
-        <PackageVersion>3.0.0</PackageVersion>
-        <AssemblyVersion>3.0.0</AssemblyVersion>
-        <FileVersion>3.0.0</FileVersion>
     </PropertyGroup>
 
     <ItemGroup>
-        <None Include="../../icon.png" Pack="true" PackagePath="\" Visible="false" />
-        <None Include="../../README.md" Pack="true" PackagePath="\" Visible="false" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <ProjectReference Include="..\Enumeration\Enumeration.csproj" />
+        <ProjectReference Include="..\Enumeration\Enumeration.csproj"/>
     </ItemGroup>
 
 </Project>

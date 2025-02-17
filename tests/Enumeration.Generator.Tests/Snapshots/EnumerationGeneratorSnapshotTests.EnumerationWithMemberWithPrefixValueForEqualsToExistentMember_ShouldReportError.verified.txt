@@ -1,0 +1,23 @@
+﻿{
+  Diagnostics: [
+    {
+      Location: /*
+{
+    private static readonly string ValueForCodeA = "CodeA";
+                                   ^^^^^^^^^^^^^
+
+*/
+ : (7,35)-(7,48),
+      Message: A member with the name 'CodeA' is already declared,
+      Severity: Error,
+      Descriptor: {
+        Id: ENUM0003,
+        Title: An error generating an Enumeration class,
+        MessageFormat: A member with the name '{0}' is already declared,
+        Category: EnumerationGeneratorAnalyzer,
+        DefaultSeverity: Error,
+        IsEnabledByDefault: true
+      }
+    }
+  ]
+}

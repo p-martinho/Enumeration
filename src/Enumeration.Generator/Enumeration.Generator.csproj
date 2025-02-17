@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <LangVersion>Latest</LangVersion>
+
+        <PackageId>PMart.Enumeration.Generator</PackageId>
+        <AssemblyName>$(PackageId)</AssemblyName>
+        <RootNamespace>$(PackageId)</RootNamespace>
+
+        <Title>$(PackageId)</Title>
+        <Description>Source code generator to easly create Enumeration classes.</Description>
+        <PackageTags>enum;enumeration;ddd;sourceGenerator</PackageTags>
+
+        <IncludeBuildOutput>false</IncludeBuildOutput>
+        <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.11.0" PrivateAssets="all"/>
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.8.0" PrivateAssets="all"/>
+        <PackageReference Include="Microsoft.Bcl.HashCode" Version="1.1.1"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Enumeration.Generator.Attributes\Enumeration.Generator.Attributes.csproj" PrivateAssets="all"/>
+    </ItemGroup>
+
+    <!-- This ensures the library will be packaged as a source generator when we use `dotnet pack` -->
+    <ItemGroup>
+        <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false"/>
+        <None Include="$(OutputPath)\$(AssemblyName).Attributes.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false"/>
+        <None Include="$(OutputPath)\$(AssemblyName).Attributes.dll" Pack="true" PackagePath="lib\netstandard2.0" Visible="false"/>
+        <None Include="$(OutputPath)\$(AssemblyName).Attributes.xml" Pack="true" PackagePath="lib\netstandard2.0" Visible="false"/>
+    </ItemGroup>
+
+</Project>

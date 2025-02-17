@@ -1,15 +1,32 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Src", "1. Src", "{D5F0A5F7-1947-4E19-9946-436CEA9A5D95}"
+	ProjectSection(SolutionItems) = preProject
+		src\Directory.Build.props = src\Directory.Build.props
+		src\Directory.Build.targets = src\Directory.Build.targets
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Tests", "2. Tests", "{6FDC7463-F8B8-4EDF-8FC5-78D544DD83AC}"
+	ProjectSection(SolutionItems) = preProject
+		tests\Directory.Build.props = tests\Directory.Build.props
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Samples", "3. Samples", "{8D935BDC-5C2B-49FD-B72A-CFAA76578664}"
+	ProjectSection(SolutionItems) = preProject
+		samples\Directory.Build.props = samples\Directory.Build.props
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4. Docs", "4. Docs", "{29E02E5C-3AE5-4EFF-9E61-42169F7F174B}"
 	ProjectSection(SolutionItems) = preProject
 		LICENSE = LICENSE
 		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5. Solution Files", "5. Solution Files", "{5887EC58-2D0E-460E-83A3-7342D6E8CE08}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		global.json = global.json
+		Directory.Build.props = Directory.Build.props
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enumeration", "src\Enumeration\Enumeration.csproj", "{4BD298FF-EB3E-4295-9B25-11F16DE8CA37}"
@@ -45,6 +62,16 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enumeration.Mappers", "src\Enumeration.Mappers\Enumeration.Mappers.csproj", "{6378D270-ABD2-4B84-9660-FF58539DE06A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enumeration.Mappers.Sample", "samples\Enumeration.Mappers.Sample\Enumeration.Mappers.Sample.csproj", "{7FA662AC-5046-4DDA-8F57-F9C656CDAED6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enumeration.Generator", "src\Enumeration.Generator\Enumeration.Generator.csproj", "{8DC99049-D85D-4F5C-9D1F-1E1202559D68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enumeration.Generator.Tests", "tests\Enumeration.Generator.Tests\Enumeration.Generator.Tests.csproj", "{9D5A3C04-8452-4370-B42B-22D5B378E833}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enumeration.Generator.IntegrationTests", "tests\Enumeration.Generator.IntegrationTests\Enumeration.Generator.IntegrationTests.csproj", "{540C0A21-2920-4217-BAF9-0D20FD8BEC66}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enumeration.Generator.Sample", "samples\Enumeration.Generator.Sample\Enumeration.Generator.Sample.csproj", "{56C30CAE-257F-4AF2-893B-3004AB7F0B9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enumeration.Generator.Attributes", "src\Enumeration.Generator.Attributes\Enumeration.Generator.Attributes.csproj", "{241B88D6-724B-43A7-A2BA-E1993E9AB6B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -120,6 +147,26 @@ Global
 		{7FA662AC-5046-4DDA-8F57-F9C656CDAED6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FA662AC-5046-4DDA-8F57-F9C656CDAED6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FA662AC-5046-4DDA-8F57-F9C656CDAED6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DC99049-D85D-4F5C-9D1F-1E1202559D68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DC99049-D85D-4F5C-9D1F-1E1202559D68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DC99049-D85D-4F5C-9D1F-1E1202559D68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DC99049-D85D-4F5C-9D1F-1E1202559D68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D5A3C04-8452-4370-B42B-22D5B378E833}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D5A3C04-8452-4370-B42B-22D5B378E833}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D5A3C04-8452-4370-B42B-22D5B378E833}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D5A3C04-8452-4370-B42B-22D5B378E833}.Release|Any CPU.Build.0 = Release|Any CPU
+		{540C0A21-2920-4217-BAF9-0D20FD8BEC66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{540C0A21-2920-4217-BAF9-0D20FD8BEC66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{540C0A21-2920-4217-BAF9-0D20FD8BEC66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{540C0A21-2920-4217-BAF9-0D20FD8BEC66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56C30CAE-257F-4AF2-893B-3004AB7F0B9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56C30CAE-257F-4AF2-893B-3004AB7F0B9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56C30CAE-257F-4AF2-893B-3004AB7F0B9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56C30CAE-257F-4AF2-893B-3004AB7F0B9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{241B88D6-724B-43A7-A2BA-E1993E9AB6B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{241B88D6-724B-43A7-A2BA-E1993E9AB6B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{241B88D6-724B-43A7-A2BA-E1993E9AB6B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{241B88D6-724B-43A7-A2BA-E1993E9AB6B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{4BD298FF-EB3E-4295-9B25-11F16DE8CA37} = {D5F0A5F7-1947-4E19-9946-436CEA9A5D95}
@@ -139,5 +186,10 @@ Global
 		{8B926822-1B4B-4175-B03F-BC8AE2F67AC9} = {6FDC7463-F8B8-4EDF-8FC5-78D544DD83AC}
 		{6378D270-ABD2-4B84-9660-FF58539DE06A} = {D5F0A5F7-1947-4E19-9946-436CEA9A5D95}
 		{7FA662AC-5046-4DDA-8F57-F9C656CDAED6} = {8D935BDC-5C2B-49FD-B72A-CFAA76578664}
+		{8DC99049-D85D-4F5C-9D1F-1E1202559D68} = {D5F0A5F7-1947-4E19-9946-436CEA9A5D95}
+		{9D5A3C04-8452-4370-B42B-22D5B378E833} = {6FDC7463-F8B8-4EDF-8FC5-78D544DD83AC}
+		{540C0A21-2920-4217-BAF9-0D20FD8BEC66} = {6FDC7463-F8B8-4EDF-8FC5-78D544DD83AC}
+		{56C30CAE-257F-4AF2-893B-3004AB7F0B9D} = {8D935BDC-5C2B-49FD-B72A-CFAA76578664}
+		{241B88D6-724B-43A7-A2BA-E1993E9AB6B3} = {D5F0A5F7-1947-4E19-9946-436CEA9A5D95}
 	EndGlobalSection
 EndGlobal

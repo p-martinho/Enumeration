@@ -1,7 +1,5 @@
-﻿using System;
-using Enumeration.Tests.EnumerationClasses;
+﻿using Enumeration.Tests.EnumerationClasses;
 using PMart.Enumeration.Extensions;
-using Xunit;
 
 namespace Enumeration.Tests.Extensions;
 

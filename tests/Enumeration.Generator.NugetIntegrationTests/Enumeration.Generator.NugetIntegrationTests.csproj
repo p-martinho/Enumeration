@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <!-- Add the temporary package -->
+    <ItemGroup>
+      <PackageReference Include="PMart.Enumeration.Generator" Version="3.0.0-rc.1" PrivateAssets="all" ExcludeAssets="runtime" />
+      <PackageReference Include="PMart.Enumeration" Version="3.0.0" />
+    </ItemGroup>
+
+    <!-- Link in all the files from the integration test project, so we run the same tests -->
+    <ItemGroup>
+      <Compile Include="..\Enumeration.Generator.IntegrationTests\*.cs" Link="%(Filename)%(Extension)"/>
+      <Compile Include="..\Enumeration.Generator.IntegrationTests\EnumerationClasses\*.cs" Link="%(Filename)%(Extension)"/>
+    </ItemGroup>
+
+</Project>

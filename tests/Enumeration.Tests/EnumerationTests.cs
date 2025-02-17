@@ -1,7 +1,4 @@
-using System;
-using System.Linq;
 using Enumeration.Tests.EnumerationClasses;
-using Xunit;
 
 namespace Enumeration.Tests;
 
@@ -36,12 +33,16 @@ public class EnumerationTests
         var members = TestEnumeration.GetMembers().ToList();
 
         // Assert
-        // GetMembers use an HashSet, that does not allow more than one member with exactly same value.
+        // GetMembers use an HashSet, that does not allow more than one member with exactly same value with same case (they have same hash).
         Assert.Equal(3, members.Count);
         Assert.Contains(TestEnumeration.CodeA, members);
         Assert.Contains(TestEnumeration.CodeB, members);
-        Assert.Contains(TestEnumeration.CodeAClone, members);
+        Assert.Contains(TestEnumeration.CodeAClone, members); // true because Assert.Contains() is using the default Equality comparer
         Assert.Contains(TestEnumeration.CodeAUpper, members);
+        Assert.Contains(TestEnumeration.CodeA, members, ReferenceEqualityComparer.Instance);
+        Assert.Contains(TestEnumeration.CodeB, members, ReferenceEqualityComparer.Instance);
+        Assert.DoesNotContain(TestEnumeration.CodeAClone, members, ReferenceEqualityComparer.Instance);
+        Assert.Contains(TestEnumeration.CodeAUpper, members, ReferenceEqualityComparer.Instance);
     }
 
     #endregion

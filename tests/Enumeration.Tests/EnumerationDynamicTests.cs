@@ -1,8 +1,5 @@
-using System;
 using System.Collections.Immutable;
-using System.Linq;
 using Enumeration.Tests.EnumerationClasses;
-using Xunit;
 
 namespace Enumeration.Tests;
 
@@ -14,7 +11,7 @@ public class EnumerationDynamicTests
     public void GetFromValueOrNew_WhenNewValue_ShouldReturnNewInstance()
     {
         // Arrange
-        var newTestType = "newTestType";
+        const string newTestType = "newTestType";
 
         // Act
         var instance = TestEnumerationDynamic.GetFromValueOrNew(newTestType);
@@ -56,13 +53,48 @@ public class EnumerationDynamicTests
     public void GetFromValueOrNew_WhenValueIsNull_ShouldReturnNull()
     {
         // Arrange
-        string? nullValue = null;
+        const string? nullValue = null;
 
         // Act
         var instance = TestEnumerationDynamic.GetFromValueOrNew(nullValue);
 
         // Assert
         Assert.Null(instance);
+    }
+    
+    [Fact]
+    public void GetFromValueOrNew_WhenCallingWithSameValueTwice_ShouldReturnTwoDifferentInstancesButEqual()
+    {
+        // Arrange
+        const string newTestType = "newTestType";
+        var newTestTypeInDifferentCase = newTestType.ToUpper();
+
+        // Act
+        var instance1 = TestEnumerationDynamic.GetFromValueOrNew(newTestType);
+        var instance2 = TestEnumerationDynamic.GetFromValueOrNew(newTestTypeInDifferentCase);
+
+        // Assert
+        Assert.NotNull(instance1);
+        Assert.NotNull(instance2);
+        Assert.NotSame(instance1, instance2);
+        Assert.Equal(instance1, instance2);
+    }
+    
+    [Fact]
+    public void GetFromValueOrNew_WhenCallingWithSameValueWithDifferentCase_ShouldReturnTwoDifferentInstancesButEqual()
+    {
+        // Arrange
+        const string newTestType = "newTestType";
+
+        // Act
+        var instance1 = TestEnumerationDynamic.GetFromValueOrNew(newTestType);
+        var instance2 = TestEnumerationDynamic.GetFromValueOrNew(newTestType.ToUpper());
+
+        // Assert
+        Assert.NotNull(instance1);
+        Assert.NotNull(instance2);
+        Assert.NotSame(instance1, instance2);
+        Assert.Equal(instance1, instance2);
     }
 
     #endregion

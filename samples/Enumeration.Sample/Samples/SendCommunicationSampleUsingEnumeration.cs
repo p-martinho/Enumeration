@@ -23,11 +23,11 @@ public class SendCommunicationSampleUsingEnumeration
         // Parse the string to Enumeration:
         var communicationTypeEnum = CommunicationType.GetFromValueOrDefault(communicationType);
         
-        // Validate the value: verify if it is a valid value...
-        var isCommunicationTypeValid = CommunicationType.HasValue(communicationType);
+        // Verify if exists an enumeration with the value (GetFromValueOrDefault returns null if there isn't any enumeration with the value).
+        var isCommunicationTypeValid = communicationTypeEnum is not null;
         
-        // ... Or verify if exists an enumeration with the value (GetFromValueOrDefault returns null if there isn't any enumeration with the value).
-        isCommunicationTypeValid = communicationTypeEnum != null;
+        // ... Or verify it with HasValue method:
+        // var isCommunicationTypeValid = CommunicationType.HasValue(communicationType);
 
         if (!isCommunicationTypeValid)
         {
@@ -35,9 +35,9 @@ public class SendCommunicationSampleUsingEnumeration
         }
 
         // Now, I can use the communication type as an Enumeration, with all of its advantages and features.
-        var communicationSender = GetCommunicationSenderForCommunicationType(communicationTypeEnum!);
+        var communicationSender = GetCommunicationSenderForCommunicationType(communicationTypeEnum);
 
-        if (communicationSender == null)
+        if (communicationSender is null)
         {
             return "Error: Communication type is not supported.";
         }
@@ -47,14 +47,14 @@ public class SendCommunicationSampleUsingEnumeration
         return "Ok: Message sent successfully.";
     }
 
-    private ISender? GetCommunicationSenderForCommunicationType(CommunicationType communicationType)
+    private ISender? GetCommunicationSenderForCommunicationType(CommunicationType? communicationType)
     {
         // A switch statement for pattern matching
         return communicationType switch
         {
-            var type when type == CommunicationType.Email => _emailSender,
-            var type when type == CommunicationType.PushNotification => _pushNotificationSender,
-            var type when type == CommunicationType.Sms => _smsSender,
+            _ when communicationType == CommunicationType.Email => _emailSender,
+            _ when communicationType == CommunicationType.PushNotification => _pushNotificationSender,
+            _ when communicationType == CommunicationType.Sms => _smsSender,
             _ => null
         };
     }
