@@ -864,8 +864,8 @@ And you can also add `ExcludeAssets="runtime"`, to avoid the `PMart.Enumeration.
 
   <!-- ... -->
 
-  <PackageReference Include="PMart.Enumeration" Version="3.0.0" />
-  <PackageReference Include="PMart.Enumeration.Generator" Version="3.0.0" PrivateAssets="all" ExcludeAssets="runtime" />
+  <PackageReference Include="PMart.Enumeration" Version="3.1.0" />
+  <PackageReference Include="PMart.Enumeration.Generator" Version="3.1.0" PrivateAssets="all" ExcludeAssets="runtime" />
   
   <!-- ... -->
 
@@ -879,7 +879,7 @@ To create a new Enumeration with the generator, it is easy:
 - Add the `EnumerationAttribute` (namespace `PMart.Enumeration.Generator.Attributes`) on the class.
 - Add fields of type `private static readonly string` named with the prefix `ValueFor` (this prefix is one of the ways of doing it, as you can check next), that hold the values that will be used to create the enumeration members (check the bellow examples).
 
-> The fields that are not `private static readonly string` are ignored.
+> The non-fields or fields that are not `private static readonly string` are ignored.
 
 For example, without the generator, the communication type enumeration was like this:
 
@@ -986,7 +986,7 @@ public partial class CommunicationType
 
 ### The EnumerationIgnore Attribute
 
-If, for some reason, you already have a field `private static readonly string`, but you don't want it to be used to generate a new enumeration member, use the `EnumerationIgnoreAttribute`:
+If, for some reason, you already have a field `private static readonly string` named `ValueFor...`, but you don't want it to be used to generate a new enumeration member, use the `EnumerationIgnoreAttribute`:
 
 ```c#
 [Enumeration]
@@ -999,7 +999,7 @@ public partial class CommunicationType
     private static readonly string ValueForPushNotification = "PushNotification";
     
     [EnumerationIgnore]
-    private static readonly string SomeFieldThatShouldBeIgnored = "SomeValue";
+    private static readonly string ValueForSomeFieldThatShouldBeIgnored = "SomeValue";
 }
 ```
 
@@ -1078,7 +1078,7 @@ public partial class CommunicationType
 There are other diagnostics reported for different cases. All are of type `Error` with an ID like `ENUMXXXX` and with a descriptive message.
 
 ## Generator Limitations
-- The minimum versions supported are:
+- The .NET versions restrictions are:
   - .NET SDK: >= 8.0.100
   - MSBuild/Visual Studio: >= 17.8.
 - It does not work for `abstract` classes. In the example provided in [Enumeration with behavior](#enumeration-with-behavior), we use an `abstract` class and subclasses. When using the generator, you can do the same without being `abstract`, check this [sample](./samples/Enumeration.Generator.Sample/Enumerations/CommunicationTypeWithSpecificBehaviour.cs).
