@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <ItemGroup>
-      <ProjectReference Include="..\..\src\Enumeration.SystemTextJson\Enumeration.SystemTextJson.csproj" />
+        <ProjectReference Include="..\..\src\Enumeration.SystemTextJson\Enumeration.SystemTextJson.csproj"/>
     </ItemGroup>
 
 </Project>

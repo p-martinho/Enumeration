@@ -7,12 +7,11 @@
 
         <Title>$(PackageId)</Title>
         <Description>System.Text.Json support for PMart.Enumeration.</Description>
-        
         <PackageTags>enum;enumeration;ddd;json;system.text.json</PackageTags>
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Enumeration\Enumeration.csproj" />
+        <ProjectReference Include="..\Enumeration\Enumeration.csproj"/>
     </ItemGroup>
 
 </Project>

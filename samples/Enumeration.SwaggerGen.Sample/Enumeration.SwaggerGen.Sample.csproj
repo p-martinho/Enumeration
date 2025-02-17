@@ -5,12 +5,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.9.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.9.0"/>
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\src\Enumeration.SwaggerGen\Enumeration.SwaggerGen.csproj" />
-        <ProjectReference Include="..\..\src\Enumeration.SystemTextJson\Enumeration.SystemTextJson.csproj" />
+        <ProjectReference Include="..\..\src\Enumeration.SwaggerGen\Enumeration.SwaggerGen.csproj"/>
+        <ProjectReference Include="..\..\src\Enumeration.SystemTextJson\Enumeration.SystemTextJson.csproj"/>
     </ItemGroup>
 
 </Project>

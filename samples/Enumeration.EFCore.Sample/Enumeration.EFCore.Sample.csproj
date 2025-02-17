@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <ItemGroup>
-      <ProjectReference Include="..\..\src\Enumeration.EFCore\Enumeration.EFCore.csproj" />
+        <ProjectReference Include="..\..\src\Enumeration.EFCore\Enumeration.EFCore.csproj"/>
     </ItemGroup>
 
 </Project>

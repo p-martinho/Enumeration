@@ -7,12 +7,11 @@
         
         <Title>$(PackageId)</Title>
         <Description>Mappers support for PMart.Enumeration.</Description>
-        
         <PackageTags>enum;enumeration;ddd;mapper;mapperly</PackageTags>
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Enumeration\Enumeration.csproj" />
+        <ProjectReference Include="..\Enumeration\Enumeration.csproj"/>
     </ItemGroup>
 
 </Project>

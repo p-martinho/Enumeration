@@ -7,7 +7,6 @@
         
         <Title>$(PackageId)</Title>
         <Description>Extendable class to implement enumeration classes, based on string values. They enable features of an object-oriented language without the limitations of the C# enum's.</Description>
-        
         <PackageTags>enum;enumeration;ddd</PackageTags>
     </PropertyGroup>
 

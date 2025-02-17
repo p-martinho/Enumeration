@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <ItemGroup>
-      <ProjectReference Include="..\..\src\Enumeration.JsonNet\Enumeration.JsonNet.csproj" />
+        <ProjectReference Include="..\..\src\Enumeration.JsonNet\Enumeration.JsonNet.csproj"/>
     </ItemGroup>
 
 </Project>

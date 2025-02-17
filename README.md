@@ -20,25 +20,25 @@ For more information about enumeration classes, check the links on the section [
 
 ## NuGet Packages
 
-__PMart.Enumeration__: The Enumeration base classes.
+[__PMart.Enumeration__](#usage): The Enumeration base classes.
 [![NuGet](https://img.shields.io/nuget/v/PMart.Enumeration.svg)](https://www.nuget.org/packages/PMart.Enumeration)
 
-__PMart.Enumeration.EFCore__: The __Entity Framework Core__ support for `PMart.Enumeration`.
+[__PMart.Enumeration.EFCore__](#efcore-support): The __Entity Framework Core__ support for `PMart.Enumeration`.
 [![NuGet](https://img.shields.io/nuget/v/PMart.Enumeration.EFCore.svg)](https://www.nuget.org/packages/PMart.Enumeration.EFCore)
 
-__PMart.Enumeration.JsonNet__: The __Newtonsoft Json.NET__ support for `PMart.Enumeration`.
+[__PMart.Enumeration.JsonNet__](#newtonsoft-jsonnet-support): The __Newtonsoft Json.NET__ support for `PMart.Enumeration`.
 [![NuGet](https://img.shields.io/nuget/v/PMart.Enumeration.JsonNet.svg)](https://www.nuget.org/packages/PMart.Enumeration.JsonNet)
 
-__PMart.Enumeration.SystemTextJson__: The __System.Text.Json__ support for `PMart.Enumeration`.
+[__PMart.Enumeration.SystemTextJson__](#systemtextjson-support): The __System.Text.Json__ support for `PMart.Enumeration`.
 [![NuGet](https://img.shields.io/nuget/v/PMart.Enumeration.SystemTextJson.svg)](https://www.nuget.org/packages/PMart.Enumeration.SystemTextJson)
 
-__PMart.Enumeration.SwaggerGen__: Support to generate __Swagger__ documentation when using `PMart.Enumeration`.
+[__PMart.Enumeration.SwaggerGen__](#swagger-support): Support to generate __Swagger__ documentation when using `PMart.Enumeration`.
 [![NuGet](https://img.shields.io/nuget/v/PMart.Enumeration.SwaggerGen.svg)](https://www.nuget.org/packages/PMart.Enumeration.SwaggerGen)
 
-__PMart.Enumeration.Mappers__: Mappers and mapping extensions for Enumerations (includes mapper for __Mapperly__).
+[__PMart.Enumeration.Mappers__](#mapping): Mappers and mapping extensions for Enumerations (includes mapper for __Mapperly__).
 [![NuGet](https://img.shields.io/nuget/v/PMart.Enumeration.Mappers.svg)](https://www.nuget.org/packages/PMart.Enumeration.Mappers)
 
-__PMart.Enumeration.Generator__: A source generator to generate Enumeration classes from a few lines of code.
+[__PMart.Enumeration.Generator__](#enumeration-generator): A source generator to generate Enumeration classes from a few lines of code.
 [![NuGet](https://img.shields.io/nuget/v/PMart.Enumeration.Generator.svg)](https://www.nuget.org/packages/PMart.Enumeration.Generator)
 
 # Installation
@@ -1045,7 +1045,7 @@ namespace Enumeration.Generator.Sample.Enumerations
 }
 ```
 
-### Generator Diagnostics
+## Generator Diagnostics
 
 The generator tries to report errors when the user does common mistakes, namely about naming the enumeration members with names already in use.
 In some cases, there are no compilation errors on the user code. Without the diagnostics from the generator, the user would not know why the generator doesn't work.
@@ -1077,7 +1077,7 @@ public partial class CommunicationType
 
 There are other diagnostics reported for different cases. All are of type `Error` with an ID like `ENUMXXXX` and with a descriptive message.
 
-### Generator Limitations
+## Generator Limitations
 - The minimum versions supported are:
   - .NET SDK: >= 8.0.100
   - MSBuild/Visual Studio: >= 17.8.

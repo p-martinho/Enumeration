@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-    
+
     <ItemGroup>
         <ProjectReference Include="..\..\src\Enumeration.Generator\Enumeration.Generator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false"/>
         <!-- Reference the attributes project, "treat as an analyzer", and we do need reference to its dll (ReferenceOutputAssembly="true") -->
         <ProjectReference Include="..\..\src\Enumeration.Generator.Attributes\Enumeration.Generator.Attributes.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="true"/>
-        <ProjectReference Include="..\..\src\Enumeration\Enumeration.csproj" />
+        <ProjectReference Include="..\..\src\Enumeration\Enumeration.csproj"/>
     </ItemGroup>
 
 </Project>

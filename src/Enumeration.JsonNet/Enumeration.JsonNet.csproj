@@ -4,19 +4,18 @@
         <PackageId>PMart.Enumeration.JsonNet</PackageId>
         <AssemblyName>$(PackageId)</AssemblyName>
         <RootNamespace>$(PackageId)</RootNamespace>
-        
+
         <Title>$(PackageId)</Title>
         <Description>Json.NET serialization support for PMart.Enumeration.</Description>
-        
         <PackageTags>enum;enumeration;ddd;json;json.net</PackageTags>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.3"/>
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Enumeration\Enumeration.csproj" />
+        <ProjectReference Include="..\Enumeration\Enumeration.csproj"/>
     </ItemGroup>
 
 </Project>

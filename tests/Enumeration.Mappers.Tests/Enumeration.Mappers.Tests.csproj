@@ -1,11 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <ItemGroup>
-        <PackageReference Include="Riok.Mapperly" Version="3.6.0" />
+        <PackageReference Include="Riok.Mapperly" Version="3.6.0"/>
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\src\Enumeration.Mappers\Enumeration.Mappers.csproj" />
+        <ProjectReference Include="..\..\src\Enumeration.Mappers\Enumeration.Mappers.csproj"/>
     </ItemGroup>
 
 </Project>
