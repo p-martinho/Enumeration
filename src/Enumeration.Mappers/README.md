@@ -13,7 +13,7 @@ dotnet add package PMart.Enumeration.Mappers
 
 To map between __Enumeration classes__ or between __Enumeration classes__ and `string`, you can use built-in features, like explained in the section [Features](../Enumeration/README.md#mapping).
 
-Anyway, the NuGet package `PMart.Enumeration.Mappers` includes a set of [extensions](./Extensions/EnumerationExtensions.cs) and [mappers](./src/Enumeration.Mappers) to help the mapping to/from `string` and between different types of `Enumeration` or `EnumerationDynamic`.
+Anyway, the NuGet package `PMart.Enumeration.Mappers` includes a set of [extensions](./Extensions/EnumerationExtensions.cs) and [mappers](.) to help the mapping to/from `string` and between different types of `Enumeration` or `EnumerationDynamic`.
 And they are prepared for `null` values.
 
 Here is an [example](../../samples/Enumeration.Mappers.Sample/Samples/MapCommunicationSample.cs) using the extensions and the mappers to map between `Enumeration` and `string`:
@@ -112,7 +112,7 @@ public OtherCommunicationTypeDynamic MapToOtherTypeOfEnumerationTypeUsingMapper(
 
 The [Mapperly](https://github.com/riok/mapperly) is a source generator for generating object mappings. To map objects that have properties of type `Enumeration` or `EnumerationDynamic` with __Mapperly__, you need to implement the mapping in the object mapper.
 
-The NuGet package `PMart.Enumeration.Mappers` provides a set of mappers that can be used in __Mapperly__ mappers, without the need to implement the mapping manually.
+The NuGet package `PMart.Enumeration.Mappers` provides a set of [mappers](.) that can be used in __Mapperly__ mappers, without the need to implement the mapping manually.
 
 In this example, we have a source object that is mapped to a destination object, which requires mapping from `Enumeration` to `string` (from `CommunicationType` to `string`) and between different types of `Enumeration` (from `CommunicationType` to `OtherCommunicationType`):
 

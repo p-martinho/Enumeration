@@ -2,6 +2,13 @@
 
 This is the package to add `System.Text.Json` support for the __Enumeration classes__ (more information in the [main page](../../README.md)).
 
+# Installation
+
+Add the package to your project:
+```bash
+dotnet add package PMart.Enumeration.SystemTextJson
+```
+
 # Usage
 
 Using `System.Text.Json`, if you need to serialize/deserialize objects that contain properties of type `Enumeration` or `EnumerationDynamic`, without any converters, the enumeration property would act like a regular object.
