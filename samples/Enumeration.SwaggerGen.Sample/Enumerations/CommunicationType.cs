@@ -16,7 +16,7 @@ public class CommunicationType : Enumeration<CommunicationType>
     /// The SMS type.
     /// </summary>
     public static readonly CommunicationType Sms = new("SMS");
-    
+
     /// <summary>
     /// The Push Notification type.
     /// </summary>

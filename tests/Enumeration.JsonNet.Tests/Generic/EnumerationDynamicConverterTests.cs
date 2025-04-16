@@ -13,7 +13,7 @@ public class EnumerationDynamicConverterTests
     {
         // Arrange
         var instance = TestEnumerationDynamic.CodeA;
-        var test = new TestClass {Test = instance};
+        var test = new TestClass { Test = instance };
 
         // Act
         var result = JsonConvert.SerializeObject(test);
@@ -27,7 +27,7 @@ public class EnumerationDynamicConverterTests
     {
         // Arrange
         var instance = TestEnumerationDynamic.CodeA;
-        var test = new TestClassWithoutAttribute {Test = instance};
+        var test = new TestClassWithoutAttribute { Test = instance };
 
         // Act
         var result = JsonConvert
@@ -41,7 +41,7 @@ public class EnumerationDynamicConverterTests
     public void Serialize_WhenNull_ShouldSucceed()
     {
         // Arrange
-        var test = new TestClass {Test = null};
+        var test = new TestClass { Test = null };
 
         // Act
         var result = JsonConvert.SerializeObject(test);

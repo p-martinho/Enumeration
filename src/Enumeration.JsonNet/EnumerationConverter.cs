@@ -25,7 +25,7 @@ public class EnumerationConverter : JsonConverter
         return reader.TokenType switch
         {
             JsonToken.Null => null,
-            JsonToken.String => GetEnumerationFromValue((string?) reader.Value, objectType),
+            JsonToken.String => GetEnumerationFromValue((string?)reader.Value, objectType),
             _ => throw new JsonSerializationException(
                 $"Unexpected token {reader.TokenType} when parsing an Enumeration.")
         };

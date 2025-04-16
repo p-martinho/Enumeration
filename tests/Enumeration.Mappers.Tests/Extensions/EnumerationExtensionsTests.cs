@@ -35,7 +35,7 @@ public class EnumerationExtensionsTests
     }
 
     #endregion
-    
+
     #region MapToEnumeration from string tests
 
     [Fact]

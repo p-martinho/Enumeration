@@ -55,7 +55,7 @@ internal static class GeneratorOptimizationTester
         {
             return runResult;
         }
-        
+
         // Run again, using the same driver, with a clone of the compilation
         var runResult2 = driver
             .RunGenerators(clone)

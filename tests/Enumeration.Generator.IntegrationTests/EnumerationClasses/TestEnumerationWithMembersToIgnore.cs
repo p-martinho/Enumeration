@@ -7,19 +7,19 @@ namespace Enumeration.Generator.IntegrationTests.EnumerationClasses;
 public partial class TestEnumerationWithMembersToIgnore
 {
     private static readonly string ValueForCodeA = "CodeA";
-    
+
     // Should be ignored: don't have ValueFor prefix nor EnumerationMemberAttribute.
     private static readonly string CodeB = "CodeB";
-    
+
     // Should be ignored: is not private.
     public static readonly string ValueForCodeC = "CodeC";
-    
+
     // Should be ignored: is not readonly.
     private static string ValueForCodeD = "CodeD";
-    
+
     // Should be ignored: is not static.
     private readonly string ValueForCodeE = "CodeE";
-    
+
     // Should be ignored: is not static readonly.
     private const string ValueForCodeF = "CodeF";
 }

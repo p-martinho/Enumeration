@@ -10,7 +10,7 @@ public class OtherCommunicationTypeDynamic : EnumerationDynamic<OtherCommunicati
     public static readonly OtherCommunicationTypeDynamic Email = new("Email");
 
     public static readonly OtherCommunicationTypeDynamic Sms = new("SMS");
-    
+
     public static readonly OtherCommunicationTypeDynamic PushNotification = new("PushNotification");
 
     private OtherCommunicationTypeDynamic(string value) : base(value)

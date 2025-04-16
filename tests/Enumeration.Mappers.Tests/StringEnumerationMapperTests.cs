@@ -30,7 +30,7 @@ public class StringEnumerationMapperTests
         // Assert
         Assert.Null(result);
     }
-    
+
     [Fact]
     public void MapToEnumeration_ShouldSucceed()
     {

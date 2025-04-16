@@ -65,7 +65,7 @@ public class EnumerationDynamicConverterIntegrationTests : EfCoreBaseTest
         Assert.Single(entities);
         Assert.Equal(newCode, entities.Single().TestDynamic?.Value);
     }
-    
+
     [Fact]
     public async Task QueryingData_ShouldSucceed()
     {
@@ -91,7 +91,7 @@ public class EnumerationDynamicConverterIntegrationTests : EfCoreBaseTest
         Assert.NotNull(entityWithCodeA);
         Assert.Equal(entityWithCodeA.TestDynamic, TestEnumerationDynamic.CodeA);
     }
-    
+
     [Fact]
     public async Task QueryingData_WhenNull_ShouldSucceed()
     {
@@ -117,7 +117,7 @@ public class EnumerationDynamicConverterIntegrationTests : EfCoreBaseTest
         Assert.NotNull(entityWithCodeNull);
         Assert.Null(entityWithCodeNull.TestDynamic);
     }
-    
+
     [Fact]
     public async Task QueryingData_WhenDynamicValue_ShouldSucceed()
     {

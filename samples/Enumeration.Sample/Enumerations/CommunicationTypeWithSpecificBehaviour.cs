@@ -10,7 +10,7 @@ public abstract class CommunicationTypeWithSpecificBehaviour : Enumeration<Commu
     public static readonly CommunicationTypeWithSpecificBehaviour Email = new EmailType();
 
     public static readonly CommunicationTypeWithSpecificBehaviour Sms = new SmsType();
-    
+
     public static readonly CommunicationTypeWithSpecificBehaviour PushNotification = new PushNotificationType();
 
     /// <summary>
@@ -26,7 +26,7 @@ public abstract class CommunicationTypeWithSpecificBehaviour : Enumeration<Commu
     /// </summary>
     /// <returns><c>true</c> if this communication type requires phone number; <c>false</c> otherwise.</returns>
     public abstract bool IsPhoneNumberRequired { get; }
-    
+
     private CommunicationTypeWithSpecificBehaviour(string value) : base(value)
     {
     }
@@ -36,7 +36,7 @@ public abstract class CommunicationTypeWithSpecificBehaviour : Enumeration<Commu
         public EmailType() : base("Email")
         {
         }
-        
+
         /// <inheritdoc />
         public override string ParseMessage(string message)
         {
@@ -46,35 +46,35 @@ public abstract class CommunicationTypeWithSpecificBehaviour : Enumeration<Commu
         /// <inheritdoc />
         public override bool IsPhoneNumberRequired => false;
     }
-    
+
     private sealed class SmsType : CommunicationTypeWithSpecificBehaviour
     {
         public SmsType() : base("Sms")
         {
         }
-        
+
         /// <inheritdoc />
         public override string ParseMessage(string message)
         {
             return $"Message encoded for SMS: {message}";
         }
-        
+
         /// <inheritdoc />
         public override bool IsPhoneNumberRequired => true;
     }
-    
+
     private sealed class PushNotificationType : CommunicationTypeWithSpecificBehaviour
     {
         public PushNotificationType() : base("PushNotification")
         {
         }
-        
+
         /// <inheritdoc />
         public override string ParseMessage(string message)
         {
             return $"Message encoded for push notification: {message}";
         }
-        
+
         /// <inheritdoc />
         public override bool IsPhoneNumberRequired => true;
     }

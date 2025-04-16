@@ -40,7 +40,7 @@ public class EnumerationGenerator : IIncrementalGenerator
     private static bool IsPartialClass(SyntaxNode syntaxNode, CancellationToken cancellationToken)
     {
         cancellationToken.ThrowIfCancellationRequested();
-        
+
         return syntaxNode is ClassDeclarationSyntax classDeclaration &&
                IsPartial(classDeclaration);
     }
@@ -58,7 +58,7 @@ public class EnumerationGenerator : IIncrementalGenerator
         {
             return null;
         }
-        
+
         cancellationToken.ThrowIfCancellationRequested();
 
         var symbolMembers = enumerationSymbol.GetMembers();
@@ -265,9 +265,9 @@ public class EnumerationGenerator : IIncrementalGenerator
     private static string RemoveAttributeSuffix(string attributeName)
     {
         const string suffix = "Attribute";
-        
+
         var attributeNameAsSpan = attributeName.AsSpan();
-        
+
         // Assuming that attributeName always includes "Attribute" in the string
         return attributeNameAsSpan.Slice(0, attributeName.Length - suffix.Length).ToString();
     }
@@ -275,7 +275,7 @@ public class EnumerationGenerator : IIncrementalGenerator
     private static string? GetEnumerationAttributeFullNameWithoutSuffix()
     {
         var attributeFullname = typeof(EnumerationAttribute).FullName;
-        
+
         return attributeFullname == null ? null : RemoveAttributeSuffix(attributeFullname);
     }
 

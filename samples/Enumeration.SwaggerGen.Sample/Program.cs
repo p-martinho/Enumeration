@@ -30,7 +30,7 @@ builder.Services.AddSwaggerGen(options =>
             Url = new Uri("https://sample.com/license")
         }
     });
-    
+
     options.SchemaFilter<EnumerationSchemaFilter>();
 
     var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";

@@ -30,7 +30,7 @@ public class StringEnumerationDynamicMapperTests
         // Assert
         Assert.Null(result);
     }
-    
+
     [Fact]
     public void MapToEnumerationDynamic_ShouldSucceed()
     {

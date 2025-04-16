@@ -25,6 +25,6 @@ public class EnumerationConverterFactory : JsonConverterFactory
             ? typeof(EnumerationDynamicConverter<>)
             : typeof(EnumerationConverter<>);
 
-        return (JsonConverter) Activator.CreateInstance(converterType.MakeGenericType(typeToConvert))!;
+        return (JsonConverter)Activator.CreateInstance(converterType.MakeGenericType(typeToConvert))!;
     }
 }

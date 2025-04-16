@@ -16,7 +16,7 @@ public class SendCommunicationSampleUsingGeneratedEnumerationWithSpecificBehavio
     {
         // If this code compiles, the CommunicationTypeWithBehaviour enumeration was properly generated.
         var communicationTypeEnum = CommunicationTypeWithSpecificBehaviour.GetFromValueOrDefault(communicationType);
-        
+
         if (communicationTypeEnum is null)
         {
             return "Bad request: invalid communication type.";
@@ -24,7 +24,7 @@ public class SendCommunicationSampleUsingGeneratedEnumerationWithSpecificBehavio
 
         // The enumeration has behaviour and each communication type implements its own way of parsing the message.
         var parsedMessage = communicationTypeEnum.ParseMessage(message);
-        
+
         _communicationSender.SendMessage(communicationTypeEnum.Value, to, parsedMessage);
 
         return "Ok: Message sent successfully.";

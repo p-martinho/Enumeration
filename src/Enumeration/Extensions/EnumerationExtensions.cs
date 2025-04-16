@@ -16,7 +16,7 @@ public static class EnumerationExtensions
     {
         return typeToEvaluate.IsAssignableToGenericType(typeof(Enumeration<>));
     }
-    
+
     /// <summary>
     /// Indicates whether the specified type is derived, directly or indirectly, from <see cref="EnumerationDynamic{T}"/> type.
     /// </summary>

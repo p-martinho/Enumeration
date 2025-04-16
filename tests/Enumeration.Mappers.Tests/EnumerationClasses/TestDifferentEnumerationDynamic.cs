@@ -9,7 +9,7 @@ internal class TestDifferentEnumerationDynamic : EnumerationDynamic<TestDifferen
     public TestDifferentEnumerationDynamic()
     {
     }
-    
+
     private TestDifferentEnumerationDynamic(string value) : base(value)
     {
     }

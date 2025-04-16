@@ -22,7 +22,7 @@ public class SendCommunicationSampleUsingGeneratedEnumeration
     {
         // If this code compiles, the CommunicationType enumeration was properly generated.
         var communicationTypeEnum = CommunicationType.GetFromValueOrDefault(communicationType);
-        
+
         var communicationSender = GetCommunicationSenderForCommunicationType(communicationTypeEnum);
 
         if (communicationSender == null)

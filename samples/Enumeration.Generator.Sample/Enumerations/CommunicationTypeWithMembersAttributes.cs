@@ -14,10 +14,10 @@ public partial class CommunicationTypeWithMembersAttributes
 
     [EnumerationMember("Sms")]
     private static readonly string SmsCode = "SMS";
-    
+
     [EnumerationMember("PushNotification")]
     private static readonly string PushNotificationCode = "PushNotification";
-    
+
     [EnumerationIgnore]
     private static readonly string SomeFieldThatShouldBeIgnored = "SomeValue";
 }

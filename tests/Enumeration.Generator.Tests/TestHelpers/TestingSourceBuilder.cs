@@ -3,9 +3,9 @@
 internal static class TestingSourceBuilder
 {
     #region Generate Enumeration class Cases
-    
+
     public static string BuildEnumerationWithPrefixValueFor() => BuildHeadSection() + BuildBodySection();
-    
+
     public static string BuildEnumerationWithNamedMembers() => BuildHeadSection() +
         """
            [EnumerationMember("CodeAa")]
@@ -15,7 +15,7 @@ internal static class TestingSourceBuilder
            private static readonly string CodeB = "CodeB";
         }
         """;
-    
+
     public static string BuildEnumerationDynamic() =>
         """
         using PMart.Enumeration.Generator.Attributes;
@@ -27,7 +27,7 @@ internal static class TestingSourceBuilder
         {
 
         """ + BuildBodySection();
-    
+
     public static string BuildEnumerationWithMembersToIgnore() => BuildHeadSection() +
     """
         [EnumerationIgnore]
@@ -44,10 +44,10 @@ internal static class TestingSourceBuilder
         private static readonly string ValueForCodeD = "CodeD";
     }
     """;
-    
+
     public static string BuildInternalEnumeration() => BuildHeadSection().Replace("public", "internal") + BuildBodySection();
 
-    public static string BuildEnumerationWithThreeMembers() => BuildHeadSection() + 
+    public static string BuildEnumerationWithThreeMembers() => BuildHeadSection() +
         """
             private static readonly string ValueForCodeA = "CodeA";
             private static readonly string ValueForCodeB = "CodeB";
@@ -55,12 +55,12 @@ internal static class TestingSourceBuilder
         }
         """;
 
-    public static string BuildEnumerationWithValueDifferentFromMemberName() => BuildHeadSection() + 
+    public static string BuildEnumerationWithValueDifferentFromMemberName() => BuildHeadSection() +
         """
             private static readonly string ValueForCodeA = "DifferentCodeA";
         }
         """;
-    
+
     public static string BuildEnumerationWithOtherNonEnumerationMembers() => BuildHeadSection() +
         """
             private static readonly string ValueForCodeA = "CodeA";
@@ -86,7 +86,7 @@ internal static class TestingSourceBuilder
         {
 
         """ + BuildBodySection();
-    
+
     public static string BuildEnumerationWithBlockScopedNamespace() =>
         """
         using PMart.Enumeration.Generator.Attributes;
@@ -100,7 +100,7 @@ internal static class TestingSourceBuilder
             }
         }
         """;
-    
+
     public static string BuildEnumerationWithNestedNamespaces() =>
         """
         using PMart.Enumeration.Generator.Attributes;
@@ -120,7 +120,7 @@ internal static class TestingSourceBuilder
             }
         }
         """;
-    
+
     public static string BuildEnumerationWithoutNamespace() =>
         """
         using PMart.Enumeration.Generator.Attributes;
@@ -130,7 +130,7 @@ internal static class TestingSourceBuilder
         {
 
         """ + BuildBodySection();
-    
+
     public static string BuildEnumerationWithAttributeWithFullNameAndDynamic() =>
         """
         namespace Enumeration.Generator.Tests.Source;
@@ -140,7 +140,7 @@ internal static class TestingSourceBuilder
         {
 
         """ + BuildBodySection();
-    
+
     public static string BuildEnumerationWithOtherAttributes() =>
         """
         using PMart.Enumeration.Generator.Attributes;
@@ -162,7 +162,7 @@ internal static class TestingSourceBuilder
             private static readonly string CodeC = "CodeC";
         }
         """;
-    
+
     public static string BuildEnumerationWithAttributeAndInheritFromEnumeration() =>
         """
         using PMart.Enumeration.Generator.Attributes;
@@ -182,7 +182,7 @@ internal static class TestingSourceBuilder
            public static readonly TestEnumeration CodeB = "CodeB";
         }
         """;
-    
+
     public static string BuildEnumerationDynamicWithAlreadyDefinedMembers() => BuildHeadSection() +
         """
         using PMart.Enumeration.Generator.Attributes;
@@ -197,13 +197,13 @@ internal static class TestingSourceBuilder
            public static readonly TestEnumeration CodeB = "CodeB";
         }
         """;
-    
+
     #endregion
-    
+
     #region Do not generate Enumeration class (without reporting diagnostics) Cases
-    
+
     public static string BuildEnumerationEmpty() => BuildHeadSection() + "}";
-    
+
     public static string BuildEnumerationWithoutAttribute() =>
         """
         using PMart.Enumeration.Generator.Attributes;
@@ -214,7 +214,7 @@ internal static class TestingSourceBuilder
         {
 
         """ + BuildBodySection();
-    
+
     public static string BuildEnumerationNotPartial() =>
         """
         using PMart.Enumeration.Generator.Attributes;
@@ -226,7 +226,7 @@ internal static class TestingSourceBuilder
         {
 
         """ + BuildBodySection();
-    
+
     public static string BuildEnumerationWithMemberNotString() => BuildHeadSection() +
        """
            private static readonly object ValueForCodeA = "CodeA";
@@ -250,25 +250,25 @@ internal static class TestingSourceBuilder
             private const string ValueForCodeA = "CodeA";
         }
         """;
-    
-    public static string BuildEnumerationWithMemberNamedJustValueFor() => BuildHeadSection() + 
+
+    public static string BuildEnumerationWithMemberNamedJustValueFor() => BuildHeadSection() +
         """
             private static readonly string ValueFor = "CodeA";
         }
         """;
-    
+
     #endregion
 
     #region Report diagnostics Cases
-    
+
     public static string BuildEnumerationWithMemberNameEqualsToFieldName() => BuildHeadSection() +
         """
             [EnumerationMember("CodeA")]
             private static readonly string CodeA = "CodeA";
         }
         """;
-    
-    public static string BuildEnumerationWithMemberNameEqualsToExistentMember() => BuildHeadSection() + 
+
+    public static string BuildEnumerationWithMemberNameEqualsToExistentMember() => BuildHeadSection() +
         """
             [EnumerationMember("CodeA")]
             private static readonly string CodeAa = "CodeA";
@@ -276,16 +276,16 @@ internal static class TestingSourceBuilder
             private static readonly string CodeA = "CodeA";
         }
         """;
-    
-    public static string BuildEnumerationWithMemberWithPrefixValueForEqualsToExistentMember() => BuildHeadSection() + 
+
+    public static string BuildEnumerationWithMemberWithPrefixValueForEqualsToExistentMember() => BuildHeadSection() +
         """
             private static readonly string ValueForCodeA = "CodeA";
 
             private static readonly string CodeA = "CodeA";
         }
         """;
-    
-    public static string BuildEnumerationWithMemberNameEqualsToMemberWithPrefixValueFor() => BuildHeadSection() + 
+
+    public static string BuildEnumerationWithMemberNameEqualsToMemberWithPrefixValueFor() => BuildHeadSection() +
         """
             private static readonly string ValueForCodeA = "CodeA";
 
@@ -293,28 +293,28 @@ internal static class TestingSourceBuilder
             private static readonly string CodeAa = "CodeA";
         }
         """;
-    
-    public static string BuildEnumerationWithEmptyMemberName() => BuildHeadSection() + 
+
+    public static string BuildEnumerationWithEmptyMemberName() => BuildHeadSection() +
        """
            [EnumerationMember("")]
            private static readonly string CodeA = "CodeA";
        }
        """;
-    
-    public static string BuildEnumerationWithNullMemberName() => BuildHeadSection() + 
+
+    public static string BuildEnumerationWithNullMemberName() => BuildHeadSection() +
         """
             [EnumerationMember(null)]
             private static readonly string CodeA = "CodeA";
         }
         """;
-    
-    public static string BuildEnumerationWithInvalidMemberName() => BuildHeadSection() + 
+
+    public static string BuildEnumerationWithInvalidMemberName() => BuildHeadSection() +
         """
             [EnumerationMember("123")]
             private static readonly string CodeA = "CodeA";
         }
         """;
-    
+
     #endregion
 
     private static string BuildHeadSection() =>

@@ -18,7 +18,7 @@ public static class SerializeCommunicationSample
     public static CommunicationRecord? DeserializeCommunicationRecord(string json)
     {
         var serializerSettings = GetSerializerSettings();
-        
+
         var communicationRecord = JsonConvert.DeserializeObject<CommunicationRecord>(json, serializerSettings);
 
         return communicationRecord;
@@ -28,7 +28,7 @@ public static class SerializeCommunicationSample
     {
         return new JsonSerializerSettings
         {
-            Converters = {new EnumerationConverter()}
+            Converters = { new EnumerationConverter() }
         };
     }
 }

@@ -438,7 +438,7 @@ public class EnumerationTests
         // Assert
         Assert.False(result);
     }
-    
+
     [Fact]
     public void NotEqualsOperator_WhenDifferentInstanceButSameValue_ShouldReturnFalse()
     {
@@ -452,7 +452,7 @@ public class EnumerationTests
         // Assert
         Assert.False(result);
     }
-    
+
     [Fact]
     public void NotEqualsOperator_WhenSameValueWithDifferentCase_ShouldReturnFalse()
     {
@@ -568,7 +568,7 @@ public class EnumerationTests
         // Assert
         Assert.False(result);
     }
-    
+
     [Fact]
     public void EqualsOperatorWithString_WhenEnumerationIsNull_ShouldReturnFalse()
     {
@@ -656,7 +656,7 @@ public class EnumerationTests
         // Assert
         Assert.True(result);
     }
-    
+
     [Fact]
     public void NotEqualsOperatorWithString_WhenEnumerationIsNull_ShouldReturnFalse()
     {
@@ -694,7 +694,7 @@ public class EnumerationTests
     {
         // Act
         var result = TestEnumeration.IncorrectInstantiation;
-        
+
         // Assert
         Assert.Throws<ArgumentNullException>(result);
     }

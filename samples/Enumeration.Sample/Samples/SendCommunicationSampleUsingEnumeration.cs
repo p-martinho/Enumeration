@@ -22,10 +22,10 @@ public class SendCommunicationSampleUsingEnumeration
     {
         // Parse the string to Enumeration:
         var communicationTypeEnum = CommunicationType.GetFromValueOrDefault(communicationType);
-        
+
         // Verify if exists an enumeration with the value (GetFromValueOrDefault returns null if there isn't any enumeration with the value).
         var isCommunicationTypeValid = communicationTypeEnum is not null;
-        
+
         // ... Or verify it with HasValue method:
         // var isCommunicationTypeValid = CommunicationType.HasValue(communicationType);
 
