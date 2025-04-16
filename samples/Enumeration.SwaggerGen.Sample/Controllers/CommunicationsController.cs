@@ -16,13 +16,11 @@ public class CommunicationsController : ControllerBase
     /// Gets all communication records by type.
     /// </summary>
     /// <param name="type">The communication type.</param>
-    /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A collection of all communication records.</returns>
     /// <response code="200">Returns the list of all communication records.</response>
     [HttpGet]
     [ProducesResponseType(typeof(IEnumerable<CommunicationRecord>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetAllAsync([FromQuery] string? type = null,
-        CancellationToken cancellationToken = default)
+    public async Task<IActionResult> GetAllAsync([FromQuery] string? type = null)
     {
         var communicationTypes = GetCommunicationTypesToFilter(type);
 

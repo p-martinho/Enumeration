@@ -31,7 +31,7 @@ public class EnumerationDynamicConverterTests
     public void ConvertToProvider_WhenNull_ShouldConvertToNull()
     {
         // Arrange
-        var enumeration = (TestEnumerationDynamic?) null;
+        TestEnumerationDynamic? enumeration = null;
 
         // Act
         var result = _converter.ConvertToProvider(enumeration);
@@ -73,7 +73,7 @@ public class EnumerationDynamicConverterTests
     public void ConvertFromProvider_WhenNull_ShouldConvertToNull()
     {
         // Arrange
-        var valueToConvertFrom = (string?) null;
+        string? valueToConvertFrom = null;
 
         // Act
         var result = _converter.ConvertFromProvider(valueToConvertFrom);

@@ -51,23 +51,25 @@ internal static class GeneratorOptimizationTester
         driver = driver.RunGenerators(compilation);
         var runResult = driver.GetRunResult();
 
-        if (assertOutput)
+        if (!assertOutput)
         {
-            // Run again, using the same driver, with a clone of the compilation
-            var runResult2 = driver
-                .RunGenerators(clone)
-                .GetRunResult();
-
-            // Compare all the tracked outputs, throw if there's a failure
-            AssertRunsEqual(runResult, runResult2, trackingNames);
-
-            // verify the second run only generated cached source outputs
-            Assert.True(runResult2.Results[0]
-                .TrackedOutputSteps
-                .SelectMany(x => x.Value) // step executions
-                .SelectMany(x => x.Outputs) // execution results
-                .All(x => x.Reason == IncrementalStepRunReason.Cached));
+            return runResult;
         }
+
+        // Run again, using the same driver, with a clone of the compilation
+        var runResult2 = driver
+            .RunGenerators(clone)
+            .GetRunResult();
+
+        // Compare all the tracked outputs, throw if there's a failure
+        AssertRunsEqual(runResult, runResult2, trackingNames);
+
+        // verify the second run only generated cached source outputs
+        Assert.True(runResult2.Results[0]
+            .TrackedOutputSteps
+            .SelectMany(x => x.Value) // step executions
+            .SelectMany(x => x.Outputs) // execution results
+            .All(x => x.Reason == IncrementalStepRunReason.Cached));
 
         return runResult;
     }
@@ -129,7 +131,7 @@ internal static class GeneratorOptimizationTester
             // - Unchanged is when the _input_ has changed, but the output hasn't
             // - Cached is when the input has not changed, so the cached output is used 
             Assert.True(runStep2.Outputs.All(
-                x => x.Reason == IncrementalStepRunReason.Cached || x.Reason == IncrementalStepRunReason.Unchanged));
+                x => x.Reason is IncrementalStepRunReason.Cached or IncrementalStepRunReason.Unchanged));
 
             // Make sure we're not using anything we shouldn't
             AssertObjectGraph(runStep1);
@@ -145,6 +147,8 @@ internal static class GeneratorOptimizationTester
         {
             Visit(obj);
         }
+
+        return;
 
         void Visit(object? node)
         {

@@ -11,12 +11,12 @@ public class CommunicationRecord
     /// The date when the communication was sent.
     /// </summary>
     public DateTime SentAt { get; set; }
-    
+
     /// <summary>
     /// The destination of the communication.
     /// </summary>
     public string To { get; set; } = null!;
-    
+
     /// <summary>
     /// The communication type.
     /// </summary>

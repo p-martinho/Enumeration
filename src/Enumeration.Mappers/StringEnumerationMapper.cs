@@ -16,7 +16,7 @@ public static class StringEnumerationMapper<T>
     /// <param name="sourceEnumeration">The <see cref="Enumeration{T}"/> to convert.</param>
     /// <returns>The <c>string</c> value, or <c>null</c> if enumeration is <c>null</c>.</returns>
     public static string MapToString(T sourceEnumeration) => sourceEnumeration.MapToString()!;
-    
+
     /// <summary>
     /// Maps from a <c>string</c> to a <see cref="Enumeration{T}"/>.
     /// </summary>

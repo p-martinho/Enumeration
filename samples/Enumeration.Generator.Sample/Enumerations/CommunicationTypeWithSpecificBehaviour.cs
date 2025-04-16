@@ -11,9 +11,9 @@ public partial class CommunicationTypeWithSpecificBehaviour
     public static readonly CommunicationTypeWithSpecificBehaviour Email = new EmailType();
 
     public static readonly CommunicationTypeWithSpecificBehaviour Sms = new SmsType();
-    
+
     public static readonly CommunicationTypeWithSpecificBehaviour PushNotification = new PushNotificationType();
-    
+
     private static readonly string ValueForOther = "Other";
 
     /// <summary>
@@ -29,33 +29,33 @@ public partial class CommunicationTypeWithSpecificBehaviour
         public EmailType() : base("Email")
         {
         }
-        
+
         /// <inheritdoc />
         public override string ParseMessage(string message)
         {
             return $"<html>{message}</html>";
         }
     }
-    
+
     private sealed class SmsType : CommunicationTypeWithSpecificBehaviour
     {
         public SmsType() : base("Sms")
         {
         }
-        
+
         /// <inheritdoc />
         public override string ParseMessage(string message)
         {
             return $"Message encoded for SMS: {message}";
         }
     }
-    
+
     private sealed class PushNotificationType : CommunicationTypeWithSpecificBehaviour
     {
         public PushNotificationType() : base("PushNotification")
         {
         }
-        
+
         /// <inheritdoc />
         public override string ParseMessage(string message)
         {

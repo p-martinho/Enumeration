@@ -3,17 +3,17 @@ using Enumeration.Mappers.Sample.Samples.Mapperly.Models;
 
 namespace Enumeration.Mappers.Sample.Samples.Mapperly;
 
-public class MapWithMapperlySample
+public static class MapWithMapperlySample
 {
-    private readonly SampleMapper _mapper = new SampleMapper();
+    private static readonly SampleMapper Mapper = new();
 
     /// <summary>
     /// Maps from <see cref="SourceObject"/> to <see cref="DestinationObject"/>.
     /// </summary>
     /// <param name="source">The source object.</param>
     /// <returns>The mapped object.</returns>
-    public DestinationObject MapObject(SourceObject source)
+    public static DestinationObject MapObject(SourceObject source)
     {
-        return _mapper.SourceToDestination(source);
+        return Mapper.SourceToDestination(source);
     }
 }

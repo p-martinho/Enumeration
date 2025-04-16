@@ -7,14 +7,14 @@ namespace Enumeration.Generator.IntegrationTests.EnumerationClasses;
 public partial class TestEnumerationWithIgnoreAttribute
 {
     private static readonly string ValueForCodeA = "CodeA";
-    
+
     [EnumerationIgnore]
     private static readonly string ValueForCodeB = "CodeB";
-    
+
     [EnumerationIgnore]
     [EnumerationMember("CodeC")]
     private static readonly string CodeC = "CodeC";
-    
+
     [EnumerationMember("CodeD")]
     [EnumerationIgnore]
     private static readonly string CodeD = "CodeD";

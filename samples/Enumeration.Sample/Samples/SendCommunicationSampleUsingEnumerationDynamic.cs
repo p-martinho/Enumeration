@@ -37,11 +37,11 @@ public class SendCommunicationSampleUsingEnumerationDynamic
 
         if (isCommunicationTypeDeclared)
         {
-            Console.WriteLine($"The communication type is a known type.");
+            Console.WriteLine("The communication type is a known type.");
         }
         else
         {
-            Console.WriteLine($"The communication type is a unknown type.");
+            Console.WriteLine("The communication type is a unknown type.");
         }
     }
 

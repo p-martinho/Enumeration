@@ -13,7 +13,7 @@ internal static class SourceGenerationBuilder
     private const string EnumerationFullyQualifiedName = "global::PMart.Enumeration.Enumeration";
     private const string EnumerationDynamicFullyQualifiedName = "global::PMart.Enumeration.EnumerationDynamic";
     private const string GeneratedCodeAttributeFullyQualifiedName = "global::System.CodeDom.Compiler.GeneratedCodeAttribute";
-    
+
     /// <summary>
     /// Generates the source code for the Enumeration class.
     /// </summary>
@@ -35,7 +35,7 @@ internal static class SourceGenerationBuilder
 
 
             """);
-        
+
         sb.Append(
             """
             #nullable enable
@@ -77,7 +77,7 @@ internal static class SourceGenerationBuilder
         if (enumerationToGenerate.IsDynamic)
         {
             sb.Append(generatedCodeAttribute);
-            
+
             sb.Append(
                 """
 
@@ -90,7 +90,7 @@ internal static class SourceGenerationBuilder
 
                 """);
         }
-        
+
         sb.Append(generatedCodeAttribute);
 
         sb.Append(
@@ -104,7 +104,7 @@ internal static class SourceGenerationBuilder
                     }
                 }
             """);
-        
+
         if (hasNamespace)
         {
             sb.Append(
@@ -120,32 +120,32 @@ internal static class SourceGenerationBuilder
     private static string BuildFullyQualifiedName(EnumerationToGenerate enumerationToGenerate, bool hasNamespace)
     {
         var fullyQualifiedNameStringBuilder = new StringBuilder();
-        
+
         fullyQualifiedNameStringBuilder.Append("global::");
 
         if (hasNamespace)
         {
             fullyQualifiedNameStringBuilder.Append(enumerationToGenerate.Namespace).Append(".");
         }
-        
+
         fullyQualifiedNameStringBuilder.Append(enumerationToGenerate.Name);
-        
+
         return fullyQualifiedNameStringBuilder.ToString();
     }
-    
+
     private static string BuildGeneratedCodeAttribute()
     {
         var generatorNamespace = typeof(EnumerationGenerator).Namespace;
         var assemblyVersion = typeof(EnumerationGenerator).Assembly.GetName().Version.ToString();
-        
+
         var generatedCodeAttributeStringBuilder = new StringBuilder();
-        
+
         generatedCodeAttributeStringBuilder.Append(
             """
             
                     [
             """).Append(GeneratedCodeAttributeFullyQualifiedName).Append("(\"").Append(generatorNamespace).Append("\", \"").Append(assemblyVersion).Append("\")]");
-        
+
         return generatedCodeAttributeStringBuilder.ToString();
     }
 }

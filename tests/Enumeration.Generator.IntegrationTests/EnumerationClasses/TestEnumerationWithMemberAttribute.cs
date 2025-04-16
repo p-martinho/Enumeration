@@ -7,7 +7,7 @@ public partial class TestEnumerationWithMemberAttribute
 {
     [EnumerationMember("MemberCodeA")]
     private static readonly string CodeA = "CodeA";
-    
+
     [EnumerationMember("MemberCodeB")]
     private static readonly string ValueForCodeB = "CodeB";
 }

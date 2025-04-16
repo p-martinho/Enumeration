@@ -12,27 +12,27 @@ internal readonly record struct EnumerationToGenerate
     /// The name for the Enumeration class.
     /// </summary>
     public readonly string? Name;
-    
+
     /// <summary>
     /// The namespace.
     /// </summary>
     public readonly string? Namespace;
-    
+
     /// <summary>
     /// The accessibility level.
     /// </summary>
     public readonly string? AccessibilityLevel;
-    
+
     /// <summary>
     /// The value indicating if the Enumeration to generate is EnumerationDynamic.
     /// </summary>
     public readonly bool IsDynamic;
-    
+
     /// <summary>
     /// The members to add to the Enumeration class.
     /// </summary>
     public readonly EquatableStringDictionary? Members;
-    
+
     /// <summary>
     /// The error to report.
     /// </summary>
@@ -59,7 +59,7 @@ internal readonly record struct EnumerationToGenerate
         IsDynamic = isDynamic;
         Members = members;
     }
-    
+
     /// <summary>
     /// initializes a new instance of the class <see cref="EnumerationToGenerate"/> with error.
     /// </summary>

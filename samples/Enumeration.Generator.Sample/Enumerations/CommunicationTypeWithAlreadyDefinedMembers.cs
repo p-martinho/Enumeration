@@ -11,6 +11,6 @@ public partial class CommunicationTypeWithAlreadyDefinedMembers
     public static readonly CommunicationTypeWithAlreadyDefinedMembers Email = new("Email");
 
     public static readonly CommunicationTypeWithAlreadyDefinedMembers Sms = new("SMS");
-    
+
     public static readonly CommunicationTypeWithAlreadyDefinedMembers PushNotification = new("PushNotification");
 }

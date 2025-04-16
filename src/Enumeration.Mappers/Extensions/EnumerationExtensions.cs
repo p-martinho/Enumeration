@@ -16,7 +16,7 @@ public static class EnumerationExtensions
     {
         return sourceEnumeration?.Value;
     }
-    
+
     /// <summary>
     /// Maps from a <c>string</c> value to a <see cref="Enumeration{TTarget}"/>.
     /// </summary>

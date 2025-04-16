@@ -25,7 +25,7 @@ public class SendCommunicationSampleUsingGeneratedEnumerationDynamic
     {
         // If this code compiles, the CommunicationTypeDynamic enumeration dynamic was properly generated.
         var communicationTypeEnum = CommunicationTypeDynamic.GetFromValueOrNew(communicationType);
-        
+
         var communicationSender = GetCommunicationSenderForCommunicationType(communicationTypeEnum);
 
         if (communicationSender is null)
@@ -39,7 +39,7 @@ public class SendCommunicationSampleUsingGeneratedEnumerationDynamic
 
         return "Ok: Message sent successfully.";
     }
-    
+
     private ISender? GetCommunicationSenderForCommunicationType(CommunicationTypeDynamic? communicationType)
     {
         // If this code compiles, the several CommunicationTypeDynamic enumeration members were properly generated.

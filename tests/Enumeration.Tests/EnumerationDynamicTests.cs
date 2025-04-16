@@ -61,7 +61,7 @@ public class EnumerationDynamicTests
         // Assert
         Assert.Null(instance);
     }
-    
+
     [Fact]
     public void GetFromValueOrNew_WhenCallingWithSameValueTwice_ShouldReturnTwoDifferentInstancesButEqual()
     {
@@ -79,7 +79,7 @@ public class EnumerationDynamicTests
         Assert.NotSame(instance1, instance2);
         Assert.Equal(instance1, instance2);
     }
-    
+
     [Fact]
     public void GetFromValueOrNew_WhenCallingWithSameValueWithDifferentCase_ShouldReturnTwoDifferentInstancesButEqual()
     {
@@ -123,7 +123,7 @@ public class EnumerationDynamicTests
         var newMember = TestEnumerationDynamic.GetFromValueOrNew("newCode");
 
         // Act
-        var membersList = (ImmutableHashSet<TestEnumerationDynamic>) TestEnumerationDynamic.GetMembers();
+        var membersList = (ImmutableHashSet<TestEnumerationDynamic>)TestEnumerationDynamic.GetMembers();
         membersList = membersList.Add(newMember!);
         var originalMembersList = TestEnumerationDynamic.GetMembers();
 

@@ -3,6 +3,4 @@
 /// <summary>
 /// Interface for push notification sender.
 /// </summary>
-public interface IPushNotificationSender : ISender
-{
-}
+public interface IPushNotificationSender : ISender;

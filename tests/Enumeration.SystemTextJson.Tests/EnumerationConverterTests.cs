@@ -6,6 +6,16 @@ namespace Enumeration.SystemTextJson.Tests;
 
 public class EnumerationConverterTests
 {
+    private readonly JsonSerializerOptions _serializerOptions;
+
+    public EnumerationConverterTests()
+    {
+        _serializerOptions = new JsonSerializerOptions
+        {
+            Converters = { new EnumerationConverterFactory() }
+        };
+    }
+
     #region Serialize Tests
 
     [Fact]
@@ -13,14 +23,10 @@ public class EnumerationConverterTests
     {
         // Arrange
         var instance = TestEnumeration.CodeA;
-        var test = new TestClass {Test = instance};
-        var serializerOptions = new JsonSerializerOptions
-        {
-            Converters = {new EnumerationConverterFactory()}
-        };
+        var test = new TestClass { Test = instance };
 
         // Act
-        var result = JsonSerializer.Serialize(test, serializerOptions);
+        var result = JsonSerializer.Serialize(test, _serializerOptions);
 
         // Assert
         Assert.Equal("{\"Test\":\"" + instance.Value + "\"}", result);
@@ -30,14 +36,10 @@ public class EnumerationConverterTests
     public void Serialize_WhenNull_ShouldSucceed()
     {
         // Arrange
-        var test = new TestClass {Test = null};
-        var serializerOptions = new JsonSerializerOptions
-        {
-            Converters = {new EnumerationConverterFactory()}
-        };
+        var test = new TestClass { Test = null };
 
         // Act
-        var result = JsonSerializer.Serialize(test, serializerOptions);
+        var result = JsonSerializer.Serialize(test, _serializerOptions);
 
         // Assert
         Assert.Equal("{\"Test\":null}", result);
@@ -53,13 +55,9 @@ public class EnumerationConverterTests
         // Arrange
         var instance = TestEnumeration.CodeA;
         var json = "{\"Test\":\"" + instance.Value + "\"}";
-        var serializerOptions = new JsonSerializerOptions
-        {
-            Converters = {new EnumerationConverterFactory()}
-        };
 
         // Act
-        var result = JsonSerializer.Deserialize<TestClass>(json, serializerOptions);
+        var result = JsonSerializer.Deserialize<TestClass>(json, _serializerOptions);
 
         // Assert
         Assert.NotNull(result);
@@ -71,13 +69,9 @@ public class EnumerationConverterTests
     {
         // Arrange
         var json = "{\"Test\":null}";
-        var serializerOptions = new JsonSerializerOptions
-        {
-            Converters = {new EnumerationConverterFactory()}
-        };
 
         // Act
-        var result = JsonSerializer.Deserialize<TestClass>(json, serializerOptions);
+        var result = JsonSerializer.Deserialize<TestClass>(json, _serializerOptions);
 
         // Assert
         Assert.NotNull(result);

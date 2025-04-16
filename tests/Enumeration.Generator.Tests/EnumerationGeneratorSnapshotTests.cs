@@ -21,7 +21,7 @@ public class EnumerationGeneratorSnapshotTests
         // Assert
         return Verify(driver);
     }
-    
+
     [Fact]
     public Task EnumerationWithNamedMembers_ShouldGenerateMembersWithCorrectName()
     {
@@ -34,7 +34,7 @@ public class EnumerationGeneratorSnapshotTests
         // Assert
         return Verify(driver);
     }
-    
+
     [Fact]
     public Task EnumerationDynamic_ShouldGenerateEnumerationDynamicClass()
     {
@@ -47,7 +47,7 @@ public class EnumerationGeneratorSnapshotTests
         // Assert
         return Verify(driver);
     }
-    
+
     [Fact]
     public Task EnumerationWithMembersToIgnore_ShouldGenerateEnumerationWithoutIgnoredMembers()
     {
@@ -60,7 +60,7 @@ public class EnumerationGeneratorSnapshotTests
         // Assert
         return Verify(driver);
     }
-    
+
     [Fact]
     public Task InternalEnumeration_ShouldGenerateEnumerationClassInternal()
     {
@@ -86,7 +86,7 @@ public class EnumerationGeneratorSnapshotTests
         // Assert
         return Verify(driver);
     }
-    
+
     [Fact]
     public Task EnumerationWithValueDifferentFromMemberName_ShouldGenerateMemberWithCorrectName()
     {
@@ -99,7 +99,7 @@ public class EnumerationGeneratorSnapshotTests
         // Assert
         return Verify(driver);
     }
-    
+
     [Fact]
     public Task EnumerationWithOtherNonEnumerationMembers_ShouldGenerateEnumerationClass()
     {
@@ -112,7 +112,7 @@ public class EnumerationGeneratorSnapshotTests
         // Assert
         return Verify(driver);
     }
-    
+
     [Fact]
     public Task EnumerationsInSameFile_ShouldGenerateEnumerationClasses()
     {
@@ -125,7 +125,7 @@ public class EnumerationGeneratorSnapshotTests
         // Assert
         return Verify(driver);
     }
-    
+
     [Fact]
     public Task TwoEnumerationsInSameFileOneWithoutAttribute_ShouldGenerateOnlyOneEnumerationClass()
     {
@@ -138,7 +138,7 @@ public class EnumerationGeneratorSnapshotTests
         // Assert
         return Verify(driver);
     }
-    
+
     [Fact]
     public Task EnumerationWithBlockScopedNamespace_ShouldGenerateEnumerationClassWithCorrectNamespace()
     {
@@ -151,7 +151,7 @@ public class EnumerationGeneratorSnapshotTests
         // Assert
         return Verify(driver);
     }
-    
+
     [Fact]
     public Task EnumerationWithNestedNamespaces_ShouldGenerateEnumerationClassWithFullNamespace()
     {
@@ -164,7 +164,7 @@ public class EnumerationGeneratorSnapshotTests
         // Assert
         return Verify(driver);
     }
-    
+
     [Fact]
     public Task EnumerationWithoutNamespace_ShouldGenerateEnumerationClassWithoutNamespace()
     {
@@ -177,7 +177,7 @@ public class EnumerationGeneratorSnapshotTests
         // Assert
         return Verify(driver);
     }
-    
+
     [Fact]
     public Task EnumerationWithAttributeWithFullNameAndDynamic_ShouldGenerateEnumerationDynamicClass()
     {
@@ -190,7 +190,7 @@ public class EnumerationGeneratorSnapshotTests
         // Assert
         return Verify(driver);
     }
-    
+
     [Fact]
     public Task EnumerationWithOtherAttributes_ShouldGenerateEnumerationClass()
     {
@@ -203,7 +203,7 @@ public class EnumerationGeneratorSnapshotTests
         // Assert
         return Verify(driver);
     }
-    
+
     [Fact]
     public Task EnumerationWithAttributeAndInheritFromEnumeration_ShouldGenerateEnumerationClass()
     {
@@ -216,7 +216,7 @@ public class EnumerationGeneratorSnapshotTests
         // Assert
         return Verify(driver);
     }
-    
+
     [Fact]
     public Task EnumerationWithAlreadyDefinedMembers_ShouldGenerateEnumerationClass()
     {
@@ -229,7 +229,7 @@ public class EnumerationGeneratorSnapshotTests
         // Assert
         return Verify(driver);
     }
-    
+
     [Fact]
     public Task EnumerationDynamicWithAlreadyDefinedMembers_ShouldGenerateEnumerationClass()
     {
@@ -242,7 +242,7 @@ public class EnumerationGeneratorSnapshotTests
         // Assert
         return Verify(driver);
     }
-    
+
     #endregion
 
     #region Do not generate Enumeration class (without reporting diagnostics) Tests
@@ -259,7 +259,7 @@ public class EnumerationGeneratorSnapshotTests
         // Assert
         return Verify(driver);
     }
-    
+
     [Fact]
     public Task EnumerationEmpty_ShouldNotGenerateEnumerationClass()
     {
@@ -272,7 +272,7 @@ public class EnumerationGeneratorSnapshotTests
         // Assert
         return Verify(driver);
     }
-    
+
     [Fact]
     public Task EnumerationWithoutAttribute_ShouldNotGenerateEnumerationClass()
     {
@@ -285,7 +285,7 @@ public class EnumerationGeneratorSnapshotTests
         // Assert
         return Verify(driver);
     }
-    
+
     [Fact]
     public Task EnumerationNotPartial_ShouldNotGenerateEnumerationClass()
     {
@@ -298,7 +298,7 @@ public class EnumerationGeneratorSnapshotTests
         // Assert
         return Verify(driver);
     }
-    
+
     [Fact]
     public Task EnumerationWithMemberNotString_ShouldNotGenerateEnumerationClass()
     {
@@ -311,7 +311,7 @@ public class EnumerationGeneratorSnapshotTests
         // Assert
         return Verify(driver);
     }
-    
+
     [Fact]
     public Task EnumerationWithMemberNotPrivate_ShouldNotGenerateEnumerationClass()
     {
@@ -324,7 +324,7 @@ public class EnumerationGeneratorSnapshotTests
         // Assert
         return Verify(driver);
     }
-    
+
     [Fact]
     public Task EnumerationWithMemberNotStatic_ShouldNotGenerateEnumerationClass()
     {
@@ -337,7 +337,7 @@ public class EnumerationGeneratorSnapshotTests
         // Assert
         return Verify(driver);
     }
-    
+
     [Fact]
     public Task EnumerationWithMemberConstant_ShouldNotGenerateEnumerationClass()
     {
@@ -350,7 +350,7 @@ public class EnumerationGeneratorSnapshotTests
         // Assert
         return Verify(driver);
     }
-    
+
     [Fact]
     public Task EnumerationWithMemberNamedJustValueFor_ShouldNotGenerateEnumerationClass()
     {
@@ -363,11 +363,11 @@ public class EnumerationGeneratorSnapshotTests
         // Assert
         return Verify(driver);
     }
-    
+
     #endregion
 
     #region Report diagnostics Tests
-    
+
     [Fact]
     public Task EnumerationWithMemberNameEqualsToFieldName_ShouldReportError()
     {
@@ -380,7 +380,7 @@ public class EnumerationGeneratorSnapshotTests
         // Assert
         return Verify(driver);
     }
-    
+
     [Fact]
     public Task EnumerationWithMemberNameEqualsToExistentMember_ShouldReportError()
     {
@@ -393,7 +393,7 @@ public class EnumerationGeneratorSnapshotTests
         // Assert
         return Verify(driver);
     }
-    
+
     [Fact]
     public Task EnumerationWithMemberWithPrefixValueForEqualsToExistentMember_ShouldReportError()
     {
@@ -406,7 +406,7 @@ public class EnumerationGeneratorSnapshotTests
         // Assert
         return Verify(driver);
     }
-    
+
     [Fact]
     public Task EnumerationWithMemberNameEqualsToMemberWithPrefixValueFor_ShouldReportError()
     {
@@ -419,7 +419,7 @@ public class EnumerationGeneratorSnapshotTests
         // Assert
         return Verify(driver);
     }
-    
+
     [Fact]
     public Task EnumerationWithEmptyMemberName_ShouldReportError()
     {
@@ -432,7 +432,7 @@ public class EnumerationGeneratorSnapshotTests
         // Assert
         return Verify(driver);
     }
-    
+
     [Fact]
     public Task EnumerationWithNullMemberName_ShouldReportError()
     {
@@ -445,7 +445,7 @@ public class EnumerationGeneratorSnapshotTests
         // Assert
         return Verify(driver);
     }
-    
+
     [Fact]
     public Task EnumerationWithInvalidMemberName_ShouldReportError()
     {
@@ -458,7 +458,7 @@ public class EnumerationGeneratorSnapshotTests
         // Assert
         return Verify(driver);
     }
-    
+
     #endregion
 
     private static Task Verify(GeneratorDriver driver)

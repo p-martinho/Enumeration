@@ -10,7 +10,7 @@ public partial class TestEnumerationWithSeveralMembers
     private static readonly string ValueForCodeB = "CodeB";
     [EnumerationMember("CodeC")]
     private static readonly string CodeCa = "CodeC";
-    
+
     // not readonly, member to ignore
     private static string ValueForCodeD = "CodeD";
 }

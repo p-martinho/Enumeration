@@ -3,6 +3,4 @@
 /// <summary>
 /// Interface for emails sender.
 /// </summary>
-public interface IEmailSender : ISender
-{
-}
+public interface IEmailSender : ISender;

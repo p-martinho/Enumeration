@@ -14,17 +14,17 @@ internal readonly record struct ErrorToReport
     /// The error location.
     /// </summary>
     public readonly Location? Location;
-    
+
     /// <summary>
     /// The error ID.
     /// </summary>
     public readonly string ErrorId = string.Empty;
-    
+
     /// <summary>
     /// The error message.
     /// </summary>
     public readonly string Message = string.Empty;
-    
+
     /// <summary>
     /// The member name where the error is located.
     /// </summary>

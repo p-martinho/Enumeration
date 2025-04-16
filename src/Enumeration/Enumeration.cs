@@ -10,7 +10,7 @@ namespace PMart.Enumeration;
 public abstract class Enumeration<T> : IEquatable<Enumeration<T>> where T : Enumeration<T>
 {
     private static readonly Lazy<ImmutableHashSet<T>> MembersLazy = new(BuildMembersHashSet);
-    
+
     private readonly string _value = null!;
 
     /// <summary>
@@ -97,7 +97,7 @@ public abstract class Enumeration<T> : IEquatable<Enumeration<T>> where T : Enum
     /// <inheritdoc />
     public override bool Equals(object? obj)
     {
-        return (obj is Enumeration<T> other) && Equals(other);
+        return obj is Enumeration<T> other && Equals(other);
     }
 
     /// <inheritdoc />

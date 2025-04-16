@@ -4,9 +4,9 @@ using PMart.Enumeration.JsonNet;
 
 namespace Enumeration.JsonNet.Sample.Samples;
 
-public class SerializeCommunicationSample
+public static class SerializeCommunicationSample
 {
-    public string SerializeCommunicationRecord(CommunicationRecord communicationRecord)
+    public static string SerializeCommunicationRecord(CommunicationRecord communicationRecord)
     {
         var serializerSettings = GetSerializerSettings();
 
@@ -15,20 +15,20 @@ public class SerializeCommunicationSample
         return json;
     }
 
-    public CommunicationRecord? DeserializeCommunicationRecord(string json)
+    public static CommunicationRecord? DeserializeCommunicationRecord(string json)
     {
         var serializerSettings = GetSerializerSettings();
-        
+
         var communicationRecord = JsonConvert.DeserializeObject<CommunicationRecord>(json, serializerSettings);
 
         return communicationRecord;
     }
 
-    private JsonSerializerSettings GetSerializerSettings()
+    private static JsonSerializerSettings GetSerializerSettings()
     {
         return new JsonSerializerSettings
         {
-            Converters = {new EnumerationConverter()}
+            Converters = { new EnumerationConverter() }
         };
     }
 }

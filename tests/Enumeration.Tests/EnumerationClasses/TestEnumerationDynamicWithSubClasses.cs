@@ -10,7 +10,7 @@ internal class TestEnumerationDynamicWithSubClasses : EnumerationDynamic<TestEnu
     public TestEnumerationDynamicWithSubClasses()
     {
     }
-    
+
     protected TestEnumerationDynamicWithSubClasses(string value) : base(value)
     {
     }

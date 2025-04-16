@@ -13,17 +13,17 @@ internal static class ErrorIds
     /// The ID for the error "invalid member name".
     /// </summary>
     public const string InvalidMemberName = "ENUM0001";
-    
+
     /// <summary>
     /// The ID for the error "member and constant has same name".
     /// </summary>
     public const string MemberHasSameNameAsConstant = "ENUM0002";
-    
+
     /// <summary>
     /// The ID for error "other member with same name already declared".
     /// </summary>
     public const string MemberWithSameNameAlreadyDeclared = "ENUM0003";
-    
+
     /// <summary>
     /// The ID for the error "member name duplicated".
     /// </summary>

@@ -15,7 +15,7 @@ public class EnumerationConverterTests
         var enumeration = TestEnumeration.CodeA;
         var enumerationDynamicValue = "newValue";
         var enumerationDynamic = TestEnumerationDynamic.GetFromValueOrNew(enumerationDynamicValue);
-        var test = new TestClass {Test = enumeration, TestDynamic = enumerationDynamic};
+        var test = new TestClass { Test = enumeration, TestDynamic = enumerationDynamic };
 
         // Act
         var result = JsonConvert.SerializeObject(test, new EnumerationConverter());
@@ -29,7 +29,7 @@ public class EnumerationConverterTests
     public void Serialize_WhenNull_ShouldSucceed()
     {
         // Arrange
-        var test = new TestClass {Test = null, TestDynamic = null};
+        var test = new TestClass { Test = null, TestDynamic = null };
 
         // Act
         var result = JsonConvert.SerializeObject(test, new EnumerationConverter());

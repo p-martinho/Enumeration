@@ -7,6 +7,4 @@ namespace PMart.Enumeration.Generator.Attributes;
 [System.AttributeUsage(System.AttributeTargets.Field)]
 [System.Diagnostics.Conditional("ENUMERATION_ATTRIBUTES_SCOPE_RUNTIME")]
 [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
-public class EnumerationIgnoreAttribute : System.Attribute
-{
-}
+public class EnumerationIgnoreAttribute : System.Attribute;

@@ -9,23 +9,23 @@ public class EnumerationGeneratorIntegrationTests
     {
         // Act
         var enumeration = TestEnumerationWithValueFor.CodeA;
-    
+
         // Assert
         Assert.Equal("CodeA", enumeration.Value);
     }
-    
+
     [Fact]
     public void EnumerationWithMemberAttribute_ShouldGenerateMemberFromAttribute()
     {
         // Act
         var enumerationA = TestEnumerationWithMemberAttribute.MemberCodeA;
         var enumerationB = TestEnumerationWithMemberAttribute.MemberCodeB;
-    
+
         // Assert
         Assert.Equal("CodeA", enumerationA.Value);
         Assert.Equal("CodeB", enumerationB.Value);
     }
-    
+
     [Fact]
     public void EnumerationWithIgnoreAttribute_ShouldNotGenerateMembers()
     {
@@ -35,11 +35,11 @@ public class EnumerationGeneratorIntegrationTests
         // var enumerationB = TestEnumerationWithIgnoreAttribute.CodeB;
         // var enumerationC = TestEnumerationWithIgnoreAttribute.CodeC;
         // var enumerationD = TestEnumerationWithIgnoreAttribute.CodeD;
-        
+
         // Assert
         Assert.Equal("CodeA", enumerationA.Value);
     }
-    
+
     [Fact]
     public void EnumerationWithMembersToIgnore_ShouldNotGenerateMembers()
     {
@@ -51,11 +51,11 @@ public class EnumerationGeneratorIntegrationTests
         // var enumerationD = TestEnumerationWithMembersToIgnore.CodeD;
         // var enumerationE = TestEnumerationWithMembersToIgnore.CodeE;
         // var enumerationF = TestEnumerationWithMembersToIgnore.CodeF;
-        
+
         // Assert
         Assert.Equal("CodeA", enumerationA.Value);
     }
-    
+
     [Fact]
     public void EnumerationWithSeveralMembers_ShouldGenerateAllMembers()
     {
@@ -65,32 +65,32 @@ public class EnumerationGeneratorIntegrationTests
         var enumerationC = TestEnumerationWithSeveralMembers.CodeC;
         // Compile error, members where not added:
         //var enumerationD = TestEnumerationWithSeveralMembers.CodeD;
-        
+
         // Assert
         Assert.Equal("CodeA", enumerationA.Value);
         Assert.Equal("CodeB", enumerationB.Value);
         Assert.Equal("CodeC", enumerationC.Value);
     }
-    
+
     [Fact]
     public void EnumerationWithIsDynamic_ShouldGenerateEnumerationDynamic()
     {
         // Act
         var enumeration = TestEnumerationDynamic.CodeA;
         var enumerationDynamic = TestEnumerationDynamic.GetFromValueOrNew("CodeB");
-    
+
         // Assert
         Assert.Equal("CodeA", enumeration.Value);
         Assert.NotNull(enumerationDynamic);
         Assert.Equal("CodeB", enumerationDynamic.Value);
     }
-    
+
     [Fact]
     public void EnumerationWithAlreadyDefinedMember_ShouldGenerateEnumeration()
     {
         // Act
         var enumeration = TestEnumerationWithAlreadyDefinedMember.CodeA;
-    
+
         // Assert
         Assert.Equal("CodeA", enumeration.Value);
     }

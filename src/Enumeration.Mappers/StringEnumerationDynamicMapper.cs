@@ -15,7 +15,7 @@ public static class StringEnumerationDynamicMapper<T>
     /// <param name="sourceEnumeration">The <see cref="EnumerationDynamic{T}"/> to convert.</param>
     /// <returns>The <c>string</c> value, or <c>null</c> if enumeration is <c>null</c>.</returns>
     public static string MapToString(T sourceEnumeration) => sourceEnumeration.MapToString()!;
-    
+
     /// <summary>
     /// Maps from a <c>string</c> value to a <see cref="EnumerationDynamic{T}"/>.
     /// </summary>

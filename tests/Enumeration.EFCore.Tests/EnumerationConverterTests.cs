@@ -18,7 +18,7 @@ public class EnumerationConverterTests
     {
         // Arrange
         var enumeration = TestEnumeration.CodeA;
-        
+
         // Act
         var result = _converter.ConvertToProvider(enumeration) as string;
 
@@ -26,26 +26,26 @@ public class EnumerationConverterTests
         Assert.NotNull(result);
         Assert.Equal(TestEnumeration.CodeA.Value, result);
     }
-    
+
     [Fact]
     public void ConvertToProvider_WhenNull_ShouldConvertToNull()
     {
         // Arrange
-        var enumeration = (TestEnumeration?)null;
-        
+        TestEnumeration? enumeration = null;
+
         // Act
         var result = _converter.ConvertToProvider(enumeration);
 
         // Assert
         Assert.Null(result);
     }
-    
+
     [Fact]
     public void ConvertFromProvider_ShouldSucceed()
     {
         // Arrange
         var valueToConvertFrom = TestEnumeration.CodeA.Value;
-        
+
         // Act
         var result = _converter.ConvertFromProvider(valueToConvertFrom) as TestEnumeration;
 
@@ -53,33 +53,33 @@ public class EnumerationConverterTests
         Assert.NotNull(result);
         Assert.Equal(TestEnumeration.CodeA, result);
     }
-    
+
     [Fact]
     public void ConvertFromProvider_WhenNull_ShouldConvertToNull()
     {
         // Arrange
-        var valueToConvertFrom = (string?)null;
-        
+        string? valueToConvertFrom = null;
+
         // Act
         var result = _converter.ConvertFromProvider(valueToConvertFrom);
 
         // Assert
         Assert.Null(result);
     }
-    
+
     [Fact]
     public void ConvertFromProvider_WhenInvalidValue_ShouldConvertToNull()
     {
         // Arrange
         var valueToConvertFrom = "someValue";
-        
+
         // Act
         var result = _converter.ConvertFromProvider(valueToConvertFrom);
 
         // Assert
         Assert.Null(result);
     }
-    
+
     private class TestEnumeration : Enumeration<TestEnumeration>
     {
         public static readonly TestEnumeration CodeA = new(nameof(CodeA));
