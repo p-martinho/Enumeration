@@ -3,6 +3,4 @@
 /// <summary>
 /// Interface for SMS sender.
 /// </summary>
-public interface ISmsSender : ISender
-{
-}
+public interface ISmsSender : ISender;

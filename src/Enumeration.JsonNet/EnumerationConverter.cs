@@ -37,7 +37,7 @@ public class EnumerationConverter : JsonConverter
         writer.WriteValue(value?.ToString());
     }
 
-    private object? GetEnumerationFromValue(string? value, Type objectType)
+    private static object? GetEnumerationFromValue(string? value, Type objectType)
     {
         try
         {
@@ -53,7 +53,7 @@ public class EnumerationConverter : JsonConverter
                 .MakeGenericType(objectType)
                 .GetMethod(methodName);
 
-            return methodInfo!.Invoke(null, new object?[] {value});
+            return methodInfo!.Invoke(null, [value]);
         }
         catch (Exception ex)
         {

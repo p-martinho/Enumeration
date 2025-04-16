@@ -4,20 +4,20 @@ using PMart.Enumeration.Mappers.Extensions;
 
 namespace Enumeration.Mappers.Sample.Samples;
 
-public class MapToOtherCommunicationDynamicSample
+public static class MapToOtherCommunicationDynamicSample
 {
-    public OtherCommunicationTypeDynamic? MapToOtherTypeOfEnumeration(CommunicationType communicationType)
+    public static OtherCommunicationTypeDynamic? MapToOtherTypeOfEnumeration(CommunicationType communicationType)
     {
         return OtherCommunicationTypeDynamic.GetFromValueOrNew(communicationType.Value);
     }
 
-    public OtherCommunicationTypeDynamic? MapToOtherTypeOfEnumerationUsingExtensions(
+    public static OtherCommunicationTypeDynamic? MapToOtherTypeOfEnumerationUsingExtensions(
         CommunicationType communicationType)
     {
         return communicationType.MapToEnumerationDynamic<CommunicationType, OtherCommunicationTypeDynamic>();
     }
 
-    public OtherCommunicationTypeDynamic MapToOtherTypeOfEnumerationTypeUsingMapper(CommunicationType communicationType)
+    public static OtherCommunicationTypeDynamic MapToOtherTypeOfEnumerationTypeUsingMapper(CommunicationType communicationType)
     {
         return EnumerationDynamicMapper<CommunicationType, OtherCommunicationTypeDynamic>.MapToEnumerationDynamic(
             communicationType);

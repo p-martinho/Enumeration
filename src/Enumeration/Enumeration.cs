@@ -97,7 +97,7 @@ public abstract class Enumeration<T> : IEquatable<Enumeration<T>> where T : Enum
     /// <inheritdoc />
     public override bool Equals(object? obj)
     {
-        return (obj is Enumeration<T> other) && Equals(other);
+        return obj is Enumeration<T> other && Equals(other);
     }
 
     /// <inheritdoc />

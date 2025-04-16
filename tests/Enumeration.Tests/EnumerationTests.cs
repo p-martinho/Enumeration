@@ -296,7 +296,7 @@ public class EnumerationTests
     {
         // Arrange
         var instance1 = TestEnumeration.CodeA;
-        var instance2 = (TestEnumeration?) null;
+        TestEnumeration? instance2 = null;
 
         // Act
         var result = Equals(instance1, instance2);
@@ -309,8 +309,8 @@ public class EnumerationTests
     public void Equals_WhenBothAreNull_ShouldReturnTrue()
     {
         // Arrange
-        var instance1 = (TestEnumeration?) null;
-        var instance2 = (TestEnumeration?) null;
+        TestEnumeration? instance1 = null;
+        TestEnumeration? instance2 = null;
 
         // Act
         var result = Equals(instance1, instance2);
@@ -398,7 +398,7 @@ public class EnumerationTests
     {
         // Arrange
         var instance1 = TestEnumeration.CodeA;
-        var instance2 = (TestEnumeration?) null;
+        TestEnumeration? instance2 = null;
 
         // Act
         var result = instance1 == instance2;
@@ -411,8 +411,8 @@ public class EnumerationTests
     public void EqualsOperator_WhenBothAreNull_ShouldReturnTrue()
     {
         // Arrange
-        var instance1 = (TestEnumeration?) null;
-        var instance2 = (TestEnumeration?) null;
+        TestEnumeration? instance1 = null;
+        TestEnumeration? instance2 = null;
 
         // Act
         var result = instance1 == instance2;
@@ -486,7 +486,7 @@ public class EnumerationTests
     {
         // Arrange
         var instance1 = TestEnumeration.CodeA;
-        var instance2 = (TestEnumeration?) null;
+        TestEnumeration? instance2 = null;
 
         // Act
         var result = instance1 != instance2;
@@ -499,8 +499,8 @@ public class EnumerationTests
     public void NotEqualsOperator_WhenBothAreNull_ShouldReturnFalse()
     {
         // Arrange
-        var instance1 = (TestEnumeration?) null;
-        var instance2 = (TestEnumeration?) null;
+        TestEnumeration? instance1 = null;
+        TestEnumeration? instance2 = null;
 
         // Act
         var result = instance1 != instance2;
@@ -560,7 +560,7 @@ public class EnumerationTests
     {
         // Arrange
         var instance = TestEnumeration.CodeA;
-        var value = (string?) null;
+        string? value = null;
 
         // Act
         var result = value == instance;
@@ -573,7 +573,7 @@ public class EnumerationTests
     public void EqualsOperatorWithString_WhenEnumerationIsNull_ShouldReturnFalse()
     {
         // Arrange
-        var instance = (TestEnumeration?) null;
+        TestEnumeration? instance = null;
         var value = TestEnumeration.CodeA.Value;
 
         // Act
@@ -587,8 +587,8 @@ public class EnumerationTests
     public void EqualsOperatorWithString_WhenBothAreNull_ShouldReturnTrue()
     {
         // Arrange
-        var instance = (TestEnumeration?) null;
-        var value = (TestEnumeration?) null;
+        TestEnumeration? instance = null;
+        TestEnumeration? value = null;
 
         // Act
         var result = value == instance;
@@ -648,7 +648,7 @@ public class EnumerationTests
     {
         // Arrange
         var instance = TestEnumeration.CodeA;
-        var value = (string?) null;
+        string? value = null;
 
         // Act
         var result = value != instance;
@@ -661,7 +661,7 @@ public class EnumerationTests
     public void NotEqualsOperatorWithString_WhenEnumerationIsNull_ShouldReturnFalse()
     {
         // Arrange
-        var instance = (TestEnumeration?) null;
+        TestEnumeration? instance = null;
         var value = TestEnumeration.CodeA.Value;
 
         // Act
@@ -675,8 +675,8 @@ public class EnumerationTests
     public void NotEqualsOperatorWithString_WhenBothAreNull_ShouldReturnFalse()
     {
         // Arrange
-        var instance = (TestEnumeration?) null;
-        var value = (string?) null;
+        TestEnumeration? instance = null;
+        string? value = null;
 
         // Act
         var result = value != instance;

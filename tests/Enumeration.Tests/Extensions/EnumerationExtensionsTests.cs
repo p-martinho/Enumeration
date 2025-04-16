@@ -63,7 +63,7 @@ public class EnumerationExtensionsTests
     public void IsAssignableToEnumeration_WhenTypeIsNull_ShouldReturnFalse()
     {
         // Arrange
-        var type = (Type?)null;
+        Type? type = null;
         
         // Act
         var result = type.IsAssignableToEnumeration();
@@ -119,7 +119,7 @@ public class EnumerationExtensionsTests
     public void IsAssignableToEnumerationDynamic_WhenTypeIsNull_ShouldReturnFalse()
     {
         // Arrange
-        var type = (Type?)null;
+        Type? type = null;
         
         // Act
         var result = type.IsAssignableToEnumerationDynamic();

@@ -31,7 +31,7 @@ public class EnumerationConverterTests
     public void ConvertToProvider_WhenNull_ShouldConvertToNull()
     {
         // Arrange
-        var enumeration = (TestEnumeration?)null;
+        TestEnumeration? enumeration = null;
         
         // Act
         var result = _converter.ConvertToProvider(enumeration);
@@ -58,7 +58,7 @@ public class EnumerationConverterTests
     public void ConvertFromProvider_WhenNull_ShouldConvertToNull()
     {
         // Arrange
-        var valueToConvertFrom = (string?)null;
+        string? valueToConvertFrom = null;
         
         // Act
         var result = _converter.ConvertFromProvider(valueToConvertFrom);

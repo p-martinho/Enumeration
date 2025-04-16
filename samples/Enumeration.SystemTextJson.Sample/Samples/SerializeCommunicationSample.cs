@@ -4,9 +4,9 @@ using PMart.Enumeration.SystemTextJson;
 
 namespace Enumeration.SystemTextJson.Sample.Samples;
 
-public class SerializeCommunicationSample
+public static class SerializeCommunicationSample
 {
-    public string SerializeCommunicationRecord(CommunicationRecord communicationRecord)
+    public static string SerializeCommunicationRecord(CommunicationRecord communicationRecord)
     {
         var serializerOptions = GetSerializerOptions();
 
@@ -15,7 +15,7 @@ public class SerializeCommunicationSample
         return json;
     }
 
-    public CommunicationRecord? DeserializeCommunicationRecord(string json)
+    public static CommunicationRecord? DeserializeCommunicationRecord(string json)
     {
         var serializerOptions = GetSerializerOptions();
 
@@ -24,7 +24,7 @@ public class SerializeCommunicationSample
         return communicationRecord;
     }
 
-    private JsonSerializerOptions GetSerializerOptions()
+    private static JsonSerializerOptions GetSerializerOptions()
     {
         return new JsonSerializerOptions
         {

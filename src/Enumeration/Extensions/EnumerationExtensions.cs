@@ -28,26 +28,29 @@ public static class EnumerationExtensions
     {
         return typeToEvaluate.IsAssignableToGenericType(typeof(EnumerationDynamic<>));
     }
-    
+
     private static bool IsAssignableToGenericType(this Type? typeToEvaluate, Type genericType)
     {
-        if (typeToEvaluate == null)
+        while (true)
         {
-            return false;
-        }
-        
-        if (typeToEvaluate.IsGenericType && typeToEvaluate.GetGenericTypeDefinition() == genericType)
-        {
-            return true;
-        }
+            if (typeToEvaluate == null)
+            {
+                return false;
+            }
 
-        var baseType = typeToEvaluate.BaseType;
+            if (typeToEvaluate.IsGenericType && typeToEvaluate.GetGenericTypeDefinition() == genericType)
+            {
+                return true;
+            }
 
-        if (baseType == null)
-        {
-            return false;
+            var baseType = typeToEvaluate.BaseType;
+
+            if (baseType == null)
+            {
+                return false;
+            }
+
+            typeToEvaluate = baseType;
         }
-
-        return baseType.IsAssignableToGenericType(genericType);
     }
 }
