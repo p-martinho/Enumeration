@@ -13,6 +13,8 @@ namespace PMart.Enumeration.SwaggerGen;
 [ExcludeFromCodeCoverage]
 public class EnumerationSchemaFilter : ISchemaFilter
 {
+    private const string PropertyValueName = "Value";
+
     /// <inheritdoc />
     public void Apply(OpenApiSchema schema, SchemaFilterContext context)
     {
@@ -21,14 +23,33 @@ public class EnumerationSchemaFilter : ISchemaFilter
             return;
         }
 
-        var fields = context.Type
+        var enumerationMembers = context.Type
             .GetFields(BindingFlags.Public | BindingFlags.Static | BindingFlags.DeclaredOnly)
-            .Select(f => f.Name)
-            .ToList();
+            .Where(field => field.FieldType == context.Type);
 
-        schema.Enum = fields.ConvertAll<IOpenApiAny>(fieldName => new OpenApiString(fieldName));
+        var enumerationMembersValues = enumerationMembers
+            .Select(GetValueFromEnumerationMember)
+            .Where(v => v is not null);
+
+        schema.Enum = enumerationMembersValues.Select(v => new OpenApiString(v)).ToList<IOpenApiAny>();
         schema.Type = "string";
         schema.AllOf = null;
         schema.Properties = null;
+    }
+
+    private static string? GetValueFromEnumerationMember(FieldInfo fieldInfo)
+    {
+        var propertyInfo = typeof(Enumeration<>)
+            .MakeGenericType(fieldInfo.FieldType)
+            .GetProperty(PropertyValueName);
+
+        if (propertyInfo is null)
+        {
+            return null;
+        }
+
+        var enumerationMember = fieldInfo.GetValue(null);
+
+        return propertyInfo.GetValue(enumerationMember) as string;
     }
 }
