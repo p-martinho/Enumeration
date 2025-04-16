@@ -1,6 +1,6 @@
 # PMart.Enumeration.Generator
 
-This is the package to generate automatically __Enumeration classes__ and its members (more information in the [introduction page](../../README.md)).
+This is the package to generate automatically __Enumeration classes__ and its members (more information in the [main page](../../README.md)).
 
 Creating a new Enumeration class is a little bit verbose. For instance, you can't forget to extend `Enumeration<T>` and to create the `private` constructor (else, it wouldn't compile anyway).
 Therefore, the package `PMart.Enumeration.Generator` was added to help on that. It is an [incremental generator](https://github.com/dotnet/roslyn/blob/main/docs/features/incremental-generators.md).

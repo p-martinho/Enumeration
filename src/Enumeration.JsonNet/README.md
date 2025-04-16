@@ -1,6 +1,6 @@
 # PMart.Enumeration.JsonNet
 
-This is the package to add [Newtonsoft Json.NET](https://www.newtonsoft.com) support for the __Enumeration classes__ (more information in the [introduction page](../../README.md)).
+This is the package to add [Newtonsoft Json.NET](https://www.newtonsoft.com) support for the __Enumeration classes__ (more information in the [main page](../../README.md)).
 
 # Installation
 

@@ -1,6 +1,6 @@
 # PMart.Enumeration.SystemTextJson
 
-This is the package to add `System.Text.Json` support for the __Enumeration classes__ (more information in the [introduction page](../../README.md)).
+This is the package to add `System.Text.Json` support for the __Enumeration classes__ (more information in the [main page](../../README.md)).
 
 # Usage
 

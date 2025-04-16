@@ -20,25 +20,25 @@ For more information about __Enumeration classes__, check the links on the secti
 
 ## NuGet Packages
 
-[__PMart.Enumeration__](#usage): The Enumeration base classes.
+[__PMart.Enumeration__](./src/Enumeration/README.md): The Enumeration base classes.
 [![NuGet](https://img.shields.io/nuget/v/PMart.Enumeration.svg)](https://www.nuget.org/packages/PMart.Enumeration)
 
-[__PMart.Enumeration.EFCore__](#efcore-support): The __Entity Framework Core__ support for `PMart.Enumeration`.
+[__PMart.Enumeration.EFCore__](./src/Enumeration.EFCore/README.md): The __Entity Framework Core__ support for `PMart.Enumeration`.
 [![NuGet](https://img.shields.io/nuget/v/PMart.Enumeration.EFCore.svg)](https://www.nuget.org/packages/PMart.Enumeration.EFCore)
 
-[__PMart.Enumeration.JsonNet__](#newtonsoft-jsonnet-support): The __Newtonsoft Json.NET__ support for `PMart.Enumeration`.
+[__PMart.Enumeration.JsonNet__](./src/Enumeration.JsonNet/README.md): The __Newtonsoft Json.NET__ support for `PMart.Enumeration`.
 [![NuGet](https://img.shields.io/nuget/v/PMart.Enumeration.JsonNet.svg)](https://www.nuget.org/packages/PMart.Enumeration.JsonNet)
 
-[__PMart.Enumeration.SystemTextJson__](#systemtextjson-support): The __System.Text.Json__ support for `PMart.Enumeration`.
+[__PMart.Enumeration.SystemTextJson__](./src/Enumeration.SystemTextJson/README.md): The __System.Text.Json__ support for `PMart.Enumeration`.
 [![NuGet](https://img.shields.io/nuget/v/PMart.Enumeration.SystemTextJson.svg)](https://www.nuget.org/packages/PMart.Enumeration.SystemTextJson)
 
-[__PMart.Enumeration.SwaggerGen__](#swagger-support): Support to generate __Swagger__ documentation when using `PMart.Enumeration`.
+[__PMart.Enumeration.SwaggerGen__](./src/Enumeration.SwaggerGen/README.md): Support to generate __Swagger__ documentation when using `PMart.Enumeration`.
 [![NuGet](https://img.shields.io/nuget/v/PMart.Enumeration.SwaggerGen.svg)](https://www.nuget.org/packages/PMart.Enumeration.SwaggerGen)
 
-[__PMart.Enumeration.Mappers__](#mapping): Mappers and mapping extensions for Enumerations (includes mapper for __Mapperly__).
+[__PMart.Enumeration.Mappers__](./src/Enumeration.Mappers/README.md): Mappers and mapping extensions for Enumerations (includes mapper for __Mapperly__).
 [![NuGet](https://img.shields.io/nuget/v/PMart.Enumeration.Mappers.svg)](https://www.nuget.org/packages/PMart.Enumeration.Mappers)
 
-[__PMart.Enumeration.Generator__](#enumeration-generator): A source generator to generate __Enumeration classes__ from few lines of code.
+[__PMart.Enumeration.Generator__](./src/Enumeration.Generator/README.md): A source generator to generate __Enumeration classes__ from few lines of code.
 [![NuGet](https://img.shields.io/nuget/v/PMart.Enumeration.Generator.svg)](https://www.nuget.org/packages/PMart.Enumeration.Generator)
 
 # Installation

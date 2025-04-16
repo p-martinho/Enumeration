@@ -1,6 +1,6 @@
 # PMart.Enumeration
 
-This is the core package to use the __Enumeration classes__ (more information in the [introduction page](../../README.md)).
+This is the core package to use the __Enumeration classes__ (more information in the [main page](../../README.md)).
 
 It enables the strongly typed advantages, while using `string` enumerations.
 It has, also, the possibility to create new enumerations at runtime (let's call it [Dynamic Enumerations](#dynamic-enumerations)).

@@ -1,6 +1,6 @@
 # PMart.Enumeration.Mappers
 
-This is a package with mapping extensions and mappers for the __Enumeration classes__ (more information in the [introduction page](../../README.md)).
+This is a package with mapping extensions and mappers for the __Enumeration classes__ (more information in the [main page](../../README.md)).
 
 # Installation
 

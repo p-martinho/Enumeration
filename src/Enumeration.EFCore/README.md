@@ -1,6 +1,6 @@
 # PMart.Enumeration.EFCore
 
-This is the package to add EF Core support for the __Enumeration classes__ (more information in the [introduction page](../../README.md)).
+This is the package to add EF Core support for the __Enumeration classes__ (more information in the [main page](../../README.md)).
 
 In EF Core, adding a property of type `Enumeration` or `EnumerationDynamic` to an entity requires setting the conversion to store the value of the enumeration on the database.
 The NuGet package `PMart.Enumeration.EFCore` has the required converters, you just need to add them to your model configuration.
