@@ -47,7 +47,7 @@ Install one or more of the available NuGet packages in your project.
 
 Use your IDE or the command:
 ```bash
-dotnet add package <package name>
+dotnet add package <PACKAGE_NAME>
 ```
 
 # Usage

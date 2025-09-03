@@ -27,6 +27,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5. Solution Files", "5. Sol
 		.gitignore = .gitignore
 		global.json = global.json
 		Directory.Build.props = Directory.Build.props
+		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enumeration", "src\Enumeration\Enumeration.csproj", "{4BD298FF-EB3E-4295-9B25-11F16DE8CA37}"
