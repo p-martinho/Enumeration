@@ -116,3 +116,15 @@ Please be aware that __Enumeration class__ may not fit your needs.
   - [Roslyn Documentation: Incremental Generators Cookbook](https://github.com/dotnet/roslyn/blob/main/docs/features/incremental-generators.cookbook.md)
   - [Andrew Lock: Creating a source generator](https://andrewlock.net/series/creating-a-source-generator)
   - [Andrew Lock: NetEscapades.EnumGenerators](https://github.com/andrewlock/NetEscapades.EnumGenerators)
+
+# TODO
+- Remove the Microsoft.NET.Test.Sdk package and check if the tests are not marked as unused and if code coverage works (wait for Rider fix)
+- Update to .NET 10 (when stable)
+    - Check .slnx file is better supported (not preview anymore)
+    - Update the tests for MTP mode:
+        - https://learn.microsoft.com/en-us/dotnet/core/testing/unit-testing-with-dotnet-test#microsofttestingplatform-mtp-mode-of-dotnet-test (removing, for instance, <TestingPlatformDotnetTestSupport>true</TestingPlatformDotnetTestSupport> may not be possible with Rider)
+        - https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-test?tabs=dotnet-test-with-mtp#vstest-and-microsofttestingplatform-mtp
+    - Update Github flow (change the SDK version, dotnet test command, etc.)
+    - add new package with support for OpenApi (and update Swagger package) (it requires update to .NET 10 first)
+- Update dependencies
+- Change to Github flow, pipeline to pack and publish

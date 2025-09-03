@@ -16,11 +16,11 @@ public class EnumerationConverterIntegrationTests : EfCoreBaseTest
 
         // Act
         Context.Add(entity);
-        await Context.SaveChangesAsync();
+        await Context.SaveChangesAsync(TestContext.Current.CancellationToken);
         DetachAllEntries();
 
         // Assert
-        var entities = await Context.TestEntities.ToListAsync();
+        var entities = await Context.TestEntities.ToListAsync(TestContext.Current.CancellationToken);
         Assert.Single(entities);
         Assert.Equal(TestEnumeration.CodeA, entities.Single().Test);
     }
@@ -36,11 +36,11 @@ public class EnumerationConverterIntegrationTests : EfCoreBaseTest
 
         // Act
         Context.Add(entity);
-        await Context.SaveChangesAsync();
+        await Context.SaveChangesAsync(TestContext.Current.CancellationToken);
         DetachAllEntries();
 
         // Assert
-        var entities = await Context.TestEntities.ToListAsync();
+        var entities = await Context.TestEntities.ToListAsync(TestContext.Current.CancellationToken);
         Assert.Single(entities);
         Assert.Null(entities.Single().Test);
     }
@@ -61,12 +61,12 @@ public class EnumerationConverterIntegrationTests : EfCoreBaseTest
         // Act
         Context.Add(entity1);
         Context.Add(entity2);
-        await Context.SaveChangesAsync();
+        await Context.SaveChangesAsync(TestContext.Current.CancellationToken);
         DetachAllEntries();
 
         // Assert
         var entityWithCodeA = await Context.TestEntities
-            .FirstOrDefaultAsync(e => e.Test == TestEnumeration.CodeA);
+            .FirstOrDefaultAsync(e => e.Test == TestEnumeration.CodeA, TestContext.Current.CancellationToken);
         Assert.NotNull(entityWithCodeA);
         Assert.Equal(entityWithCodeA.Test, TestEnumeration.CodeA);
     }
@@ -87,12 +87,12 @@ public class EnumerationConverterIntegrationTests : EfCoreBaseTest
         // Act
         Context.Add(entity1);
         Context.Add(entity2);
-        await Context.SaveChangesAsync();
+        await Context.SaveChangesAsync(TestContext.Current.CancellationToken);
         DetachAllEntries();
 
         // Assert
         var entityWithCodeNull = await Context.TestEntities
-            .FirstOrDefaultAsync(e => e.Test == null);
+            .FirstOrDefaultAsync(e => e.Test == null, TestContext.Current.CancellationToken);
         Assert.NotNull(entityWithCodeNull);
         Assert.Null(entityWithCodeNull.Test);
     }

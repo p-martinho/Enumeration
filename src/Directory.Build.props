@@ -4,6 +4,12 @@
     <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))"/>
 
     <PropertyGroup>
+        <PackageId>$(Company).$(MSBuildProjectName)</PackageId>
+        <AssemblyName>$(PackageId)</AssemblyName>
+        <RootNamespace>$(PackageId)</RootNamespace>
+
+        <Title>$(PackageId)</Title>
+
         <PackageProjectUrl>https://github.com/p-martinho/Enumeration</PackageProjectUrl>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageIcon>icon.png</PackageIcon>
@@ -19,9 +25,10 @@
     </ItemGroup>
 
     <ItemGroup>
-        <InternalsVisibleTo Include="$(AssemblyName).Tests" />
-        <InternalsVisibleTo Include="$(AssemblyName).IntegrationTests" />
-        <InternalsVisibleTo Include="DynamicProxyGenAssembly2" />
+        <InternalsVisibleTo Include="$(MSBuildProjectName).Tests"/>
+        <InternalsVisibleTo Include="$(MSBuildProjectName).IntegrationTests"/>
+        <InternalsVisibleTo Include="Architecture.Tests"/>
+        <InternalsVisibleTo Include="DynamicProxyGenAssembly2"/>
     </ItemGroup>
 
 </Project>

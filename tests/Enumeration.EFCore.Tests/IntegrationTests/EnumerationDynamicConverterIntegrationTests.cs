@@ -16,11 +16,11 @@ public class EnumerationDynamicConverterIntegrationTests : EfCoreBaseTest
 
         // Act
         Context.Add(entity);
-        await Context.SaveChangesAsync();
+        await Context.SaveChangesAsync(TestContext.Current.CancellationToken);
         DetachAllEntries();
 
         // Assert
-        var entities = await Context.TestEntities.ToListAsync();
+        var entities = await Context.TestEntities.ToListAsync(TestContext.Current.CancellationToken);
         Assert.Single(entities);
         Assert.Equal(TestEnumerationDynamic.CodeA, entities.Single().TestDynamic);
     }
@@ -36,11 +36,11 @@ public class EnumerationDynamicConverterIntegrationTests : EfCoreBaseTest
 
         // Act
         Context.Add(entity);
-        await Context.SaveChangesAsync();
+        await Context.SaveChangesAsync(TestContext.Current.CancellationToken);
         DetachAllEntries();
 
         // Assert
-        var entities = await Context.TestEntities.ToListAsync();
+        var entities = await Context.TestEntities.ToListAsync(TestContext.Current.CancellationToken);
         Assert.Single(entities);
         Assert.Null(entities.Single().TestDynamic);
     }
@@ -57,11 +57,11 @@ public class EnumerationDynamicConverterIntegrationTests : EfCoreBaseTest
 
         // Act
         Context.Add(entity);
-        await Context.SaveChangesAsync();
+        await Context.SaveChangesAsync(TestContext.Current.CancellationToken);
         DetachAllEntries();
 
         // Assert
-        var entities = await Context.TestEntities.ToListAsync();
+        var entities = await Context.TestEntities.ToListAsync(TestContext.Current.CancellationToken);
         Assert.Single(entities);
         Assert.Equal(newCode, entities.Single().TestDynamic?.Value);
     }
@@ -82,12 +82,13 @@ public class EnumerationDynamicConverterIntegrationTests : EfCoreBaseTest
         // Act
         Context.Add(entity1);
         Context.Add(entity2);
-        await Context.SaveChangesAsync();
+        await Context.SaveChangesAsync(TestContext.Current.CancellationToken);
         DetachAllEntries();
 
         // Assert
         var entityWithCodeA = await Context.TestEntities
-            .FirstOrDefaultAsync(e => e.TestDynamic == TestEnumerationDynamic.CodeA);
+            .FirstOrDefaultAsync(e => e.TestDynamic == TestEnumerationDynamic.CodeA,
+                TestContext.Current.CancellationToken);
         Assert.NotNull(entityWithCodeA);
         Assert.Equal(entityWithCodeA.TestDynamic, TestEnumerationDynamic.CodeA);
     }
@@ -108,12 +109,12 @@ public class EnumerationDynamicConverterIntegrationTests : EfCoreBaseTest
         // Act
         Context.Add(entity1);
         Context.Add(entity2);
-        await Context.SaveChangesAsync();
+        await Context.SaveChangesAsync(TestContext.Current.CancellationToken);
         DetachAllEntries();
 
         // Assert
         var entityWithCodeNull = await Context.TestEntities
-            .FirstOrDefaultAsync(e => e.TestDynamic == null);
+            .FirstOrDefaultAsync(e => e.TestDynamic == null, TestContext.Current.CancellationToken);
         Assert.NotNull(entityWithCodeNull);
         Assert.Null(entityWithCodeNull.TestDynamic);
     }
@@ -135,13 +136,14 @@ public class EnumerationDynamicConverterIntegrationTests : EfCoreBaseTest
         // Act
         Context.Add(entity1);
         Context.Add(entity2);
-        await Context.SaveChangesAsync();
+        await Context.SaveChangesAsync(TestContext.Current.CancellationToken);
         DetachAllEntries();
 
         // Assert
         var newEnumerationDynamicInstance = TestEnumerationDynamic.GetFromValueOrNew(newCode);
         var entityWithNewCode = await Context.TestEntities
-            .FirstOrDefaultAsync(e => e.TestDynamic == newEnumerationDynamicInstance);
+            .FirstOrDefaultAsync(e => e.TestDynamic == newEnumerationDynamicInstance,
+                TestContext.Current.CancellationToken);
         Assert.NotNull(entityWithNewCode);
         Assert.Equal(newEnumerationDynamicInstance, entityWithNewCode.TestDynamic);
     }
