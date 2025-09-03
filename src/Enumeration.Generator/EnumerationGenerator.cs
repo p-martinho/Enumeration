@@ -195,14 +195,13 @@ public class EnumerationGenerator : IIncrementalGenerator
         var prefixLength = MemberNameConstPrefix.Length;
 
         var fieldName = field.Name;
-        var fieldNameAsSpan = fieldName.AsSpan();
 
-        if (!fieldNameAsSpan.StartsWith(MemberNameConstPrefix.AsSpan()) || fieldName.Length == prefixLength)
+        if (!fieldName.StartsWith(MemberNameConstPrefix) || fieldName.Length == prefixLength)
         {
             return null;
         }
 
-        return fieldNameAsSpan.Slice(prefixLength).ToString();
+        return fieldName.Substring(prefixLength);
     }
 
     private static EnumerationToGenerate BuildEnumerationToGenerateWithError(ErrorToReport errorToReport)
@@ -266,10 +265,8 @@ public class EnumerationGenerator : IIncrementalGenerator
     {
         const string suffix = "Attribute";
 
-        var attributeNameAsSpan = attributeName.AsSpan();
-
         // Assuming that attributeName always includes "Attribute" in the string
-        return attributeNameAsSpan.Slice(0, attributeName.Length - suffix.Length).ToString();
+        return attributeName.Substring(0, attributeName.Length - suffix.Length);
     }
 
     private static string? GetEnumerationAttributeFullNameWithoutSuffix()
